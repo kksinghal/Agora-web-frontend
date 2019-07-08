@@ -1,0 +1,126 @@
+
+$segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
+$segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
+
+.container
+    margin: 0
+    min-width: 100vw
+    background: #ffffff
+    
+.content
+    padding: 0
+
+.form-clean
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+
+.field-icon
+    width: 3%
+    height: 3%
+    margin-left: 1%
+
+mat-form-field
+    width: 90%
+
+a 
+    color: #00843D
+    cursor: pointer
+    font-family: $segoe
+    font-size: 16px
+    width: 45%
+    text-align: right
+    margin-top: -10px
+    margin-bottom: 10px
+
+input
+    width: 50%
+    background: #F6F6F6
+    border: none
+    color: #9E9E9E
+    font-family: $segoe
+    font-size: 18px
+    line-height: 18px
+    margin-bottom: 22px
+    margin-left: 25%
+    height: 55px
+    padding: 15px
+
+.btn-green-line
+    &:active
+        background: #ffffff
+        color: #49ee96
+        border: #49ee96 2px solid
+    &:hover
+        background: linear-gradient(180deg, #49ee96, #00843D)
+        color: #ffffff
+
+.btn-green
+    background: linear-gradient(180deg, #49ee96, #00843D)
+    width: 200px
+    color: #ffffff
+    border-radius: 8px
+    line-height: 18px
+    font-size: 16px
+
+.btn-green-line
+    border: 2px #49ee96 solid
+    width: 150px
+    background: #ffffff
+    height: 40px
+    color: #49ee96
+    border-radius: 8px
+    line-height: 18px
+    font-size: 18px
+
+.btn-wrraper
+    width: 90%
+    margin-top: 20px
+    margin-bottom: 100px
+
+h1
+    font-size: 52px
+    font-weight: 400
+    color: $segoe-semibold
+    color: #49EE96
+    margin-bottom: 20px
+p
+    margin-bottom: 50px
+    font-size: 18px
+    text-align: center
+    font-family: $segoe
+
+@media(max-width: 1024px)
+    h1
+        font-size: 42px
+        margin-bottom: 30px
+    .btn-wrraper
+        margin-bottom: 60px
+
+@media(max-width: 450px)
+    a
+        width: 60%
+        font-size: 12px
+    input
+        width: 70%
+        font-size: 14px
+        margin-bottom: 22px
+        margin-left: 15%
+        height: 40px
+    h1
+        font-size: 24px
+        margin-bottom: 20px
+    p
+        font-size: 14px
+    .btn
+        width: 120px
+        height: 40px
+        border-radius: 8px
+        font-size: 14px
+        line-height: 14px
+        padding: 12px 20px
+    .btn-green
+        width: 160px
+    .btn-wrraper
+        margin-bottom: 30px

@@ -20,6 +20,7 @@ export class TwoFactorAuthComponent implements OnInit {
   twoFactorAuth: TwoFactorAuth;
   oneTimePassword: OneTimePassword;
   success = false;
+  isSending = false;
 
   constructor(private userService: UserService, private jwt: JwtService, private router: Router) { }
 
@@ -47,13 +48,16 @@ export class TwoFactorAuthComponent implements OnInit {
   }
 
   resendOTP() {
+    this.isSending = true;
     this.userService.currentCrypto.subscribe( crypto => {
       console.log(crypto.username);
       this.userService.resendOtp(crypto.username).subscribe((data: any) => {
+        this.isSending = false;
         this.success = true;
         console.log(data);
       },
       (err: HttpErrorResponse) => {
+        this.isSending = false;
         this.error = true;
       });
     });

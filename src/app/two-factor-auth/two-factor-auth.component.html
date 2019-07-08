@@ -18,7 +18,9 @@
                             <mat-form-field class="example-full-width">
                                 <input matInput type="text" #otp ngModel name="user_name" placeholder="One Time Password" required>
                             </mat-form-field>
-                            <button class="btn btn-white" [disabled]="isLoading" (click)= "resendOTP()" class="forgot">Resend OTP</button>
+                            <div class="side">
+                                <button class="btn btn-white resend" [disabled]="isSending" (click)= "resendOTP()">Resend OTP</button>
+                            </div>
                             <div class="form-group">
                                 <button class="btn btn-green" [disabled]="!twoFactorForm.valid || isLoading" type="submit">
                                     <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>

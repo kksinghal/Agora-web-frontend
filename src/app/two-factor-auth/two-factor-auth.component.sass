@@ -10,7 +10,7 @@ $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
 .content
     padding: 0
 
-.form-clean
+.form-clean, .center
     display: flex
     flex-direction: column
     align-items: center
@@ -27,13 +27,14 @@ $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
     box-shadow: none
     line-height: 14px
     width: 160px
+    margin-bottom: 20px
     color: #49ee96
 
 .btn-white
     &:hover
         color: #49ee96
 
-mat-form-field
+.form-group
     width: 90%
 
 input
@@ -62,6 +63,7 @@ input
     background: linear-gradient(180deg, #49ee96, #00843D)
     width: 200px
     color: #ffffff
+    border: none
     border-radius: 8px
     line-height: 18px
     font-size: 16px
@@ -114,7 +116,7 @@ p
     p
         font-size: 14px
     .btn
-        width: 120px
+        width: 100px
         height: 40px
         border-radius: 8px
         font-size: 14px
@@ -123,6 +125,7 @@ p
     .btn-green
         width: 160px
     .btn-white
+        width: 140px
         padding: 0px 12px
     .btn-wrraper
         margin-bottom: 30px

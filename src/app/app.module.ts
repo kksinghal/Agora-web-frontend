@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from '../app/home/home.component';
-import { RegisterFormComponent } from '../app/register-form/register-form.component'
+import { RegisterFormComponent } from '../app/register-form/register-form.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,18 +17,13 @@ import { AgoraSocialUserService } from './services/agora-social-user.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-// import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-// import { SharedModule } from './shared.module';
+import { LandingPageModule } from './landing-page/landing-page.module';
+import { LoginFormModule } from './login-form/login-form.module';
 import { ElectionDataService } from './services/election-data.service';
 import { VotingService } from './services/voting.service';
 import { SocialLoginComponent } from './social-login/social-login.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { SigninComponent } from './signin/signin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
 
 const config = new AuthServiceConfig([
@@ -48,15 +43,9 @@ export function provideConfig() {
     HomeComponent,
     RegisterFormComponent,
     SocialLoginComponent,
-    LandingPageComponent,
-    LoginFormComponent,
-    SigninComponent,
     DashboardComponent,
     ResetPasswordComponent,
-    TwoFactorAuthComponent,
-    ForgotPasswordComponent,
     ActivateAccountComponent
-    // AdminLayoutComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -66,7 +55,8 @@ export function provideConfig() {
     AppRoutingModule,
     SocialLoginModule,
     ReactiveFormsModule,
-    // SharedModule,
+    LandingPageModule,
+    LoginFormModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',

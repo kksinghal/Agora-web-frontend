@@ -15,13 +15,13 @@
                     <p>Please enter the one time password we have send to your registered email address</p>
                     <div class="form-clean">
                         <form #twoFactorForm="ngForm" method="post" (ngSubmit)="OnSubmit(otp.value)" class="form-clean">
-                            <mat-form-field class="example-full-width">
+                            <div class="form-group">
                                 <input matInput type="text" #otp ngModel name="user_name" placeholder="One Time Password" required>
-                            </mat-form-field>
+                            </div>
                             <div class="side">
                                 <button class="btn btn-white resend" [disabled]="isSending" (click)= "resendOTP()">Resend OTP</button>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group center">
                                 <button class="btn btn-green" [disabled]="!twoFactorForm.valid || isLoading" type="submit">
                                     <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
                             </div>

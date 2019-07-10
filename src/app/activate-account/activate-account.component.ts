@@ -28,7 +28,14 @@ export class ActivateAccountComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  navigateSignIn() {
+    this.router.navigate(['/signIn']);
+  }
 
+  navigateSignUp() {
+    this.router.navigate(['/home']);
+  }
   OnSubmit(userName) {
     this.message = 'Loading....';
     this.isLoading = true;

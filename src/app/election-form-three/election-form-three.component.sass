@@ -1,0 +1,70 @@
+$segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
+
+.container-fluid
+    margin: 0
+    padding: 0
+    min-width: 100vw
+    background: #ffffff
+.row
+    margin: 0
+
+.form-election
+    margin-top: 60px
+input
+    width: 260px
+    margin-bottom: 40px
+    font-family: $segoe
+    font-size: 20px
+    color: #342B2B
+    padding: 5px
+    border-radius: 5px
+form
+    display: flex
+    align-items: center
+    flex-direction: column
+
+.card-body
+    max-height: 35vh
+    overflow-y: scroll
+.card-body::-webkit-scrollbar 
+    width: 0 !important
+
+.container
+    margin-top: 70px
+    height: 130%
+.pr-20
+    margin-left: 40px
+
+.btn-green
+    background: linear-gradient(180deg, #49ee96, #00843D)
+    width: 160px
+    color: #ffffff
+    height: 40px
+    margin-bottom: 20px
+    border: none
+    border-radius: 8px
+    margin-top: 40px
+    line-height: 18px
+    font-size: 16px
+@media(max-width: 450px)
+    .text-right
+        padding: 0.4rem
+    input
+        font-size: 14px
+    .form-election
+        margin-top: 0px
+    .container
+        margin-top: 20px
+    .pr-20
+        margin-left: 0px
+    .card
+        margin-bottom: 20px
+    .btn-green
+        height: 40px
+        border-radius: 8px
+        font-size: 14px
+        line-height: 14px
+        padding: 12px 20px
+        width: 150px
+        margin-top: 0px
+        margin-bottom: 20px

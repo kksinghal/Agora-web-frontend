@@ -14,6 +14,23 @@ enableProdMode();
 // Express server
 const app = express();
 
+const forceSSL = () => {
+  return (req, res, next) => {
+      if (req.headers['x-forwarded-proto'] !== 'https') {
+          return res.redirect(
+              ['https://', req.get('Host'), req.url].join('')
+          );
+      }
+      next();
+  };
+};
+
+// Instruct the app
+// to use the forceSSL
+// middleware
+
+app.use(forceSSL());
+
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist/browser');
 

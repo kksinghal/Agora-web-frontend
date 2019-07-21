@@ -1,0 +1,71 @@
+<div class="main-content">
+    <div class="container-fluid">
+            <app-heading-bar>
+                <div class="heading">
+                    Add Voters
+                </div>
+                <div class="instruction">
+                    <i>Instruction: Please provide details about all voters.</i>
+                </div>
+            </app-heading-bar>
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-election">
+                        <form #ngvoter="ngForm" (ngSubmit)="add()">
+                            <div class="form-grouo">
+                                <input matInput type="text" [(ngModel)]="voter.name" name="voters_name" placeholder="Voters name" required>
+                            </div>
+                            <div class="form-grouo">
+                                <input matInput type="email" [(ngModel)]="voter.hash" name="voters_email" placeholder="Voters email" required>
+                            </div>
+                            <div class="text-center mt-10">
+                                <span>
+                                    <button class="btn btn-green" [disabled]="!ngvoter.valid" type="submit">Add Voter</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <br>
+                    <div class="card pt-20">
+                        <div class="card-header card-header-gold">
+                            <h4 class="card-title">Voters</h4>
+                            <p class="card-category">Fill the form to add more Voters</p>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngIf="form3.voters.length == 0">
+                                        No Voters Added
+                                    </tr>
+                                    <tr *ngFor="let voter of form3.voters; let ind = index">
+                                    <td class="text-black">{{ind + 1}}</td>
+                                    <td class="text-black">{{voter.name}}</td>
+                                    <td class="text-black">{{voter.email}}</td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" (click)="delete(ind)" class="btn btn-sm btn-just-icon">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                    </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center pt-3">
+                    <span class="pr-20">
+                        <button class="btn btn-green" (click)="previous()">Previous</button>
+                    </span>
+                    <span class="pr-20 text-right">
+                        <button class="btn btn-green" [disabled]="!hasVoters()" (click)="next()">Next</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

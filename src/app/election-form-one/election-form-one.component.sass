@@ -1,0 +1,110 @@
+@import '~open-iconic/font/css/open-iconic-bootstrap.css'
+$segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
+
+.container-fluid
+    margin: 0
+    padding: 0
+    min-width: 100vw
+    background: #ffffff
+.row
+    margin: 0
+
+.form-election
+    margin-left: 20vw
+    margin-top: 100px
+label
+    font-size: 24px
+    font-family: $segoe
+    width: 130px
+.heading
+    font-size: 64px
+    margin-top: 20px
+
+.form-group
+    width: 100%
+.date-input
+    display: flex
+.full-width
+    width: 680px
+    font-family: $segoe
+    font-size: 22px
+    color: #342B2B
+    padding: 5px
+    border-radius: 5px
+    margin-left: 80px
+
+input
+    margin-bottom: 40px
+.half-width
+    width: 180px
+    font-family: $segoe
+    font-size: 22px
+    color: #342B2B
+    padding: 5px
+    border-radius: 5px
+    margin-top: 40px
+    margin-left: 80px
+.end-label
+    margin-left: 110px
+
+.btn-green
+    background: linear-gradient(180deg, #49ee96, #00843D)
+    width: 200px
+    color: #ffffff
+    height: 40px
+    margin-bottom: 20px
+    border: none
+    border-radius: 8px
+    line-height: 18px
+    font-size: 16px
+
+@media(max-width: 1400px)
+    .form-election
+        margin-left: 10vw
+    .full-width
+        width: 580px
+    .half-width
+        width: 145px
+    .end-label
+        margin-left: 80px
+@media(max-width: 1024px)
+    label
+        font-size: 18px
+    .full-width
+        font-size: 16px
+        width: 460px
+    .half-width
+        font-size: 16px
+        width: 145px
+    .date-input
+        flex-direction: column
+    .end-label
+        margin-left: 0
+@media(max-width: 800px)
+    .full-width
+        width: 40vw
+
+@media(max-width: 450px)
+    .form-election
+        margin-left: 8vw
+        margin-top: 60px
+    label
+        font-size: 18px
+        width: 100px
+    .full-width, .half-width
+        width: 50vw
+        margin-left: 20px
+        font-size: 12px
+    .heading
+        font-size: 41px
+    .btn
+        width: 100px
+        height: 40px
+        border-radius: 8px
+        font-size: 14px
+        line-height: 14px
+        padding: 12px 20px
+    .btn-green
+        width: 150px
+        margin-bottom: 30px
+

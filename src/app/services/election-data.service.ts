@@ -111,14 +111,15 @@ export class ElectionDataService {
     const election = new ElectionData();
     election.name = f1.name;
     election.description = f1.description;
+    election.electionType = f1.electionType;
     election.startingDate = this.getDate(new Date(f2.startDate.toISOString()));
     election.endingDate = this.getDate(new Date(f2.endDate.toISOString()));
     election.candidates = f3.candidates;
     election.votingAlgo = f4.votingAlgo;
-    election.ballotVisibility = f5.ballotVisibility;
-    election.voterListVisibility = f5.voterListVisibility === 'true' ? true : false;
-    election.isInvite = f5.isVoterInvite;
-    election.isRealTime = f5.isRealtimeResult;
+    election.ballotVisibility = 'hidden';
+    election.voterListVisibility = false;
+    election.isInvite = true;
+    election.isRealTime = false;
     return election;
 
   }
@@ -128,6 +129,7 @@ export class ElectionDataService {
     const form1 = new ElectionFormOne();
     form1.name = election.name;
     form1.description = election.description;
+    form1.electionType = election.electionType;
 
     // construct form2
     const form2 = new ElectionFormTwo();
@@ -137,6 +139,7 @@ export class ElectionDataService {
     // construct form3
     const form3 = new ElectionFormThree();
     form3.candidates = election.candidates;
+    form3.voters = election.voters;
 
     // construct form4
     const form4 = new ElectionFormFour();

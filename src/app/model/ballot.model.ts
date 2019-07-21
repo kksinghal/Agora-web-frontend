@@ -3,7 +3,7 @@ import { Deserializable } from './deserializable.model';
 export class Ballot implements Deserializable {
 
     voteBallot: string;
-    voterEmail: string;
+    hash: string;
 
     deserialize(input: any): this {
         Object.assign(this, input);

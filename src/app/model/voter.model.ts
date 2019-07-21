@@ -2,7 +2,7 @@ import { Deserializable } from './deserializable.model';
 
 export class Voter implements Deserializable {
     name: string;
-    email: string;
+    hash: string;
 
     deserialize(input: any): this {
         Object.assign(this, input);

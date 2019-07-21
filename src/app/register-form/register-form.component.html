@@ -24,8 +24,7 @@
           <input class="input-grey" matInput type="password" #password ngModel name="password" placeholder="New password" spellcheck="false" required>
         </mat-form-field>
         <div class="form-group">
-            <button class="btn btn-green" [disabled]="!userRegistrationForm.valid || isLoading || socialLoading" type="submit">
-              <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
+            <button class="btn btn-green"><i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
         </div>
     </form>
     <app-social-login [disabled]="isLoading || socialLoading" (isCurrentlyLoading)="socialLoading=$event"></app-social-login>

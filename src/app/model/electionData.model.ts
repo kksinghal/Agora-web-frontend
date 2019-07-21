@@ -1,12 +1,13 @@
 import { Deserializable } from './deserializable.model';
 import { Ballot } from './ballot.model';
-
+import { Voter } from './voter.model';
 
 // Model used to collect data when creating and editing elections
 export class ElectionData implements Deserializable {
 
     name: string;
     description: string;
+    electionType: string;
     candidates: string[] = new Array();
     ballotVisibility: string;
     voterListVisibility: boolean;

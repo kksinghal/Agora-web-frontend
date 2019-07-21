@@ -90,6 +90,8 @@ export class UserService {
 
           this.currentUserSubject.next(user);
 
+          console.log(this.currentUserSubject)
+          console.log(user);
           return user;
           }
         })

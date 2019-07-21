@@ -1,0 +1,118 @@
+$segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
+
+
+.container-fluid
+    margin: 0
+    padding: 0
+    min-width: 100vw
+    background: #ffffff
+
+.full-width
+    width: 450px
+    font-family: $segoe
+    font-size: 20px
+    color: #342B2B
+    padding: 5px
+    border-radius: 5px
+    margin-left: 90px
+
+label
+    font-size: 24px
+    font-family: $segoe
+    width: 130px
+
+.long-label
+    width: 570px
+    margin-bottom: 40px
+
+.example-full-width
+    margin-left: 10vw
+input
+    margin-bottom: 40px
+
+.form-profile
+    margin-top: 80px
+img
+    width: 180px
+    margin-top: 80px
+    border-radius: 50%
+.card
+    border: none
+.card-avatar
+    display: flex
+    justify-content: center
+.card-body
+    margin-top: 20px
+    .card-category   
+        font-family: $segoe
+        margin-bottom: 10px
+        font-size: 22px
+.btn-black
+    background: #000000
+    color: #ffffff
+    line-height: 110%
+    height: 110%
+    width: 80px
+
+.btn-green
+    background: linear-gradient(180deg, #49ee96, #00843D)
+    width: 200px
+    color: #ffffff
+    height: 40px
+    margin-bottom: 20px
+    border: none
+    border-radius: 8px
+    line-height: 18px
+    font-size: 16px
+@media(max-width: 1200px)
+    .full-width
+        width: 300px
+    .long-label
+        width: 420px
+    .btn-black
+        width: 90px
+@media(max-width: 920px)
+    .row
+        max-width: 100vw
+    label
+        width: 95px
+        font-size: 18px
+    .example-full-width
+        margin-left: 5vw
+    .full-width
+        width: 210px
+        font-size: 18px
+    .long-label
+        width: 315px
+    .card-category   
+        font-size: 16px
+@media(max-width: 450px)
+    img
+        width: 120px
+        margin-top: 20px
+    .form-profile
+        margin-top: 20px
+    .row
+        margin: 0
+        max-width: 100vw
+    .example-full-width
+        margin-left: 0
+    .reverse
+        flex-direction: column-reverse
+    label
+        font-size: 16px
+        width: 95px
+    .btn-black
+        font-size: 11px
+        width: 65px
+    .long-label
+        width: 195px
+        font-size: 15px
+    .full-width
+        margin-left: 20px
+        width: 140px
+        font-size: 14px
+    .card-category   
+        font-size: 14px
+    
+

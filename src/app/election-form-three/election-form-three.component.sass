@@ -1,64 +1,95 @@
 $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
-
 .container-fluid
     margin: 0
     padding: 0
-    min-width: 100vw
+    font-family: $segoe
+    max-width: 100vw
     background: #ffffff
 .row
     margin: 0
 
 .form-election
-    margin-top: 60px
-input
-    width: 260px
-    margin-bottom: 40px
-    font-family: $segoe
-    font-size: 20px
-    color: #342B2B
-    padding: 5px
-    border-radius: 5px
-form
+    margin-top: 40px
+.center
     display: flex
     align-items: center
     flex-direction: column
+.algo
+    display: flex
+    align-items: center
+    background: #f0f2f5
+    height: 65px
+    margin-bottom: 20px
+    border-radius: 10px
+label
+    margin-bottom: 0
+    margin-left: 25px
 
-.card-body
-    max-height: 35vh
-    overflow-y: scroll
-.card-body::-webkit-scrollbar 
-    width: 0 !important
-
-.container
-    margin-top: 70px
-    height: 130%
-.pr-20
-    margin-left: 40px
+input 
+  opacity: 0
+  cursor: pointer
+  height: 0
+  width: 0
 
 .btn-green
-    background: linear-gradient(180deg, #49ee96, #00843D)
-    width: 160px
-    color: #ffffff
-    height: 40px
-    margin-bottom: 20px
-    border: none
-    border-radius: 8px
-    margin-top: 40px
-    line-height: 18px
-    font-size: 16px
+  background: linear-gradient(180deg, #49ee96, #00843D)
+  width: 200px
+  color: #ffffff
+  height: 40px
+  margin-bottom: 20px
+  border: none
+  border-radius: 8px
+  line-height: 18px
+  font-size: 16px
+
+
+/* Create a custom radio button */
+.checkmark 
+  position: absolute
+  top: 0
+  left: 8px
+  height: 25px
+  width: 25px
+  background-color: #eee
+  border-radius: 50%
+
+
+/* On mouse-over, add a grey background color */
+input ~ .checkmark 
+  background-color: #ccc
+
+
+/* When the radio button is checked, add a blue background */
+input:checked ~ .checkmark 
+  background-color: #2196F3
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after 
+  content: ""
+  position: absolute
+  display: none
+
+
+/* Show the indicator (dot/circle) when checked */
+input:checked ~ .checkmark:after 
+  display: block
+
+
+/* Style the indicator (dot/circle) */
+.checkmark:after 
+  top: 9px
+  left: 9px
+  width: 8px
+  height: 8px
+  border-radius: 50%
+  background: white
+
 @media(max-width: 450px)
-    .text-right
-        padding: 0.4rem
-    input
-        font-size: 14px
-    .form-election
-        margin-top: 0px
-    .container
-        margin-top: 20px
-    .pr-20
-        margin-left: 0px
-    .card
-        margin-bottom: 20px
+    .heading
+        font-size: 40px
+    .algo
+        font-size: 12px
     .btn-green
         height: 40px
         border-radius: 8px
@@ -66,5 +97,4 @@ form
         line-height: 14px
         padding: 12px 20px
         width: 150px
-        margin-top: 0px
-        margin-bottom: 20px
+        margin-bottom: 30px

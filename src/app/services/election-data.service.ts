@@ -8,7 +8,6 @@ import { ElectionFormThree } from '../model/election/election-form-three.model';
 import { ElectionFormFour } from '../model/election/election-form-four.model';
 import { ElectionFormFive } from '../model/election/election-form-five.model';
 import { ElectionData } from '../model/electionData.model';
-import { Ballot } from '../model/ballot.model';
 import { Election } from '../model/election.model';
 
 @Injectable({

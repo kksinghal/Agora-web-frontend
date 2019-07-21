@@ -19,11 +19,15 @@
                     <div class="form-group date-input">
                         <div class="inp-wrapper">
                             <label for="election_startDate">Start Date:</label>
-                            <input class="half-width"  matInput type="text" [(ngModel)]="form2.startDate" name="election_startDate" placeholder="Start Date" required>
+                            <input class="half-width" [(ngModel)]="form2.startDate" type="text" [min]="getToday()"
+                            [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" name="start_date" placeholder="Start Date" required>
+                            <owl-date-time #dt1></owl-date-time>
                         </div>
                         <div class="inp-wrapper">
                             <label for="election_endDate" class="end-label">End Date:</label>
-                            <input class="half-width" Input type="text" [(ngModel)]="form2.endDate" name="election_endDate" placeholder="End Date" required>
+                            <input class="half-width" [(ngModel)]="form2.endDate" type="text" [min]="getMinEnd()" [owlDateTime]="dt2"
+                            [owlDateTimeTrigger]="dt2" name="end_date" placeholder="End Date (Click below to edit time)" required>
+                            <owl-date-time [startAt]="getEndStart()" #dt2></owl-date-time>
                         </div>
                     </div>
                 </form>

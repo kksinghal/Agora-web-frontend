@@ -39,7 +39,7 @@ export class ElectionFormTwoComponent implements OnInit {
 
   next() {
       this.electionDataService.setForm3(this.form3);
-      this.router.navigate(['../form4'], { relativeTo: this.route, skipLocationChange: true });
+      this.router.navigate(['../form3'], { relativeTo: this.route, skipLocationChange: true });
   }
 
   delete(index: number) {

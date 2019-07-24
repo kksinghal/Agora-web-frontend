@@ -1,0 +1,38 @@
+<div class="form-clean">
+    <div class="btn-wrraper">
+        <div class="btn-group btn-group-sm float-right mt-2">
+          <button type="button" class="btn btn-green">Sign Up</button>
+          <button type="button" class="btn btn-green-line" (click) = "navigateSignIn()">Sign In</button>
+      </div>
+    </div>
+    <h1 class="heading-green">Create Account</h1>
+    <form method="post" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)" class="form-clean">
+        <h2 class="sr-only">Signup Form</h2>
+        <mat-form-field class="form-group">
+          <input class="input-grey" matInput type="text" name="userName" #identifier="ngModel" [(ngModel)]="signup.identifier" placeholder="User name" required>
+        </mat-form-field>
+        <mat-form-field class="form-group">
+          <input class="input-grey" matInput type="text" name="firstName" #firstName="ngModel" [(ngModel)]="signup.firstName" placeholder="First name" required>
+        </mat-form-field>
+        <mat-form-field class="form-group">
+          <input class="input-grey" matInput type="text" name="lastName" #lastName="ngModel" [(ngModel)]="signup.lastName" placeholder="Last name" required>
+        </mat-form-field>
+        <mat-form-field class="form-group">
+          <input class="input-grey" matInput type="email" name="email" #email="ngModel" [(ngModel)]="signup.email" placeholder="Email" required>
+        </mat-form-field>
+        <mat-form-field class="form-group">
+          <input class="input-grey" matInput type="password" #password ngModel name="password" placeholder="New password" spellcheck="false" required>
+        </mat-form-field>
+        <div class="form-group">
+            <button class="btn btn-green" [disabled]="!userRegistrationForm.valid || isLoading || socialLoading" type="submit">
+              <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
+        </div>
+    </form>
+    <app-social-login [disabled]="isLoading || socialLoading" (isCurrentlyLoading)="socialLoading=$event"></app-social-login>
+    <div *ngIf="error" class="error">
+        <p class="para">An error occured please try again.</p>
+    </div>
+    <div *ngIf="success" class="success">
+        <p class="para">An activation link has been sent to your email. Follow it to activate your account.</p>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+$segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
+$segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
+
+p
+    font-family: $segoe
+    text-align: center
+
+.form-clean
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    width: 100%
+
+input
+    width: 50%
+    background: #F6F6F6
+    border: none
+    color: #9E9E9E
+    font-family: $segoe
+    font-size: 18px
+    line-height: 18px
+    margin-bottom: 22px
+    margin-left: 25%
+    height: 55px
+    padding: 15px
+
+.btn-green
+    background: linear-gradient(180deg, #49ee96, #00843D)
+    width: 150px
+    color: #ffffff
+    height: 40px
+    border: none
+    border-radius: 8px
+    line-height: 18px
+    font-size: 18px
+
+mat-form-field
+    width: 90%
+
+.btn-green-line
+    &:active
+        background: #ffffff
+        color: #49ee96
+        border: #49ee96 2px solid
+
+.btn-green-line
+    border: 2px #49ee96 solid
+    width: 150px
+    background: #ffffff
+    color: #49ee96
+    height: 40px
+    border-radius: 8px
+    line-height: 18px
+    font-size: 18px
+
+.btn-wrraper
+    width: 90%
+    margin-top: 20px
+    margin-bottom: 60px
+
+h1
+    font-size: 62px
+    font-weight: 400
+    color: $segoe-semibold
+    color: #49EE96
+    margin-bottom: 50px
+
+@media(max-width: 1024px)
+    h1
+        font-size: 48px
+        margin-bottom: 30px
+    .btn-wrraper
+        margin-bottom: 60px
+
+@media(max-width: 450px)
+    input
+        width: 70%
+        font-size: 14px
+        margin-bottom: 22px
+        margin-left: 15%
+        height: 40px
+    h1
+        font-size: 42px
+        margin-bottom: 20px
+    .btn
+        width: 100px
+        height: 40px
+        border-radius: 8px
+        font-size: 14px
+        line-height: 14px
+        padding: 12px 20px
+    .btn-wrraper
+        margin-bottom: 30px

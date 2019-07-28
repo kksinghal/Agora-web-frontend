@@ -8,6 +8,13 @@
                 <i>Instruction: Provide select the voting algorithm. </i>
             </div>
         </app-heading-bar>
+        <div class="btn-wrapper">
+            <div class="btn-group btn-group-sm mt-2">
+                <button type="button" class="btn btn-line" (click)="navigateForm1()">Election Info</button>
+                <button type="button" class="btn btn-line" (click)="previous()">Candidates</button>
+                <button type="button" class="btn btn-green-line" [disabled]="!ngform4.valid">Voting Algorithm</button>
+            </div>
+        </div>
         <div class="form-election">
             <form #ngform4="ngForm" (ngSubmit)="next()">
                 <div class="form-group">

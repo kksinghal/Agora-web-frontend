@@ -42,6 +42,10 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/create-election']);
   }
 
+  profile() {
+    this.router.navigate(['/profile']);
+  }
+
   getDisplayDate(date: string): string {
     return Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().toLocaleString();
   }

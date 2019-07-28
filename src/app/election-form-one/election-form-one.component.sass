@@ -47,8 +47,11 @@ input
 .end-label
     margin-left: 110px
 
+.btn-wrapper
+    margin-left: 20vw
+
 .btn-green
-    background: linear-gradient(180deg, #49ee96, #00843D)
+    background: #54a457
     width: 200px
     color: #ffffff
     height: 40px
@@ -58,7 +61,33 @@ input
     line-height: 18px
     font-size: 16px
 
+.btn-line
+    width: 250px
+    font-size: 22px
+    margin-right: 40px
+    color: #707070
+    text-align: center
+    border-bottom: 2px solid #707070
+
+.btn-green-line
+    width: 250px
+    color: #17A257
+    margin-right: 40px
+    font-size: 22px
+    text-align: center
+    border-bottom: 2px solid #17A257
+
 @media(max-width: 1400px)
+    .btn-wrapper
+        margin-left: 10vw
+    .btn-line
+        width: 200px
+        font-size: 16px
+        margin-right: 30px
+    .btn-green-line
+        width: 200px
+        font-size: 16px
+        margin-right: 30px
     .form-election
         margin-left: 10vw
     .full-width
@@ -85,8 +114,26 @@ input
 @media(max-width: 800px)
     .full-width
         width: 40vw
+    .btn-line
+        width: 120px
+        font-size: 12px
+        margin-right: 20px
+    .btn-green-line
+        width: 120px
+        font-size: 12px
+        margin-right: 20px
 
 @media(max-width: 450px)
+    .btn-wrapper
+        margin-left: 8vw
+    .btn-line
+        width: 85px
+        font-size: 11px
+        margin-right: 12px
+    .btn-green-line
+        width: 85px
+        font-size: 11px
+        margin-right: 12px
     .form-election
         margin-left: 8vw
         margin-top: 60px
@@ -99,14 +146,11 @@ input
         font-size: 12px
     .heading
         font-size: 41px
-    .btn
-        width: 100px
+    .btn-green
+        width: 150px
         height: 40px
         border-radius: 8px
         font-size: 14px
         line-height: 14px
         padding: 12px 20px
-    .btn-green
-        width: 150px
         margin-bottom: 30px
-

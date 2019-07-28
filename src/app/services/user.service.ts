@@ -133,6 +133,17 @@ export class UserService {
       ));
   }
 
+  toggleTwoFactorAuthentication() {
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth()) };
+    return this.http.get(this.rootUrl + '/toggleTwoFactorAuth', reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          return data;
+        }
+      ));
+  }
+
   socialLogin(provider: string, token: string) {
     const allHeaders = this.getheadersNoAuth();
     allHeaders['Access-Token'] = token;

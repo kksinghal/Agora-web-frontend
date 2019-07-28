@@ -22,30 +22,101 @@ form
     align-items: center
     flex-direction: column
 
+.card 
+    border: none
+    text-align: center
+
 .card-body
     max-height: 35vh
     overflow-y: scroll
 .card-body::-webkit-scrollbar 
     width: 0 !important
 
+.card-header
+    background: #ffffff
+    border: none
+
 .container
     margin-top: 70px
     height: 130%
 .pr-20
     margin-left: 40px
+.btn-wrapper
+    margin-left: 20vw
 
+.border
+    border: 1px solid #707070 !important
+    border-radius: 6px
+    margin-bottom: 10px
 .btn-green
-    background: linear-gradient(180deg, #49ee96, #00843D)
-    width: 160px
+    background: #54a457
+    width: 200px
     color: #ffffff
     height: 40px
     margin-bottom: 20px
     border: none
     border-radius: 8px
-    margin-top: 40px
     line-height: 18px
     font-size: 16px
+
+tr
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+td
+    border: none
+
+.btn-line
+    width: 250px
+    font-size: 22px
+    margin-right: 40px
+    color: #707070
+    text-align: center
+    border-bottom: 2px solid #707070
+
+.btn-green-line
+    width: 250px
+    color: #17A257
+    margin-right: 40px
+    font-size: 22px
+    text-align: center
+    border-bottom: 2px solid #17A257
+
+@media(max-width: 1400px)
+    .btn-wrapper
+        margin-left: 10vw
+    .btn-line
+        width: 200px
+        font-size: 16px
+        margin-right: 30px
+    .btn-green-line
+        width: 200px
+        font-size: 16px
+        margin-right: 30px
+
+@media(max-width: 800px)
+    .btn-line
+        width: 120px
+        font-size: 12px
+        margin-right: 20px
+    .btn-green-line
+        width: 120px
+        font-size: 12px
+        margin-right: 20px
+
 @media(max-width: 450px)
+    .btn-wrapper
+        margin-left: 8vw
+    .btn-line
+        width: 85px
+        font-size: 11px
+        margin-right: 12px
+    .btn-green-line
+        width: 85px
+        font-size: 11px
+        margin-right: 12px
     .card-body, .card-category
         font-size: 14px
     .card-title

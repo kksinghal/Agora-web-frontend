@@ -6,6 +6,13 @@
                 </div>
                 <div class="instruction"><i>Instruction: Provide information about the election. </i></div>
             </app-heading-bar>
+            <div class="btn-wrapper">
+                <div class="btn-group btn-group-sm mt-2">
+                    <button type="button" class="btn btn-green-line">Election Info</button>
+                    <button type="button" class="btn btn-line" [disabled]="!ngform1.valid" (click)="next()">Candidates</button>
+                    <button type="button" class="btn btn-line" [disabled]="!ngform1.valid">Voting Algorithm</button>
+                </div>
+            </div>
             <div class="form-election">
                 <form #ngform1="ngForm">
                     <div class="form-group">

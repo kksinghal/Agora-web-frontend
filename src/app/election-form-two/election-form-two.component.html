@@ -8,6 +8,13 @@
                     <i>Instruction: Please provide details about all candidates.</i>
                 </div>
             </app-heading-bar>
+            <div class="btn-wrapper">
+                <div class="btn-group btn-group-sm mt-2">
+                    <button type="button" class="btn btn-line" (click)="previous()">Election Info</button>
+                    <button type="button" class="btn btn-green-line" (click)="next()">Candidates</button>
+                    <button type="button" class="btn btn-line" [disabled]="!ngform3.valid" (click)="next()">Voting Algorithm</button>
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7">
@@ -19,7 +26,7 @@
                                 </div>
                                 <div class="text-center mt-10">
                                     <span>
-                                        <button class="btn btn-green" [disabled]="!ngform3.valid" type="submit">Add Candidate</button>
+                                        <button class="btn btn-green mt-4" [disabled]="!ngform3.valid" type="submit">Add Candidate</button>
                                     </span>
                                 </div>
                         </form>
@@ -34,27 +41,29 @@
                         </div>
                         <div class="card-body">
                             <table class="table">
-                            <tbody>
-                                <tr *ngIf="form3.candidates.length == 0">
-                                No Candidates Added
-                                </tr>
-                                <tr #else *ngFor="let candidate of form3.candidates; let ind = index">
-                                <td class="text-black">{{candidate}}</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" (click)="delete(ind)"
-                                        class="btn btn-sm btn-just-icon">
-                                    <i class="material-icons">delete</i>
-                                    </button>
-                                </td>
-                                </tr>
-                            </tbody>
+                                <tbody>
+                                    <tr *ngIf="form3.candidates.length == 0" class="d-block">
+                                    No Candidates Added
+                                    </tr>
+                                    <div class="border" #else *ngFor="let candidate of form3.candidates; let ind = index">
+                                        <tr>
+                                            <td class="text-black">{{candidate}}</td>
+                                            <td class="td-actions text-right">
+                                                <button type="button" (click)="delete(ind)"
+                                                    class="btn btn-sm btn-just-icon">
+                                                <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col text-center pt-3">
+                <div class="col text-center pt-3 mt-4">
                     <span class="pr-20">
                         <button class="btn btn-green" (click)="previous()">Previous</button>
                     </span>

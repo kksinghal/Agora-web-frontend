@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { User } from '../model/user.model';
 import { PasswordData } from '../model/password.model';
 import { AgoraSocialUserService } from '../services/agora-social-user.service';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -17,15 +18,25 @@ export class ProfileComponent implements OnInit {
   user: User;
   newPassword: PasswordData = new PasswordData();
   newRetypePassword: PasswordData = new PasswordData();
-  newPasswordRetypestatus = false;
-  newPasswordstatus = false;
+  twoFacorAuthentication: boolean;
+  twoFactorAuth: string;
 
-  constructor(private userService: UserService, private agoraSocialUserService: AgoraSocialUserService) {
+  constructor(private userService: UserService, private agoraSocialUserService: AgoraSocialUserService, private router: Router) {
     this.user = this.userService.getCurrentUser();
+    this.twoFacorAuthentication = this.user.twoFactorAuthentication;
+    this.updateMessage();
     console.log(this.user);
   }
 
   ngOnInit() {
+  }
+
+  updateMessage() {
+    if  (this.twoFacorAuthentication) {
+      this.twoFactorAuth = 'Enabled';
+    } else {
+      this.twoFactorAuth = 'Disabled';
+    }
   }
 
   isSocialUser() {
@@ -47,6 +58,28 @@ export class ProfileComponent implements OnInit {
           this.showNotification('danger', 'Unable to update profile. Please try again');
         }
       });
+  }
+
+  toggleTwoFactorAuthentication() {
+    this.userService.toggleTwoFactorAuthentication().subscribe((data: any) => {
+      this.twoFacorAuthentication = !this.twoFacorAuthentication;
+      this.updateMessage();
+      console.log(this.twoFacorAuthentication);
+      this.showNotification('success', 'Two Factor Authentication was successfully updated');
+    },
+      (err: HttpErrorResponse) => {
+        if (err.status === 200) {
+          this.showNotification('success', 'Two Factor Authentication was successfully updated');
+        } else {
+          this.updateMessage();
+          console.log(this.twoFacorAuthentication);
+          this.showNotification('danger', 'Unable to update. Please try again');
+        }
+      });
+  }
+
+  navigatePassword() {
+    this.router.navigate(['/change-password']);
   }
 
   showNotification(notifType: string, message: string) {

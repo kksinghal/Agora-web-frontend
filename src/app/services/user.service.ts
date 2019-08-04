@@ -90,6 +90,8 @@ export class UserService {
 
           this.currentUserSubject.next(user);
 
+          console.log(this.currentUserSubject)
+          console.log(user);
           return user;
           }
         })
@@ -127,6 +129,17 @@ export class UserService {
           this.currentCryptoSubject.next(twoFactorAuth);
           console.log(this.getCurrentCrypto());
           return twoFactorAuth;
+        }
+      ));
+  }
+
+  toggleTwoFactorAuthentication() {
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth()) };
+    return this.http.get(this.rootUrl + '/toggleTwoFactorAuth', reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          return data;
         }
       ));
   }

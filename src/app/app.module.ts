@@ -23,7 +23,6 @@ import { ElectionDataService } from './services/election-data.service';
 import { VotingService } from './services/voting.service';
 import { SocialLoginComponent } from './social-login/social-login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
 
 const config = new AuthServiceConfig([
@@ -44,8 +43,7 @@ export function provideConfig() {
     RegisterFormComponent,
     SocialLoginComponent,
     DashboardComponent,
-    ResetPasswordComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -63,7 +61,7 @@ export function provideConfig() {
       confirmButtonClass: 'btn btn-primary btn-gold',
       cancelButtonClass: 'btn'
     }),
-    DragulaModule.forRoot()
+    DragulaModule.forRoot(),
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [

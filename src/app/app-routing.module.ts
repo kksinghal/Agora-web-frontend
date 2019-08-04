@@ -6,6 +6,11 @@ import { ActivateAccountComponent } from './activate-account/activate-account.co
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'form1', loadChildren: './election-form-one/election-form-one.module#ElectionFormOneModule', pathMatch: 'full'},
+  { path: 'form2', loadChildren: './election-form-two/election-form-two.module#ElectionFormTwoModule', pathMatch: 'full'},
+  { path: 'form3', loadChildren: './election-form-three/election-form-three.module#ElectionFormThreeModule', pathMatch: 'full'},
+  { path: 'create-election', loadChildren: './create-private-election/create-private-election.module#CreatePrivateElectionModule', pathMatch: 'full' },
+  { path: 'create-poll', loadChildren: './create-public-election/create-public-election.module#CreatePublicElectionModule', pathMatch: 'full'  },
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
   { path: 'forgot-password', loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule', pathMatch: 'full' },

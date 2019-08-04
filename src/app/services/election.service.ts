@@ -68,6 +68,7 @@ export class ElectionService {
   create(election: ElectionData) {
     const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth()) };
     const body = JSON.stringify(election);
+    console.log(body);
     return this.http.post(this.rootUrl + '/election', body, reqHeaders);
   }
 

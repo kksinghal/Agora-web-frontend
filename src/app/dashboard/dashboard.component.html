@@ -4,21 +4,30 @@
 
         <!-- Election Stats-->
         <div class="row pb-20">
-            <div class="col text-center pt-3">
-                <span class="pr-20 text-right">
-                    <button class="btn btn-green" (click)="navigatePrivate()">Create Election</button>
+            <div class="col-md-6 col-sm-12 text-center private-election">
+                <span class="private-election-text">
+                    <button class="btn" (click)="navigatePrivate()">Create a new Election</button>
                 </span>
             </div>
-            <div class="col text-center pt-3">
-                <span class="pr-20 text-right">
-                    <button class="btn btn-green" (click)="navigatePoll()">Create Poll</button>
+            <div class="col-md-6 col-sm-12 text-center public-election">
+                <span class="public-election-text">
+                    <button class="btn" (click)="navigatePoll()">Create a new Poll</button>
                 </span>
             </div>
         </div>
         <!-- List of Elections-->
-        <div class="container">
+        <div class="container mt-2 election">
             <div class="row">
-                
+                <h1>Your Elections</h1>
+            </div>
+            <div class="row">
+                <div class="election-head bg-grey">
+                    <div class="electionType">Type</div>
+                    <div class="name">Election Name</div>
+                    <div class="startDate">Start Date</div>
+                    <div class="endDate">End Date</div>
+                    <div class="status">Status</div>
+                </div>
             </div>
         </div>
     </div>

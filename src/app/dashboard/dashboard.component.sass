@@ -4,27 +4,100 @@ $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
     margin: 0
     min-width: 100vw
     min-height: 100vh
-    background: #f0f2f5
+    background: #ffffff
     font-family: $segoe-semibold
     overflow-x: hidden
 
-.btn-green
-  background: linear-gradient(180deg, #49ee96, #00843D)
-  width: 200px
-  color: #ffffff
-  height: 40px
-  margin-bottom: 20px
-  border: none
-  border-radius: 8px
-  line-height: 18px
-  font-size: 16px
+.public-election, .private-election-text, .private-election, .public-election-text
+        display: flex
+        justify-content: center
+        align-items: center
+.private-election-text, .public-election-text
+    border-radius: 16px
 
-@media(max-width: 450px)
-    .btn-green
-        height: 40px
+.election
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+@media(min-width: 768px)
+    .election-head
+        display: flex
+        justify-content: space-between
+    .private-election
+        height: 180px
+        background: #17A257
+        min-width: 60vw
+        margin-left: -10vw
+        transform: skewX(-30deg)
+    .public-election
+        height: 180px
+        background: #1D83F7
+        min-width: 60vw
+        margin-right: -10vw
+        transform: skewX(-30deg)
+    .private-election-text
+        transform: skewX(30deg)
+        background: #ffffff
+        height: 60px
+        width: 280px
+        .btn
+            color: #067B4C
+    .public-election-text
+        transform: skewX(30deg)
+        background: #ffffff
+        height: 60px
+        width: 280px
+        .btn
+            color: #1D83F7
+    .btn
+        font-size: 20px
+
+@media(min-width: 1024px)
+    .private-election
+        height: 210px
+    .public-election
+        height: 210px
+    .private-election-text, .public-election-text
+        width: 330px
+        height: 80px
+    .btn
+        font-size: 24px
+
+@media(min-width: 1400px)
+    .private-election
+        height: 230px
+    .public-election
+        height: 230px
+    .private-election-text, .public-election-text
+        width: 350px
+    .btn
+        font-size: 24px
+
+@media(max-width: 767px)
+    .private-election
+        height: 100px
+        background: #ffffff
+    .public-election
+        height: 100px
+        background: #ffffff
+    .private-election-text
+        background: #17A257
+        height: 60px
         border-radius: 8px
-        font-size: 14px
-        line-height: 14px
-        padding: 12px 20px
-        width: 150px
-        margin-bottom: 30px
+        width: 320px
+    .public-election-text
+        background: #1D83F7
+        border-radius: 8px
+        height: 60px
+        width: 320px
+    .btn
+        color: #ffffff
+        font-size: 20px
+@media(max-width: 450px)
+    .private-election-text, .public-election-text
+        border-radius: 6px
+        width: 280px
+    .btn
+        font-size: 18px

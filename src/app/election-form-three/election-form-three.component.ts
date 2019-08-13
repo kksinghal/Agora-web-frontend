@@ -41,7 +41,7 @@ export class ElectionFormThreeComponent implements OnInit {
   }
 
   previous() {
-    this.router.navigate(['../form3'], { relativeTo: this.route, skipLocationChange: true });
+    this.router.navigate(['../form2'], { relativeTo: this.route, skipLocationChange: true });
   }
 
   finish() {

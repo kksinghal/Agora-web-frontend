@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { HeadingBarModule } from '../heading-bar/heading-bar.module';
 import { ProfileComponent } from './profile.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -12,7 +13,8 @@ import { ProfileComponent } from './profile.component';
     CommonModule,
     FormsModule,
     ProfileRoutingModule,
-    HeadingBarModule
+    HeadingBarModule,
+    NavbarModule
   ],
   exports: [ProfileComponent]
 })

@@ -1,0 +1,70 @@
+<div class="nav-desk">
+    <div class="navbar">
+        <div class="agora">AGORA</div>
+        <div class="links d-flex align-items-center">
+            <div class="dashboard" routerLink="/dashboard">DASHBOARD</div>
+            <div class="dropdown">
+                <div class="dropdown-toggle img-logo" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img *ngIf="!user.avatarURL" class="img ml-4" src="../../../../assets/agora.png" />
+                    <img *ngIf="user.avatarURL" class="img ml-4" src="{{user.avatarURL}}" />
+                </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item d-flex align-items-center" routerLink="">
+                        <i class="material-icons mr-3">home</i>
+                        <span>Home</span>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" routerLink="/profile">
+                        <i class="material-icons mr-3">person</i>
+                        <span class="d-lg-block">Profile</span>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" routerLink="/change-password">
+                        <i class="material-icons mr-3">vpn_key</i>
+                        <span class="d-md-block"> Change Password</span>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" (click)="logout()">
+                        <i class="material-icons mr-3">exit_to_app</i>
+                        <span class="d-md-block">Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hamburger">
+    <nav class="navbar navbar-dark">
+        <div class="logo-text d-flex align-items-center">
+            <img *ngIf="!user.avatarURL" class="img mr-2" src="../../../../assets/agora.png" />
+            <img *ngIf="user.avatarURL" class="img mr-2" src="{{user.avatarURL}}" />
+            <div class="agora">AGORA</div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar6" aria-controls="navbar6"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="collapse" id="navbar6">
+        <div class="bg-black p-3">
+            <a class="dropdown-item d-flex align-items-center" routerLink="">
+                <i class="material-icons mr-3">home</i>
+                <span>Home</span>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" routerLink="/dashboard">
+                    <i class="material-icons mr-3">dashboard</i>
+                    <span>Dashboard</span>
+                </a>
+            <a class="dropdown-item d-flex align-items-center" routerLink="/profile">
+                <i class="material-icons mr-3">person</i>
+                <span class="d-lg-block">Profile</span>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" routerLink="/change-password">
+                <i class="material-icons mr-3">vpn_key</i>
+                <span class="d-md-block"> Change Password</span>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" (click)="logout()">
+                <i class="material-icons mr-3">exit_to_app</i>
+                <span class="d-md-block">Logout</span>
+            </a>
+        </div>
+    </div>
+</div>

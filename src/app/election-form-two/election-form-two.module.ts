@@ -5,6 +5,7 @@ import { ElectionFormTwoComponent } from './election-form-two.component';
 import { ElectionFormTwoRoutingModule } from './election-form-two-routing.module';
 import { HeadingBarModule } from '../heading-bar/heading-bar.module';
 import { FormsModule } from '@angular/forms';
+import { NavbarModule } from '../navbar/navbar.module';
 
 @NgModule({
   declarations: [ElectionFormTwoComponent],
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ElectionFormTwoRoutingModule,
     HeadingBarModule,
-    FormsModule
+    FormsModule,
+    NavbarModule
   ],
   exports: [ElectionFormTwoComponent]
 })

@@ -61,7 +61,7 @@ export class ElectionFormThreeComponent implements OnInit {
           cancelButtonText: 'Dashboard'
         }).then((result) => {
           if (result.value) {
-            this.router.navigate(['election/' + this.electionDataService.getId() + '/voters']);
+            this.router.navigate(['addVoter/' + this.electionDataService.getId()]);
           } else {
             this.router.navigate(['dashboard']);
           }
@@ -81,7 +81,7 @@ export class ElectionFormThreeComponent implements OnInit {
             }).then((result) => {
               this.electionDataService.purge();
               if (result.value) {
-                this.router.navigate(['election/' + this.electionDataService.getId() + '/voters']);
+                this.router.navigate(['addVoter/' + this.electionDataService.getId()]);
               } else {
                 this.router.navigate(['dashboard']);
               }

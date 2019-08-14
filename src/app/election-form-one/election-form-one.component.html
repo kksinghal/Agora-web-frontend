@@ -1,5 +1,6 @@
 <div class="main-content">
         <div class="container-fluid">
+            <app-navbar></app-navbar>
             <app-heading-bar>
                 <div class="heading">
                     Create Election
@@ -19,9 +20,9 @@
                         <label for="election_name">Name:</label>
                         <input class="full-width" matInput type="text" [(ngModel)]="form1.name" name="election_name" placeholder="Election Name" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group d-flex align-items-center">
                         <label for="election_description">Description:</label>
-                        <textarea class="full-width" matInput type="text" [(ngModel)]="form1.description" name="election_description" placeholder="Election Description" required> </textarea>
+                        <textarea class="full-width description" matInput type="text" [(ngModel)]="form1.description" name="election_description" placeholder="Election Description" required> </textarea>
                     </div>
                     <div class="form-group date-input">
                         <div class="inp-wrapper">

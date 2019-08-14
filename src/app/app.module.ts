@@ -21,9 +21,8 @@ import { LandingPageModule } from './landing-page/landing-page.module';
 import { LoginFormModule } from './login-form/login-form.module';
 import { ElectionDataService } from './services/election-data.service';
 import { VotingService } from './services/voting.service';
-import { SocialLoginComponent } from './social-login/social-login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
+import { SocialLoginComponent } from './social-login/social-login.component';
 
 const config = new AuthServiceConfig([
   {
@@ -41,9 +40,8 @@ export function provideConfig() {
     AppComponent,
     HomeComponent,
     RegisterFormComponent,
-    SocialLoginComponent,
-    DashboardComponent,
     ActivateAccountComponent,
+    SocialLoginComponent
   ],
   imports: [
     BrowserAnimationsModule,

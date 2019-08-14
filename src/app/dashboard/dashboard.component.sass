@@ -1,81 +1,210 @@
 $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
+$segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
 
 .full-width
     margin: 0
-    min-width: 100vw
+    max-width: 100vw
     min-height: 100vh
-    background: #ffffff
-    font-family: $segoe-semibold
+    background: #fefefe
+    font-family: $segoe
     overflow-x: hidden
 
 .public-election, .private-election-text, .private-election, .public-election-text
-        display: flex
-        justify-content: center
-        align-items: center
+    display: flex
+    justify-content: center
+    align-items: center
+    font-family: $segoe-semibold
 .private-election-text, .public-election-text
-    border-radius: 16px
-
-.election
+    font-family: $segoe-semibold
+    border-radius: 8px
+.electionStats
+    width: 100%
+.stats
+    width: 100vw
+    padding: 0 8vw
+    margin: 0
+    margin-top: 30px
+    display: flex
+    justify-content: space-around
+.totalElec, .activeElec, .pendingElec, .finishedElec
+    width: 18vw
+    height: 14vw
+    border-radius: 20px
+    font-family: $segoe
+    padding: 20px
+    font-size: 25px
+    color: #ffffff
+    text-align: center
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
+    background: #ffffff
+    box-shadow: #f0f0f0 0px 0px 15px
+.pendingElec
+    background: #1e83f7
+.totalElec
+    background: #fcd115
+.finishedElec
+    background: #e84318
+.activeElec
+    background: #54a457
+.figure
+    font-size: 38px
+h1
+    font-size: 4rem
+.private
+    padding: 5px 30px
+    border: 1px solid #087348
+    background: #ffffff
+    color: #087348
+.border-blue
+    border-left: 5px solid #1D83F7
+.border-green
+    border-left: 5px solid #087348
+.border-red
+    border-left: 5px solid #FF2A2A
+.public
+    padding: 5px 30px
+    border: 1px solid #1D83F7
+    background: #ffffff
+    color: #1D83F7
+.pending, .results
+    width: fit-content
+    padding: 5px 20px
+    color: #ffffff
+    background: #1D83F7
+.results
+    padding: 5px 20px
+.finish, .voters
+    padding: 5px 30px
+    color: #ffffff
+    background: #FF2A2A
+.active, .edit
+    width: fit-content
+    padding: 5px 30px
+    color: #ffffff
+    background: #17a257
+.edit 
+    padding: 5px 40px
+.election
+    min-width: 75vw
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+.name, .type, .status, .startDate, .endDate, .editStatus
+    display: flex
+    text-align: center
+    justify-content: center
+    align-items: center
+.container
+    padding: 0
+.editStatus
+    cursor: pointer
+.bg-grey
+    height: 90px
+    background: #ffffff
+    box-shadow: #f0f0f0 0px 0px 15px
+.election-head
+    display: flex
+    align-items: center
+    margin-top: 40px
+    font-size: 24px
+    color: #000000
+    font-family: $segoe-semibold
 
-@media(min-width: 768px)
+.electionInfo
+    display: flex
+    align-items: center
+    font-size: 22px
+    font-family: $segoe
+    color: #000000
+    margin-top: 20px
+.card
+    background: #ffffff
+    box-shadow: #f0f0f0 0px 0px 15px
+    border: none
+
+@media(max-width: 1200px)
+    .totalElec, .activeElec, .pendingElec, .finishedElec
+        width: 30vw
+        height: 22vw
+        margin-bottom: 20px
+        border-radius: 12px
     .election-head
-        display: flex
-        justify-content: space-between
+        font-size: 19px
+    .electionInfo
+        font-size: 19px
+@media(min-width: 768px)
     .private-election
         height: 180px
-        background: #17A257
-        min-width: 60vw
-        margin-left: -10vw
-        transform: skewX(-30deg)
     .public-election
         height: 180px
-        background: #1D83F7
-        min-width: 60vw
-        margin-right: -10vw
-        transform: skewX(-30deg)
     .private-election-text
-        transform: skewX(30deg)
-        background: #ffffff
-        height: 60px
-        width: 280px
+        background: #17A257
+        height: 50px
+        width: 245px
+        margin-left: 5vw
         .btn
-            color: #067B4C
+            color: #ffffff
     .public-election-text
-        transform: skewX(30deg)
-        background: #ffffff
-        height: 60px
-        width: 280px
+        background: #1D83F7
+        height: 50px
+        width: 245px
         .btn
-            color: #1D83F7
+            color: #ffffff
     .btn
         font-size: 20px
 
 @media(min-width: 1024px)
     .private-election
-        height: 210px
+        height: 180px
     .public-election
-        height: 210px
+        height: 180px
     .private-election-text, .public-election-text
-        width: 330px
-        height: 80px
+        width: 270px
+        height: 60px
     .btn
         font-size: 24px
-
 @media(min-width: 1400px)
     .private-election
-        height: 230px
+        height: 200px
     .public-election
-        height: 230px
+        height: 200px
     .private-election-text, .public-election-text
-        width: 350px
+        width: 320px
     .btn
         font-size: 24px
+@media(max-width: 1400px)
+    .private, .public, .finish
+        padding: 5px 15px
+    .active, .finish, .results, .voters, .pending, .edit
+        padding: 5px 15px
+@media(max-width: 1000px)
+    .electionInfo
+        font-size: 16px
+    .private, .public, .results
+        padding: 5px 10px
+    .finish
+        padding: 5px 20px
 
 @media(max-width: 767px)
+    .stats
+        padding: 0 5vw
+    .totalElec, .activeElec, .pendingElec, .finishedElec
+        width: 36vw
+        height: 30vw
+        font-size: 20px
+        border-radius: 8px
+    .figure
+        font-size: 32px
+    h1
+        font-size: 2.5rem
+    .private, .public, .active
+        padding: 5px 10px
+    .name
+        font-size: 17px
     .private-election
         height: 100px
         background: #ffffff
@@ -84,20 +213,41 @@ $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
         background: #ffffff
     .private-election-text
         background: #17A257
-        height: 60px
-        border-radius: 8px
-        width: 320px
+        height: 50px
+        border-radius: 5px
+        width: 240px
+        img
+            display: none
     .public-election-text
         background: #1D83F7
-        border-radius: 8px
-        height: 60px
-        width: 320px
+        border-radius: 5px
+        height: 50px
+        width: 240px
+        img
+            display: none
     .btn
         color: #ffffff
         font-size: 20px
+    .name, .type, .status, .startDate, .endDate, .editStatus
+        font-size: 14px
+    .name
+        font-weight: bold
+        font-size: 20px
+    
 @media(max-width: 450px)
+    .totalElec, .activeElec, .pendingElec, .finishedElec
+        width: 80vw
+        height: 28vw
+        font-size: 18px
+    .figure
+        font-size: 28px
+    .card-body
+        padding: 0.5rem
     .private-election-text, .public-election-text
         border-radius: 6px
-        width: 280px
+        width: 220px
+    .name
+        font-weight: bold
+        font-size: 18px
     .btn
         font-size: 18px

@@ -28,7 +28,7 @@ export class ActivateAccountComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   navigateSignIn() {
     this.router.navigate(['/signIn']);
   }

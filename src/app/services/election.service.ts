@@ -119,6 +119,11 @@ export class ElectionService {
      }));
   }
 
+  generateUrl(id: string) {
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth())};
+    return this.http.get<Ballot>(this.rootUrl + '/election/' + id + '/pollVoterLink', reqHeaders);
+  }
+
   getResults(id: string) {
     const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth())};
     return this.http.get<Winner[]>(this.rootUrl + '/result/' + id , reqHeaders).pipe(map(data => {

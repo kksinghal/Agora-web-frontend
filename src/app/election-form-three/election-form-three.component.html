@@ -1,8 +1,9 @@
 <div class="main-content">
     <div class="container-fluid">
+        <app-navbar></app-navbar>
         <app-heading-bar>
             <div class="heading">
-                   Voting Algorithm
+                Voting Algorithm
             </div>
             <div class="instruction">
                 <i>Instruction: Provide select the voting algorithm. </i>
@@ -23,7 +24,8 @@
                             <div class=" row algo" *ngFor="let algo of algos; let i = index">
                                 <div class=" col-9 col-sm group">
                                     <label class="radio-label">{{algo.description}}
-                                        <input type="radio" value="{{algo.value}}" [(ngModel)]="form4.votingAlgo" ngDefaultControl name="form4.votingAlgo">
+                                        <input type="radio" value="{{algo.value}}" [(ngModel)]="form4.votingAlgo"
+                                            ngDefaultControl name="form4.votingAlgo">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
@@ -38,18 +40,9 @@
                 </div>
             </form>
         </div>
-        <div class="row pb-20">
-            <div class="col text-center pt-3">
-                <span class="pr-20 text-right">
-                    <button class="btn btn-green" (click)="previous()">Previous</button>
-                </span>
-            </div>
-            <div class="col text-center pt-3">
-                <span class="pr-20 text-right">
-                    <button class="btn btn-green" [disabled]="!ngform4.valid" (click)="finish()">{{buttonStatus}}</button>
-                </span>
-            </div>
+        <div class="row d-flex justify-content-center pb-20">
+            <button class="btn btn-green mr-3" (click)="previous()">Previous</button>
+            <button class="btn btn-green" [disabled]="!ngform4.valid" (click)="finish()">{{buttonStatus}}</button>
         </div>
     </div>
 </div>
-    

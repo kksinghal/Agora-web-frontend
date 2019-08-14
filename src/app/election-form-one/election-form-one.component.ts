@@ -18,6 +18,7 @@ export class ElectionFormOneComponent implements OnInit {
     const origin = this.electionDataService.getOrigin();
     if (origin && 'valid' === origin) {
       this.form1 = this.electionDataService.getForm1();
+      this.form2 = this.electionDataService.getForm2();
     } else {
         this.router.navigate(['dashboard']);
     }

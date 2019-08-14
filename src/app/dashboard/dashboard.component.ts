@@ -24,16 +24,26 @@ export class DashboardComponent implements OnInit {
   finishedElections: Election[] = new Array();
 
   constructor(private userService: UserService, private electionService: ElectionService, private router: Router) {
+    this.user = new User();
     this.user = this.userService.getCurrentUser();
   }
 
   ngOnInit() {
-    // this.electionService.getElections().subscribe(data => {
-    //   this.elections = data;
-    //   this.doStats(this.elections);
-    // });
+    this.electionService.getElections().subscribe(data => {
+      this.elections = data;
+      this.doStats(this.elections);
+    });
   }
 
+  isMobile() {
+    if ($(window).width() > 768) {
+      return false;
+    }
+    return true;
+  }
+  navigateElection(id: string) {
+    this.router.navigate(['/election/' + id]);
+  }
   navigatePoll() {
     this.router.navigate(['/create-poll']);
   }
@@ -53,7 +63,7 @@ export class DashboardComponent implements OnInit {
   getStatus(election: Election): string {
     const now = new Date().getTime();
     const start = Moment.utc(election.start, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
-    const end = Moment.utc(election.end, 'YYYY-MM-DDTHH:mm:ssZ', true).local(true).toDate().getTime();
+    const end = Moment.utc(election.end, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
     if (now < start) {
       return 'Pending';
     } else if (now > start && now < end) {
@@ -70,60 +80,21 @@ export class DashboardComponent implements OnInit {
     return true;
   }
 
-  delete(id: string) {
-    console.log(id);
-    let isActiveElection = false;
 
-    this.activeElections.forEach(value => {
-      if (value._id === id) {
-        isActiveElection = true;
-      }
-    });
-
-    if (!isActiveElection) {
-      Swal({
-        title: 'Delete',
-        text: 'Are you sure you want to delete this election?',
-        type: 'warning',
-        confirmButtonColor: '#FFCD00',
-        showCancelButton: true,
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
-      }).then((result) => {
-        if (result.value) {
-          this.electionService.delete(id).subscribe((data: any) => {
-            this.elections = this.elections.filter(value => !(value._id === id));
-            this.doStats(this.elections);
-            this.showNotification('success', 'Election was successfully deleted');
-          }, (err: HttpErrorResponse) => {
-            if (err.status === 200) {
-              this.elections = this.elections.filter(value => !(value._id === id));
-              this.doStats(this.elections);
-              this.showNotification('success', 'Election was successfully deleted');
-            } else {
-              this.showNotification('danger', 'Unable to delete election. Please try again');
-            }
-          });
-        }
-      });
-    } else {
-      this.showNotification('danger', 'Active elections can\'t be deleted');
-    }
-  }
 
   doStats(data: Election[]) {
     this.activeElections = new Array();
     this.pendingElections = new Array();
     this.finishedElections = new Array();
 
-    data.filter(data => {
-      const status = this.getStatus(data);
+    data.filter(datas => {
+      const status = this.getStatus(datas);
       if (status === 'Active') {
-        this.activeElections.push(data);
+        this.activeElections.push(datas);
       } else if (status === 'Pending') {
-        this.pendingElections.push(data);
+        this.pendingElections.push(datas);
       } else {
-        this.finishedElections.push(data);
+        this.finishedElections.push(datas);
       }
     });
   }
@@ -175,10 +146,6 @@ export class DashboardComponent implements OnInit {
     } else {
       this.router.navigate(['election/edit/' + id]);
            }
-  }
-
-  view(id: string) {
-    this.router.navigate(['election/' + id]);
   }
 
   showNotification(notifType, message) {

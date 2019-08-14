@@ -21,7 +21,6 @@
                 <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
         </div>
     </form>
-    <!-- <app-social-login [disabled]="isLoading || socialLoading" (isCurrentlyLoading)="socialLoading=$event"></app-social-login> -->
     <div *ngIf="error" class="error">
         <p>An error occured please try again.</p>
     </div>

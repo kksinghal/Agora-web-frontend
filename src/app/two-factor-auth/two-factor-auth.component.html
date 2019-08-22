@@ -1,39 +1,48 @@
 <div class="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 content">
-                    <app-landing-page></app-landing-page>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 content">
+                <app-landing-page></app-landing-page>
+            </div>
+            <div class="col-lg-6 col-md-12 form-clean">
+                <div class="btn-wrraper">
+                    <div class="btn-group btn-group-sm float-right mt-2">
+                        <button type="button" class="btn btn-green-line" (click)="navigateSignUp()">Sign Up</button>
+                        <button type="button" class="btn btn-green-line" (click)="navigateSignIn()">Sign In</button>
+                    </div>
                 </div>
-                <div class="col-lg-6 col-md-12 form-clean">
-                    <div class="btn-wrraper">
-                        <div class="btn-group btn-group-sm float-right mt-2">
-                            <button type="button" class="btn btn-green-line" (click) = "navigateSignUp()">Sign Up</button>
-                            <button type="button" class="btn btn-green-line" (click) = "navigateSignIn()">Sign In</button>
+                <h1>Two Factor Authentication</h1>
+                <p>Please enter the one time password we have send to your registered email address</p>
+                <div class="form-clean">
+                    <form #twoFactorForm="ngForm" method="post" (ngSubmit)="OnSubmit(otp.value)" class="form-clean">
+                        <div class="form-group">
+                            <input class="input-text" type="text" #otp ngModel name="user_name" placeholder="One Time Password"
+                                required>
                         </div>
-                    </div>
-                    <h1>Two Factor Authentication</h1>
-                    <p>Please enter the one time password we have send to your registered email address</p>
-                    <div class="form-clean">
-                        <form #twoFactorForm="ngForm" method="post" (ngSubmit)="OnSubmit(otp.value)" class="form-clean">
-                            <div class="form-group">
-                                <input matInput type="text" #otp ngModel name="user_name" placeholder="One Time Password" required>
-                            </div>
-                            <div class="side">
-                                <button class="btn btn-white resend" [disabled]="isSending" (click)= "resendOTP()">Resend OTP</button>
-                            </div>
-                            <div class="form-group center">
-                                <button class="btn btn-green" [disabled]="!twoFactorForm.valid || isLoading" type="submit">
-                                    <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
-                            </div>
-                            <div *ngIf="success" class="success">
-                                <p>OTP is send to your registered email addresss.</p>
-                            </div>
-                            <div *ngIf="error" class="error">
-                                <p>An error occurred! Please try again.</p>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="side">
+                            <button class="btn btn-white resend" [disabled]="isSending" (click)="resendOTP()">Resend
+                                OTP</button>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" class="form-check-input" name="trustDevice" [(ngModel)]="oneTimePassword.trustedDevice">
+                            <label class="form-check-label" for="trustDevice">Trust this device</label>
+                        </div>
+                        <div class="form-group">
+                            <a routerLink="/security-question">Don't have access to your phone?</a>
+                        </div>
+                        <div class="form-group center">
+                            <button class="btn btn-green" [disabled]="!twoFactorForm.valid || isLoading" type="submit">
+                                <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
+                        </div>
+                        <div *ngIf="success" class="success">
+                            <p>OTP is send to your registered email addresss.</p>
+                        </div>
+                        <div *ngIf="error" class="error">
+                            <p>An error occurred! Please try again.</p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>

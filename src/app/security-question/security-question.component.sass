@@ -1,56 +1,88 @@
+
 $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
 $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
+
+.container
+    margin: 0
+    min-width: 100vw
+    background: #ffffff
+    
+.content
+    padding: 0
 
 .form-clean, .center
     display: flex
     flex-direction: column
-    justify-content: center
     align-items: center
     width: 100%
-    
+.question
+    width: 72%
+    background: #F6F6F6
+    border: none
+    color: #646464
+    font-family: $segoe
+    font-size: 18px
+    line-height: 55px
+    text-align: center
+    height: 55px
+    margin-bottom: 20px
+
+.btn-white
+    background: #ffffff
+    font-size: 14px
+    box-shadow: none
+    line-height: 14px
+    width: 160px
+    margin-bottom: 20px
+    color: #49ee96
+
+.btn-white
+    &:hover
+        color: #49ee96
+
 .form-group
+    display: flex
+    align-items: center
+    justify-content: center
     width: 90%
 
-a 
-    cursor: pointer
-    color: #00843D
-    font-family: $segoe
-    font-size: 14px
-    width: 45%
-    text-align: right
-    margin-top: -10px
-    margin-bottom: 30px
-
-input
-    width: 50%
+.input-text
+    width: 80%
     background: #F6F6F6
     border: none
     color: #9E9E9E
     font-family: $segoe
     font-size: 18px
     line-height: 18px
-    margin-bottom: 22px
-    margin-left: 25%
+    margin-bottom: 2px
     height: 55px
     padding: 15px
-
+.form-check-input
+    position: relative
+    margin: 0
+    margin-right: 10px
+.form-check-label
+    font-size: 18px
+    color: #444444
 .btn-green-line
     &:active
         background: #ffffff
         color: #49ee96
         border: #49ee96 2px solid
+    &:hover
+        background: linear-gradient(180deg, #49ee96, #00843D)
+        color: #ffffff
 
 .btn-green
     background: linear-gradient(180deg, #49ee96, #00843D)
-    width: 150px
+    width: 200px
     color: #ffffff
+    border: none
+    height: 40px
+    margin-top: 20px
     border-radius: 8px
     line-height: 18px
-    font-size: 18px
-    border: none
-    padding: 12px 12px
-    height: 40px
-
+    font-size: 16px
 
 .btn-green-line
     border: 2px #49ee96 solid
@@ -68,10 +100,11 @@ input
     margin-bottom: 100px
 
 h1
-    font-size: 54px
+    font-size: 52px
     font-weight: 400
     font-family: $segoe-semibold
     color: #49EE96
+    text-align: center
     margin-bottom: 20px
 p
     margin-bottom: 50px
@@ -81,22 +114,25 @@ p
 
 @media(max-width: 1024px)
     h1
-        font-size: 48px
+        font-size: 42px
         margin-bottom: 30px
     .btn-wrraper
         margin-bottom: 60px
 
 @media(max-width: 450px)
-    a
-        width: 60%
-    input
+    .side
         width: 70%
+    .question
+        width: 90%
+        height: 40px
+        line-height: 14px
         font-size: 14px
-        margin-bottom: 22px
-        margin-left: 15%
+    .input-text
+        width: 100%
+        font-size: 14px
         height: 40px
     h1
-        font-size: 34px
+        font-size: 24px
         margin-bottom: 20px
     p
         font-size: 14px
@@ -108,6 +144,9 @@ p
         line-height: 14px
         padding: 12px 20px
     .btn-green
-        width: 120px
+        width: 160px
+    .btn-white
+        width: 140px
+        padding: 0px 12px
     .btn-wrraper
         margin-bottom: 30px

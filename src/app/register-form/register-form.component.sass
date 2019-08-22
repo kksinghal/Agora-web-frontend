@@ -12,7 +12,7 @@ p
     align-items: center
     width: 100%
 
-input
+input, .form-control
     width: 50%
     background: #F6F6F6
     border: none
@@ -20,8 +20,7 @@ input
     font-family: $segoe
     font-size: 18px
     line-height: 18px
-    margin-bottom: 22px
-    margin-left: 25%
+    margin-bottom: 14px
     height: 55px
     padding: 15px
 
@@ -35,8 +34,10 @@ input
     line-height: 18px
     font-size: 18px
 
-mat-form-field
+.form-group
     width: 90%
+    display: flex
+    justify-content: center
 
 .btn-green-line
     &:active
@@ -57,14 +58,18 @@ mat-form-field
 .btn-wrraper
     width: 90%
     margin-top: 20px
-    margin-bottom: 60px
+    margin-bottom: 20px
 
 h1
     font-size: 62px
     font-weight: 400
-    color: $segoe-semibold
+    font-family: $segoe-semibold
     color: #49EE96
-    margin-bottom: 50px
+    margin-bottom: 20px
+
+@media(max-width: 1200px) and (min-width: 1024px)
+    input, .form-control
+        width: 70%
 
 @media(max-width: 1024px)
     h1
@@ -74,14 +79,14 @@ h1
         margin-bottom: 60px
 
 @media(max-width: 450px)
-    input
-        width: 70%
+    input, .form-control
+        width: 80%
         font-size: 14px
         margin-bottom: 22px
-        margin-left: 15%
         height: 40px
+        padding: 10px
     h1
-        font-size: 42px
+        font-size: 36px
         margin-bottom: 20px
     .btn
         width: 100px
@@ -91,4 +96,4 @@ h1
         line-height: 14px
         padding: 12px 20px
     .btn-wrraper
-        margin-bottom: 30px
+        margin-bottom: 20px

@@ -8,23 +8,36 @@
     <h1 class="heading-green">Create Account</h1>
     <form method="post" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)" class="form-clean">
         <h2 class="sr-only">Signup Form</h2>
-        <mat-form-field class="form-group">
-          <input class="input-grey" matInput type="text" name="userName" #identifier="ngModel" [(ngModel)]="signup.identifier" placeholder="User name" required>
-        </mat-form-field>
-        <mat-form-field class="form-group">
-          <input class="input-grey" matInput type="text" name="firstName" #firstName="ngModel" [(ngModel)]="signup.firstName" placeholder="First name" required>
-        </mat-form-field>
-        <mat-form-field class="form-group">
-          <input class="input-grey" matInput type="text" name="lastName" #lastName="ngModel" [(ngModel)]="signup.lastName" placeholder="Last name" required>
-        </mat-form-field>
-        <mat-form-field class="form-group">
-          <input class="input-grey" matInput type="email" name="email" #email="ngModel" [(ngModel)]="signup.email" placeholder="Email" required>
-        </mat-form-field>
-        <mat-form-field class="form-group">
-          <input class="input-grey" matInput type="password" #password ngModel name="password" placeholder="New password" spellcheck="false" required>
-        </mat-form-field>
         <div class="form-group">
-            <button class="btn btn-green"><i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
+          <input class="input-grey" matInput type="text" name="userName" #identifier="ngModel" [(ngModel)]="signup.identifier" placeholder="User name" required>
+        </div>
+        <div class="form-group">
+          <input class="input-grey" matInput type="text" name="firstName" #firstName="ngModel" [(ngModel)]="signup.firstName" placeholder="First name" required>
+        </div>
+        <div class="form-group">
+          <input class="input-grey" matInput type="text" name="lastName" #lastName="ngModel" [(ngModel)]="signup.lastName" placeholder="Last name" required>
+        </div>
+        <div class="form-group">
+          <input class="input-grey" matInput type="email" name="email" #email="ngModel" [(ngModel)]="signup.email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input class="input-grey" matInput type="password" #password ngModel name="password" placeholder="Password" spellcheck="false" required>
+        </div>
+        <div class="form-group">
+          <select class="form-control" name="securityQuestion"  [(ngModel)]="question.question" required>
+            <option>Select Security Question</option>
+            <option>What was your childhood nickname?</option>
+            <option>What is the name of your favorite childhood friend?</option>
+            <option>What is your oldest sibling's middle name?</option>
+            <option>In what city or town was your first job?</option>
+            <option>What was the last name of your third grade teacher?</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="input-grey" matInput type="answer" name="answer" #answer="ngModel" [(ngModel)]="question.answer" placeholder="Security Answer" required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-green" [disabled]="!userRegistrationForm.valid"><i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
         </div>
     </form>
     <app-social-login [disabled]="isLoading || socialLoading" (isCurrentlyLoading)="socialLoading=$event"></app-social-login>

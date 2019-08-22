@@ -1,4 +1,4 @@
-<div class="bg-green">
+<div class="{{isUserAuthenticated ? 'bg-white' : 'bg-green'}} bg-green">
     <div class="mx-auto row d-flex justify-content-center head">
         <img class="logo" src="../../assets/agora.png" alt="Agora-Logo">
         <h1 class="my-auto heading1-white">AGORA</h1>
@@ -9,5 +9,5 @@
         <p class="para-about">It supports a wide range of voting algorithms some of which are Majority, Egalitarian, Australian STV just
             to name a few</p>
     </div>
-    <button class="btn btn-white" type="button"><a class="a-link" href="http://aossie.org" target="_blank">Learn More</a></button>
+    <button class="btn {{isUserAuthenticated ? 'btn-green' : 'btn-white'}}" type="button"><a class="a-link" href="http://aossie.org" target="_blank">Learn More</a></button>
 </div>

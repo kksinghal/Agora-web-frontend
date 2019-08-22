@@ -8,6 +8,7 @@ export class User implements Deserializable {
     lastName: string;
     avatarURL?: string;
     token?: JwtToken;
+    trustedDevice?: string;
     twoFactorAuthentication: boolean;
 
     deserialize(input: any): this {

@@ -1,4 +1,5 @@
 import { Deserializable } from './deserializable.model';
+import { Question } from './question.model';
 
 export class SignUp implements Deserializable {
 
@@ -7,6 +8,7 @@ export class SignUp implements Deserializable {
     email: string;
     firstName: string;
     lastName: string;
+    securityQuestion: Question;
 
     deserialize(input: any): this {
         Object.assign(this, input);

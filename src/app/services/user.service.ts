@@ -12,6 +12,7 @@ import { TwoFactorAuth } from '../model/twoFactorAuth.model';
 import { JwtService } from './jwt.service';
 import { JwtToken } from '../model/jwtToken.model';
 import { OneTimePassword } from '../model/oneTimePassword.model';
+import { Question } from '../model/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -69,7 +70,7 @@ export class UserService {
     return this.http.post(this.rootUrl + '/auth/login', body, reqHeaders)
       .pipe(map(
         (data: any) => {
-          if (data.twoFactorAuthentication ) {
+          if (data.twoFactorAuthentication && ! ('token' in data)) {
 
             console.log(data);
 
@@ -90,7 +91,7 @@ export class UserService {
 
           this.currentUserSubject.next(user);
 
-          console.log(this.currentUserSubject)
+          console.log(this.currentUserSubject);
           console.log(user);
           return user;
           }
@@ -107,6 +108,9 @@ export class UserService {
         data => {
           console.log(data);
           const user = new User().deserialize(data);
+          if (oneTimePassword.trustedDevice) {
+            this.addTrustedDevice(user.trustedDevice);
+          }
           // Save JWT sent from server in localstorage
           this.jwtService.saveToken(user.token.token);
           // Set isAuthenticated to true
@@ -117,6 +121,14 @@ export class UserService {
           return user;
         }
       ));
+  }
+
+  addTrustedDevice(trust: string) {
+    window.localStorage.trustedDevice = trust;
+  }
+
+  getTrustedDevice(): string {
+    return window.localStorage.trustedDevice;
   }
 
   resendOtp(userName: string) {
@@ -140,6 +152,39 @@ export class UserService {
         data => {
           console.log(data);
           return data;
+        }
+      ));
+  }
+
+  getSecurityQuestion(crypto: string) {
+    const reqHeaders =  { headers: new HttpHeaders(this.getheadersNoAuth()) };
+    console.log(crypto);
+    return this.http.get(this.rootUrl + '/securityQuestion/' + crypto, reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          return data;
+        }
+      ));
+  }
+
+  verifySecurityQuestion(question: Question) {
+    const reqHeaders =  { headers: new HttpHeaders(this.getheadersNoAuth()) };
+    const body = JSON.stringify(question);
+    return this.http.post(this.rootUrl + '/verifySecurityQuestion', body, reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          const user = new User().deserialize(data);
+
+          // Save JWT sent from server in localstorage
+          this.jwtService.saveToken(user.token.token);
+          // Set isAuthenticated to true
+          this.isAuthenticatedSubject.next(true);
+
+          this.currentUserSubject.next(user);
+
+          return user;
         }
       ));
   }
@@ -267,7 +312,7 @@ export class UserService {
     }
   }
 
-  private setAuth(user: User, token: String) {
+  private setAuth(user: User, token: string) {
     // Save JWT sent from server in localstorage
     this.jwtService.saveToken(token);
     // Set current user data into observable

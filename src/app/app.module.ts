@@ -2,8 +2,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from '../app/home/home.component';
-import { RegisterFormComponent } from '../app/register-form/register-form.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -38,8 +36,6 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    RegisterFormComponent,
     ActivateAccountComponent,
     SocialLoginComponent
   ],

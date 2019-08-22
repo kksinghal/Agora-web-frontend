@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  isUserAuthenticated = false;
+  constructor(userService: UserService) {
+    userService.isAuthenticated.subscribe(data => {
+      console.log(data);
+      this.isUserAuthenticated = data;
+    });
+   }
 
   ngOnInit() {
   }

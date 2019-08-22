@@ -17,6 +17,7 @@ export class LoginFormComponent implements OnInit {
   isLoading = false;
   socialLoading = false;
   credentials: Credentials;
+  trustedDevice: string;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
@@ -41,10 +42,18 @@ export class LoginFormComponent implements OnInit {
     this.isLoading = true;
     this.error = false;
     const credentials = new Credentials();
-    credentials.identifier = userName;
-    credentials.password = password;
-    this.userService.login(credentials).subscribe((data: any) => {
-      if (data.twoFactorAuthentication) {
+    this.credentials.identifier = userName;
+    this.credentials.password = password;
+    this.trustedDevice = this.userService.getTrustedDevice();
+    if (this.trustedDevice) {
+      this.credentials.trustedDevice = this.trustedDevice;
+    }
+    console.log(this.credentials);
+    this.userService.login(this.credentials).subscribe((data: any) => {
+      if ('token' in data) {
+        this.router.navigate(['/dashboard']);
+      } else if (data.twoFactorAuthentication) {
+        console.log(data);
         this.router.navigate(['two-factor-auth']);
       } else {
         this.router.navigate(['/dashboard']);

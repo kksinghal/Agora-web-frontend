@@ -29,15 +29,19 @@ $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
     width: 160px
     margin-bottom: 20px
     color: #49ee96
-
+a
+    color: #49ee96
 .btn-white
     &:hover
         color: #49ee96
 
 .form-group
+    display: flex
+    align-items: center
+    justify-content: center
     width: 90%
 
-input
+.input-text
     width: 50%
     background: #F6F6F6
     border: none
@@ -46,10 +50,15 @@ input
     font-size: 18px
     line-height: 18px
     margin-bottom: 2px
-    margin-left: 25%
     height: 55px
     padding: 15px
-
+.form-check-input
+    position: relative
+    margin: 0
+    margin-right: 10px
+.form-check-label
+    font-size: 18px
+    color: #444444
 .btn-green-line
     &:active
         background: #ffffff
@@ -87,8 +96,9 @@ input
 h1
     font-size: 52px
     font-weight: 400
-    color: $segoe-semibold
+    font-family: $segoe-semibold
     color: #49EE96
+    text-align: center
     margin-bottom: 20px
 p
     margin-bottom: 50px
@@ -106,11 +116,12 @@ p
 @media(max-width: 450px)
     .side
         width: 70%
-    input
+    .input-text
         width: 70%
         font-size: 14px
-        margin-left: 15%
         height: 40px
+    .form-check-label
+        font-size: 16px
     h1
         font-size: 24px
         margin-bottom: 20px
@@ -124,7 +135,7 @@ p
         line-height: 14px
         padding: 12px 20px
     .btn-green
-        width: 160px
+        width: 120px
     .btn-white
         width: 140px
         padding: 0px 12px

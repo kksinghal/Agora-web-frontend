@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { SignUp } from '../model/signUp.model';
+import { Question } from '../model/question.model';
 
 @Component({
   selector: 'app-register-form',
@@ -16,6 +17,7 @@ export class RegisterFormComponent implements OnInit {
   error = false;
   success = false;
   signup: SignUp;
+  question: Question;
   isLoading = false;
   socialLoading = false;
   message = 'Sign Up';
@@ -30,33 +32,38 @@ export class RegisterFormComponent implements OnInit {
       form.reset();
     }
     this.signup = new SignUp();
+    this.question = new Question();
     this.signup.identifier = '';
     this.signup.firstName = '';
     this.signup.lastName = '';
     this.signup.email = '';
     this.signup.password = '';
-
+    this.question.question = 'Select Security Question';
   }
   navigateSignIn() {
     this.router.navigate(['/signIn']);
   }
 
   OnSubmit(form: NgForm) {
-    this.message = 'Loading....';
-    this.isLoading = true;
-    this.success = false;
-    this.error = false;
-    this.userService.registerUser(this.signup)
-      .subscribe((data: any) => {
-        this.resetForm(form);
-        this.success = true;
-        this.message = 'Sign Up';
-        this.isLoading = false;
-      },
-      (err: HttpErrorResponse) => {
-        this.error = true;
-        this.message = 'Sign Up';
-        this.isLoading = false;
-      });
+    if (this.question.question !== 'Select Security Question') {
+      this.message = 'Loading....';
+      this.question.answer = this.question.answer.trim().toLowerCase();
+      this.signup.securityQuestion = this.question;
+      this.isLoading = true;
+      this.success = false;
+      this.error = false;
+      this.userService.registerUser(this.signup)
+        .subscribe((data: any) => {
+          this.resetForm(form);
+          this.success = true;
+          this.message = 'Sign Up';
+          this.isLoading = false;
+        },
+        (err: HttpErrorResponse) => {
+          this.error = true;
+          this.message = 'Sign Up';
+          this.isLoading = false;
+        });
+    }
   }
 }

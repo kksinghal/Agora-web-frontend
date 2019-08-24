@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DragulaModule } from 'ng2-dragula';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AuthGuard } from './auth/auth.guard';
 import { ElectionService } from './services/election.service';
@@ -15,12 +14,9 @@ import { AgoraSocialUserService } from './services/agora-social-user.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { LandingPageModule } from './landing-page/landing-page.module';
 import { LoginFormModule } from './login-form/login-form.module';
 import { ElectionDataService } from './services/election-data.service';
 import { VotingService } from './services/voting.service';
-import { ActivateAccountComponent } from './activate-account/activate-account.component';
-import { SocialLoginComponent } from './social-login/social-login.component';
 
 const config = new AuthServiceConfig([
   {
@@ -36,8 +32,6 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    ActivateAccountComponent,
-    SocialLoginComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -47,7 +41,6 @@ export function provideConfig() {
     AppRoutingModule,
     SocialLoginModule,
     ReactiveFormsModule,
-    LandingPageModule,
     LoginFormModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
@@ -55,7 +48,6 @@ export function provideConfig() {
       confirmButtonClass: 'btn btn-primary btn-gold',
       cancelButtonClass: 'btn'
     }),
-    DragulaModule.forRoot(),
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [

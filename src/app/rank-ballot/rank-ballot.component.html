@@ -1,1 +1,69 @@
-<p>rank-ballot works!</p>
+<div class="main-content">
+    <div class="container-fluid full-width">
+        <app-navbar></app-navbar>
+        <app-heading-bar>
+            <div class="heading">{{ election?.name }}</div>
+            <div class="description">Description: {{ election?.description }}<br>
+                Start Date: {{election?.startingDate}}<br>
+                End Date: {{election?.endingDate}}
+            </div>
+            <div class="instruction">Instruction: Use the sliders to set the scores of each candidate</div>
+        </app-heading-bar>
+        <div class="container infoBox">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <br>
+                    <div class="card pt-20">
+                        <div class="card-header card-header-gold">
+                            <h1 class="card-title">Election Candidates</h1>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody class="row justify-content-center">
+                                    <div class="bg-light mb-3 col-lg-11 col-xl-9" *ngFor="let candidate of candidates; let ind = index">
+                                        <tr>
+                                            <td class="text-black col-11">{{candidate}}</td>
+                                        </tr>
+                                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8">
+                    <br>
+                    <div class="card pt-20">
+                        <div class="card-header card-header-gold">
+                            <h1 class="card-title">Your Ballot</h1>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody class="row justify-content-center">
+                                    <div class="bg-light mb-3 col-lg-11 col-xl-9" *ngFor="let candidate of candidates; let ind = index">
+                                        <tr>
+                                            <div class="row align-items-center justify-content-space-between">
+                                                <div class="col-6 text-center">
+                                                    {{candidate}}
+                                                </div>
+                                                <div class="col-6 text-left">
+                                                    <input type="range" class="custom-range" id="customRange1" [max]="max"
+                                                        [min]="min" tickInterval="10" [(ngModel)]="values[ind]">
+                                                    <span>{{values[ind]}}/100</span>
+                                                </div>
+                                            </div>
+                                        </tr>
+                                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn btn-green" (click)="vote()">{{msg}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

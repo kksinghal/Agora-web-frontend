@@ -1,0 +1,93 @@
+$segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
+$segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
+
+.full-width
+    margin: 0
+    padding: 0
+    max-width: 100vw
+    min-height: 100vh
+    background: #ffffff
+    font-family: $segoe
+    overflow-x: hidden
+.card 
+    border: none
+    text-align: center
+.card-body::-webkit-scrollbar 
+    width: 0 !important
+.card-header
+    background: #ffffff
+    border: none
+.box
+    margin-top: 30px
+    font-size: 21px
+    padding: 20px
+    background: #f9f9f9
+    display: flex
+    max-width: 440px
+    justify-content: center
+    border-radius: 8px
+tr
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+td
+    border: none
+    font-size: 20px
+.bg-light
+    background: #f9f9f9
+    border-radius: 8px
+    font-size: 16px
+.material-icons
+    color: #000000
+.infoBox
+    max-width: inherit
+    box-shadow: #f0f0f0 0px 0px 15px
+    width: 90vw
+    padding: 10px
+    margin: 40px 5vw 40px 5vw
+    padding-bottom: 40px
+.btn-green
+    background: #54a457
+    width: 150px
+    color: #ffffff
+    height: 40px
+    margin-bottom: 20px
+    border: none
+    border-radius: 8px
+    line-height: 18px
+    font-size: 16px
+
+/* in-flight clone */
+.gu-mirror 
+    text-align: center
+    position: fixed !important
+    margin: 0 !important
+    z-index: 9999 !important
+    opacity: 0.8
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
+    filter: alpha(opacity=80)
+    pointer-events: none
+
+/* high-performance display:none helper */
+.gu-hide 
+    left: -9999px !important
+
+/* added to mirrorContainer (default = body) while dragging */
+.gu-unselectable 
+    -webkit-user-select: none !important
+    -moz-user-select: none !important
+    -ms-user-select: none !important
+    user-select: none !important
+
+/* added to the source element while its mirror is dragged */
+.gu-transit 
+    opacity: 0.2
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)"
+    filter: alpha(opacity=20)
+
+@media(max-width: 450px)
+    h3
+        font-size: 1.25rem
+    td
+        font-size: 16px

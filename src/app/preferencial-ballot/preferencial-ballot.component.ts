@@ -17,8 +17,7 @@ declare var $: any;
 })
 export class PreferencialBallotComponent implements OnInit {
   election: ElectionData = new ElectionData();
-  revealMsg = 'Show Ballots';
-  msg = 'Vote';
+  msg = 'Cast Vote';
   isLoading = false;
   startingTime: string;
   endingTime: string;
@@ -45,17 +44,6 @@ export class PreferencialBallotComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  revealBallots() {
-    const pastBallots = document.getElementById('ballotsDisplay');
-    if (pastBallots.style.display === 'block') {
-      pastBallots.style.display = 'none';
-      this.revealMsg = 'Show Ballots';
-    } else {
-      pastBallots.style.display = 'block';
-      this.revealMsg = 'Hide Ballots';
-    }
-  }
 
   delete(index: number) {
     Swal({
@@ -99,7 +87,6 @@ export class PreferencialBallotComponent implements OnInit {
     const ballot = new BallotData();
     ballot.ballotInput = stringBallot;
     ballot.passCode = this.votingService.getVoterCode();
-
     this.electionService
       .vote(this.votingService.getVoterID(), ballot)
       .subscribe(
@@ -141,19 +128,11 @@ export class PreferencialBallotComponent implements OnInit {
       );
   }
 
-  cancel() {
-    this.showNotification(
-      'danger',
-      'You did not submit your vote. Remember your voting links expires when the election ends',
-    );
-    this.router.navigate(['/home']);
-  }
-
   showNotification(notifType, message) {
     $.notify(
       {
         icon: notifType === 'success' ? 'done' : 'notifications',
-        message: message,
+        message,
       },
       {
         type: notifType,

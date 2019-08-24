@@ -8,7 +8,7 @@
         <div class="btn-wrapper" *ngIf="user?.email == election?.creatorEmail">
             <div class="btn-group btn-group-sm mt-2">
                 <button type="button" class="btn btn-line" (click)="electionInfo()">Election Info</button>
-                <button type="button" class="btn btn-line" (click)="addVoter()">Add Voters</button>
+                <button type="button" class="btn btn-line" *ngIf="election?.electionType != 'Public'" (click)="addVoter()">Add Voters</button>
                 <button type="button" class="btn btn-green-line">View Results</button>
             </div>
         </div>

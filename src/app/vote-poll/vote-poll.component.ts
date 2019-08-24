@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
-
 import { VotingService } from '../services/voting.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ElectionService } from '../services/election.service';
 import { ElectionData } from '../model/electionData.model';
+import { HttpErrorResponse } from '@angular/common/http';
 import { VOTING_ALGORITHMS } from '../model/election.model';
 import { BallotType } from '../model/ballot.model';
 
 @Component({
-  selector: 'app-vote',
-  templateUrl: './vote.component.html',
-  styleUrls: ['./vote.component.sass']
+  selector: 'app-vote-poll',
+  templateUrl: './vote-poll.component.html',
+  styleUrls: ['./vote-poll.component.sass']
 })
-export class VoteComponent implements OnInit {
+export class VotePollComponent implements OnInit {
+
   isError = false;
   isShow = true;
   constructor(
@@ -23,10 +23,10 @@ export class VoteComponent implements OnInit {
     private route: ActivatedRoute
     ) {
       this.route.params.subscribe(params => {
-        this.electionService.verifyVoter(params.id, params.pass).subscribe((data: ElectionData) => {
+        this.electionService.verifyPollVoter(params.id).subscribe((data: ElectionData) => {
           this.votingService.setOrigin('valid');
           this.votingService.setData(data);
-          this.votingService.setVoterCode(params.pass);
+          this.votingService.setVoterCode('');
           this.votingService.setVoterID(params.id);
           this.isShow = false;
           this.doNavigation(data);
@@ -39,6 +39,7 @@ export class VoteComponent implements OnInit {
 
   doNavigation(data: ElectionData) {
     this.isShow = false;
+    console.log(VOTING_ALGORITHMS);
     for (const algo of VOTING_ALGORITHMS) {
       if (algo.value === data.votingAlgo) {
         console.log('Entered the first if');
@@ -57,5 +58,5 @@ export class VoteComponent implements OnInit {
   }
   ngOnInit() {
   }
-}
 
+}

@@ -21,6 +21,7 @@ export class ResultsComponent implements OnInit {
               private electionService: ElectionService,
               private route: ActivatedRoute) {
       this.route.params.subscribe(params => {
+      this.election = new Election();
       this.id = params.id;
       this.user = this.userService.getCurrentUser();
       this.electionService.getElection(params.id).subscribe((data: Election) => {

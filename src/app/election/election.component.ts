@@ -21,6 +21,7 @@ export class ElectionComponent implements OnInit {
   activated: boolean;
 
   constructor( private router: Router, private electionService: ElectionService, private route: ActivatedRoute ) {
+    this.election = new Election();
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.electionService.getElection(params.id).subscribe((data: Election) => {

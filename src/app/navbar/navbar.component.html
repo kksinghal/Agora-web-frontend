@@ -2,7 +2,8 @@
     <div class="navbar">
         <div class="agora">AGORA</div>
         <div class="links d-flex align-items-center">
-            <div class="dashboard" routerLink="/dashboard">DASHBOARD</div>
+            <div *ngIf="isUserSignedIn" class="dashboard" routerLink="/dashboard">DASHBOARD</div>
+            <div *ngIf="!isUserSignedIn" class="dashboard" routerLink="/home">HOME</div>
             <div class="dropdown">
                 <div class="dropdown-toggle img-logo" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -14,17 +15,25 @@
                         <i class="material-icons mr-3">home</i>
                         <span>Home</span>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center" routerLink="/profile">
+                    <a *ngIf="isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/profile">
                         <i class="material-icons mr-3">person</i>
                         <span class="d-lg-block">Profile</span>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center" routerLink="/change-password">
+                    <a *ngIf="isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/change-password">
                         <i class="material-icons mr-3">vpn_key</i>
                         <span class="d-md-block"> Change Password</span>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center" (click)="logout()">
+                    <a *ngIf="isUserSignedIn" class="dropdown-item d-flex align-items-center" (click)="logout()">
                         <i class="material-icons mr-3">exit_to_app</i>
                         <span class="d-md-block">Logout</span>
+                    </a>
+                    <a *ngIf="!isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/signIn">
+                        <i class="material-icons mr-3">vpn_key</i>
+                        <span>Sign In</span>
+                    </a>
+                    <a *ngIf="!isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/home">
+                        <i class="material-icons mr-3">account_circle</i>
+                        <span>Sign Up</span>
                     </a>
                 </div>
             </div>
@@ -49,21 +58,33 @@
                 <i class="material-icons mr-3">home</i>
                 <span>Home</span>
             </a>
-            <a class="dropdown-item d-flex align-items-center" routerLink="/dashboard">
-                    <i class="material-icons mr-3">dashboard</i>
-                    <span>Dashboard</span>
-                </a>
-            <a class="dropdown-item d-flex align-items-center" routerLink="/profile">
+            <a *ngIf="isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/dashboard">
+                <i class="material-icons mr-3">dashboard</i>
+                <span>Dashboard</span>
+            </a>
+            <a *ngIf="isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/profile">
                 <i class="material-icons mr-3">person</i>
                 <span class="d-lg-block">Profile</span>
             </a>
-            <a class="dropdown-item d-flex align-items-center" routerLink="/change-password">
+            <a *ngIf="isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/change-password">
                 <i class="material-icons mr-3">vpn_key</i>
                 <span class="d-md-block"> Change Password</span>
             </a>
-            <a class="dropdown-item d-flex align-items-center" (click)="logout()">
+            <a *ngIf="isUserSignedIn" class="dropdown-item d-flex align-items-center" (click)="logout()">
                 <i class="material-icons mr-3">exit_to_app</i>
                 <span class="d-md-block">Logout</span>
+            </a>
+            <a *ngIf="!isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/about">
+                <i class="material-icons mr-3">code</i>
+                <span>About</span>
+            </a>
+            <a *ngIf="!isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/signIn">
+                <i class="material-icons mr-3">vpn_key</i>
+                <span>Sign In</span>
+            </a>
+            <a *ngIf="!isUserSignedIn" class="dropdown-item d-flex align-items-center" routerLink="/signUp">
+                <i class="material-icons mr-3">account_circle</i>
+                <span>Sign Up</span>
             </a>
         </div>
     </div>

@@ -119,6 +119,15 @@ export class ElectionService {
      }));
   }
 
+  verifyPollVoter(id: string): Observable<ElectionData> {
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersNoAuth())};
+    return this.http.get<ElectionData>(this.rootUrl + '/voter/verifyPoll/' + encodeURIComponent(id),
+     reqHeaders).pipe(map(data => {
+       return new ElectionData().deserialize(data);
+     }));
+  }
+
+
   generateUrl(id: string) {
     const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth())};
     return this.http.get<Ballot>(this.rootUrl + '/election/' + id + '/pollVoterLink', reqHeaders);

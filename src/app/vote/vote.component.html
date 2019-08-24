@@ -1,8 +1,9 @@
 <div *ngIf="isShow" class="main-content section_padding_50_50">
     <div class="container-fluid">
+      <app-navbar></app-navbar>
       <div class="form-clean">
-        <form>
-          <div class="logo">
+        <form class="election-form">
+          <div class="agora-logo mb-3">
             <img src="assets/agora.png" class="form-logo">
           </div>
           <p *ngIf="!isError" class="msg-activate-account">Checking invitation link, please wait....</p>

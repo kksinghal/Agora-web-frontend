@@ -29,6 +29,7 @@ export class AddVoterComponent implements OnInit {
   constructor( private router: Router, private electionService: ElectionService, private route: ActivatedRoute ) {
     this.route.params.subscribe(params => {
       this.id = params.id;
+      this.election = new Election();
       this.electionService.getElection(params.id).subscribe((data: Election) => {
         console.log(data);
         this.election = data;
@@ -69,7 +70,6 @@ export class AddVoterComponent implements OnInit {
       }
     });
   }
-  
 
   add() {
     let isFound = false;

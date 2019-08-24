@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { VoteRoutingModule } from './vote-routing.module';
 import { VoteComponent } from './vote.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 @NgModule({
   declarations: [VoteComponent],
   imports: [
     CommonModule,
-    VoteRoutingModule
+    VoteRoutingModule,
+    NavbarModule
   ],
   exports: [VoteComponent]
 })

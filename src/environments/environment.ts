@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:9000/api/v1'
+  API_URL: 'http://agora-web-api-gsoc-2019.herokuapp.com/api/v1'
 };
 
 /*

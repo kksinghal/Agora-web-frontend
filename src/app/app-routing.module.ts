@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'about', loadChildren: './about/about.module#AboutModule', pathMatch: 'full' },
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' , pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'forgot-password', loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule', pathMatch: 'full' },
-  { path: 'reset-password', loadChildren: './reset-password/reset-password.module#ResetPasswordModule', pathMatch: 'full' },
+  { path: 'reset-password/:token', loadChildren: './reset-password/reset-password.module#ResetPasswordModule', pathMatch: 'full' },
   { path: 'activate/:token', loadChildren: './activate-account/activate-account.module#ActivateAccountModule', pathMatch: 'full' },
   { path: 'vote/:id/:pass', loadChildren: './vote/vote.module#VoteModule', pathMatch: 'full' },
   { path: 'two-factor-auth', loadChildren: './two-factor-auth/two-factor-auth.module#TwoFactorAuthModule', pathMatch: 'full' },

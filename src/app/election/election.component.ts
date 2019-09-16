@@ -20,7 +20,7 @@ export class ElectionComponent implements OnInit {
   id: string;
   activated: boolean;
 
-  constructor( private router: Router, private electionService: ElectionService, private route: ActivatedRoute ) {
+  constructor(private router: Router, private electionService: ElectionService, private route: ActivatedRoute) {
     this.election = new Election();
     this.route.params.subscribe(params => {
       this.id = params.id;
@@ -32,8 +32,8 @@ export class ElectionComponent implements OnInit {
         (err: HttpErrorResponse) => {
           this.router.navigate(['/dashboard']);
         });
-  });
-}
+    });
+  }
 
   ngOnInit() {
   }
@@ -45,7 +45,7 @@ export class ElectionComponent implements OnInit {
   delete() {
     this.activated = false;
     const status = this.getStatus();
-    console.log(status === 'Active', status)
+    console.log(status === 'Active', status);
     if (status === 'Active') {
       this.activated = true;
     }
@@ -61,8 +61,8 @@ export class ElectionComponent implements OnInit {
       }).then((result) => {
         if (result.value) {
           this.electionService.delete(this.id).subscribe((data: any) => {
-              this.router.navigate(['/dashboard']);
-              this.showNotification('success', 'Election was successfully deleted');
+            this.router.navigate(['/dashboard']);
+            this.showNotification('success', 'Election was successfully deleted');
           }, (err: HttpErrorResponse) => {
             if (err.status === 200) {
               this.router.navigate(['/dashboard']);
@@ -87,14 +87,15 @@ export class ElectionComponent implements OnInit {
   }
 
   getStatus(): string {
-    const now = new Date().getTime();
+    const date = Moment.utc().format();
+    const now = Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
     const start = Moment.utc(this.election.start, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
     const end = Moment.utc(this.election.end, 'YYYY-MM-DDTHH:mm:ssZ', true).local(true).toDate().getTime();
     if (now < start) {
       return 'Pending';
     } else if (now > start && now < end) {
       return 'Active';
-         } else { return 'Finish'; }
+    } else { return 'Finish'; }
   }
 
   addVoter() {
@@ -106,7 +107,16 @@ export class ElectionComponent implements OnInit {
   }
 
   edit() {
-    if (this.getStatus() === 'Active') {
+    if (this.election.electionType === 'Public' && this.getStatus() === 'Active') {
+      Swal({
+        title: 'Forbidden',
+        text: 'Active elections can\'\t be modified.',
+        type: 'error',
+        showCancelButton: true,
+        cancelButtonColor: '#FFCD00',
+        cancelButtonText: 'Cancel'
+      });
+    } else if (this.getStatus() === 'Active') {
       Swal({
         title: 'Forbidden',
         text: 'Active elections can\'\t be modified. You can however add voters',
@@ -131,18 +141,18 @@ export class ElectionComponent implements OnInit {
         cancelButtonText: 'Cancel'
       }).then((result) => {
         if (result.value) {
-          this.router.navigate(['election/' + this.id]);
+          this.router.navigate(['results/' + this.id]);
         }
       });
     } else {
       this.router.navigate(['edit/' + this.id]);
-      }
+    }
   }
 
   showNotification(notifType, message) {
     $.notify({
       icon: notifType === 'success' ? 'done' : 'notifications',
-      message: message
+      message
 
     }, {
         type: notifType,

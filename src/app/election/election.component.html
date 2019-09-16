@@ -18,7 +18,7 @@
                     <div class="head d-flex justify-content-center col-xl-8 col-lg-9 col-md-10 col-sm-7 col-10">Basic
                         Info</div>
                     <div class="box col-xl-10 col-md-12 col-lg-10 col-sm-9 col-12">Status: <div class="status ml-2"
-                            [ngClass]="{'green': getStatus(election) == 'Active', 'red': getStatus(election) == 'Pending', 'blue': getStatus(election) == 'Finish'}">{{status}}</div>
+                            [ngClass]="{'green': getStatus() == 'Active', 'red': getStatus() == 'Pending', 'blue': getStatus() == 'Finish'}">{{status}}</div>
                     </div>
                     <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Type: <div class="type ml-2"
                             [ngClass]="{'green': election.electionType == 'Private', 'blue': election.electionType == 'Public'}">{{election?.electionType}}</div>

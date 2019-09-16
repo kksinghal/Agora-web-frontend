@@ -125,7 +125,8 @@ export class AddVoterComponent implements OnInit {
   }
 
   getStatus(): string {
-    const now = new Date().getTime();
+    const date = Moment.utc().format();
+    const now = Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
     const start = Moment.utc(this.election.start, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
     const end = Moment.utc(this.election.end, 'YYYY-MM-DDTHH:mm:ssZ', true).local(true).toDate().getTime();
     if (now < start) {

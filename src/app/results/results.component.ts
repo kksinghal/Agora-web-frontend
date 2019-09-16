@@ -5,6 +5,7 @@ import { Election } from '../model/election.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../model/user.model';
 import { UserService } from '../services/user.service';
+import { Winner } from '../model/winner.model';
 
 @Component({
   selector: 'app-results',
@@ -30,6 +31,10 @@ export class ResultsComponent implements OnInit {
       },
         (err: HttpErrorResponse) => {
           this.router.navigate(['/dashboard']);
+        });
+      this.electionService.getResults(this.id).subscribe((data: Winner[]) => {
+          console.log(data);
+          this.election.winners = data;
         });
     });
   }

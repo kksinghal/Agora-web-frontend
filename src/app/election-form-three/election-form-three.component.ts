@@ -116,7 +116,7 @@ export class ElectionFormThreeComponent implements OnInit {
   showNotification(notifType, message) {
     $.notify({
       icon: notifType === 'success' ? 'done' : 'notifications',
-      message: message
+      message
 
     }, {
         type: notifType,

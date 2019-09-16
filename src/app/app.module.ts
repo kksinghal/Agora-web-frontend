@@ -35,7 +35,9 @@ export function provideConfig() {
   ],
   imports: [
     BrowserAnimationsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({
+      appId: 'ng-universal-demystified'
+    }),
     FormsModule,
     HttpClientModule,
     AppRoutingModule,

@@ -61,7 +61,8 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatus(election: Election): string {
-    const now = new Date().getTime();
+    const date = Moment.utc().format();
+    const now = Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
     const start = Moment.utc(election.start, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
     const end = Moment.utc(election.end, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().getTime();
     if (now < start) {

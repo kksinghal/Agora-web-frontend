@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ResetPasswordComponent } from './reset-password.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: ResetPasswordComponent, pathMatch: 'full' }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

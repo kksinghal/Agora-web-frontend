@@ -134,8 +134,10 @@ export class ElectionService {
   }
 
   getResults(id: string) {
+    console.log(id);
     const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth())};
-    return this.http.get<Winner[]>(this.rootUrl + '/result/' + id , reqHeaders).pipe(map(data => {
+    return this.http.get<Winner[]>(this.rootUrl + '/result/' + encodeURIComponent(id) , reqHeaders).pipe(map(data => {
+      console.log(data);
       return data.map(value => new Winner().deserialize(value));
     }));
   }

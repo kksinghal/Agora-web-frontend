@@ -7,7 +7,7 @@
             <div class="content {{ isUserAuthenticated ? 'col-12' : 'col-lg-6'}}">
                 <app-landing-page></app-landing-page>
             </div>
-            <div class="col-lg-6 col-md-12 reg-form">
+            <div *ngIf="!isUserAuthenticated" class="col-lg-6 col-md-12 reg-form">
                 <app-register-form></app-register-form>
             </div>
         </div>

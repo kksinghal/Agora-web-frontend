@@ -1,0 +1,61 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <app-navbar></app-navbar>
+            <app-heading-bar>
+                <div class="heading">
+                    My Profile
+                </div>
+            </app-heading-bar>
+            <div class="row reverse">
+                <div class="col-md-8 col-sm-12 center">
+                    <form class="form-profile" #ngProfileForm="ngForm" (ngSubmit)="updateProfile()">
+                                <div class="example-full-width">
+                                    <label for="username">Username: </label>
+                                    <input class="full-width" placeholder="Username" name="username" [(ngModel)]="user.username" readonly>
+                                </div>
+                                <div class="example-full-width">
+                                    <label for="email">Email: </label>
+                                    <input class="full-width" placeholder="Email address" name="email" [(ngModel)]="user.email" type="email">
+                                </div>
+                                <div class="example-full-width">
+                                    <label for="firstName">First Name:</label>
+                                    <input class="full-width" placeholder="Fist Name" name="firstName" type="text" [(ngModel)]="user.firstName">
+                                </div>
+                                <div class="example-full-width">
+                                    <label for="lastName">Last Name:</label>
+                                    <input class="full-width" placeholder="Last Name" name="lastName" type="text" [(ngModel)]="user.lastName">
+                                </div>
+                                <div class="example-full-width row">
+                                    <label class ="long-label" for="two-factor-authentication">Two Factor Authentication:</label>
+                                    <div name="two-factor-authentication" class="btn btn-black white-link" (click)="toggleTwoFactorAuthentication()">{{twoFactorAuth}}</div>
+                                </div>
+                                <div *ngIf="!isSocialUser()" class="example-full-width row">
+                                    <label class ="long-label" for="password">Password:</label>
+                                    <div (click)="navigatePassword()" name="password" class="btn btn-black">Change</div>
+                                </div>
+                                <div class="row d-flex justify-content-center">
+                                    <button type="submit" [disabled]="!ngProfileForm.valid" class="btn btn-green text-center">Update Profile</button>
+                                </div>
+                                <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-profile">
+                        <div class="card-avatar profile-image">
+                            <a>
+                                <img *ngIf="!user.avatarURL" class="img" src="../../../../assets/agora.png" />
+                            </a>
+                            <a>
+                                <img *ngIf="user.avatarURL" class="img" src="{{user.avatarURL}}" />
+                            </a>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-category text-gray">{{user.fullName()}}</h4>
+                            <h6 class="card-category text-gray">{{user.email}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

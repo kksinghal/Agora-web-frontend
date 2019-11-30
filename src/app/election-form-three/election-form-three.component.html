@@ -1,0 +1,48 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <app-navbar></app-navbar>
+        <app-heading-bar>
+            <div class="heading">
+                Voting Algorithm
+            </div>
+            <div class="instruction">
+                <i>Instruction: Provide select the voting algorithm. </i>
+            </div>
+        </app-heading-bar>
+        <div class="btn-wrapper">
+            <div class="btn-group btn-group-sm mt-2">
+                <button type="button" class="btn btn-line" (click)="navigateForm1()">Election Info</button>
+                <button type="button" class="btn btn-line" (click)="previous()">Candidates</button>
+                <button type="button" class="btn btn-green-line" [disabled]="!ngform4.valid">Voting Algorithm</button>
+            </div>
+        </div>
+        <div class="form-election">
+            <form #ngform4="ngForm">
+                <div class="form-group">
+                    <div class="row center">
+                        <div class="col-md-7 col-lg-5 col-xl-4 col-sm-12 text-left">
+                            <div class=" row algo" *ngFor="let algo of algos; let i = index">
+                                <div class=" col-9 col-sm group">
+                                    <label class="radio-label">{{algo.description}}
+                                        <input type="radio" value="{{algo.value}}" [(ngModel)]="form4.votingAlgo"
+                                            ngDefaultControl name="form4.votingAlgo">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class=" col-3 col-sm-4 group text-right">
+                                    <a type="button" href="{{algo.link}}" class="btn btn-gold btn-link btn-sm btn-just-icon">
+                                        <i class="material-icons">chrome_reader_mode</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row d-flex justify-content-center pb-20">
+            <button class="btn btn-green mr-3" (click)="previous()">Previous</button>
+            <button class="btn btn-green" [disabled]="!ngform4.valid" (click)="finish()">{{buttonStatus}}</button>
+        </div>
+    </div>
+</div>

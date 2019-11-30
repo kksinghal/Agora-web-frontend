@@ -1,0 +1,74 @@
+<div class="main-content">
+    <div class="container full-width">
+        <app-navbar></app-navbar>
+
+        <!-- Election Stats-->
+        <div class="row pb-20">
+            <div class="col-md-6 col-sm-12 text-center private-election">
+                <span class="private-election-text">
+                    <button class="btn" (click)="navigatePrivate()">Create a new Election</button>
+                </span>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center public-election">
+                <span class="public-election-text">
+                    <button class="btn" (click)="navigatePoll()">Create a new Poll</button>
+                </span>
+            </div>
+        </div>
+        <div class="stats row">
+            <div class="totalElec">Total Elections : <div class="figure">{{elections?.length}}</div></div>
+            <div class="activeElec">Total Active Elections : <div class="figure">{{activeElections?.length}}</div></div>
+            <div class="pendingElec">Total Finished Elections : <div class="figure">{{finishedElections?.length}}</div></div>
+            <div class="finishedElec">Total Pending Elections : <div class="figure">{{pendingElections?.length}}</div></div>
+        </div>
+        <!-- List of Elections-->
+        <div class="container mt-2 election" *ngIf="elections.length != 0">
+            <div class="row mt-4">
+                <h1>Your Elections</h1>
+            </div>
+            <div *ngIf="!isMobile()" class="col-12 mt-6">
+                <div class="election-head bg-grey row border-red">
+                    <div class="name col-12 col-md-4">Election Name</div>
+                    <div class="startDate col-6 col-md-2">Start Date</div>
+                    <div class="endDate col-6 col-md-2">End Date</div>
+                    <div class="status col-6 col-md-2">Status</div>
+                </div>
+            </div>
+            <div class="electionStats d-flex justify-content-center mb-4" *ngFor="let election of elections">
+                <div *ngIf="!isMobile()" class="col-12">
+                    <div class="bg-grey electionInfo row" [ngClass]="{'border-green': election.electionType == 'Private', 'border-blue': election.electionType == 'Public'}">
+                        <div class="name col-12 col-md-4">{{election?.name}}</div>
+                        <div class="startDate col-6 col-md-2">{{getDisplayDate(election?.start)}}</div>
+                        <div class="endDate col-6 col-md-2">{{getDisplayDate(election?.end)}}</div>
+                        <div class="status col-6 col-md-2">
+                            <div [ngClass]="{'active': getStatus(election) == 'Active', 'pending': getStatus(election) == 'Pending', 'finish': getStatus(election) == 'Finish'}">{{getStatus(election)}}</div>
+                        </div>
+                        <div class="editStatus col-6 col-md-2" (click)="navigateElection(election._id)">
+                            <div class="results">More Info</div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="isMobile()" class="card col-11 col-sm-10 col-md-8 mb-1">
+                    <div class="card-body row" [ngClass]="{'border-green': election.electionType == 'Private', 'border-blue': election.electionType == 'Public'}">
+                        <h5 class="name col-12 mb-3">{{election.name}}</h5>
+                        <div class="title d-flex justify-content-center align-items-center col-4 mb-2">Start</div>
+                        <div class="startDate col-8 mb-2">{{getDisplayDate(election?.start)}}</div>
+                        <div class="title d-flex justify-content-center align-items-center col-4 mb-3">End</div>
+                        <div class="endDate col-8 mb-3">{{getDisplayDate(election?.end)}}</div>
+                        <div class="status col-6 mb-2">
+                            <div [ngClass]="{'active': getStatus(election) == 'Active', 'pending': getStatus(election) == 'Pending', 'finish': getStatus(election) == 'Finish'}">{{getStatus(election)}}</div>
+                        </div>
+                        <div class="editStatus col-6 col-md-4 mb-2">
+                            <div class="results" (click)="navigateElection(election._id)">More Info</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4" *ngIf="elections.length == 0">
+            <div class="row mt-4 justify-content-center">
+                <h1 class="text-center">No Elections Created</h1>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="main-content">
+    <div class="full-width">
+        <app-navbar></app-navbar>
+        <app-heading-bar>
+            <div class="heading">{{ election?.name }}</div>
+            <div class="description">Description: {{ election?.description }}</div>
+        </app-heading-bar>
+        <div class="btn-wrapper">
+            <div class="btn-group btn-group-sm mt-2">
+                <button type="button" class="btn btn-line" (click)="electionInfo()">Election Info</button>
+                <button type="button" class="btn btn-green-line">Add Voters</button>
+                <button type="button" class="btn btn-line" (click)="results()" [disabled]="getStatus() != 'Finish'">View Results</button>
+            </div>
+        </div>
+        <div class="container infoBox">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="form-election">
+                        <form #ngvoter="ngForm" (ngSubmit)="add()">
+                            <div class="form-group mb-4">
+                                <input type="text" [(ngModel)]="voter.name" name="voters_name" placeholder="Voters name"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" [(ngModel)]="voter.hash" name="voters_email" placeholder="Voters email"
+                                    required>
+                            </div>
+                            <div class="text-center mt-4">
+                                <span>
+                                    <button class="btn btn-green" [disabled]="!ngvoter.valid" type="submit">Add Voter</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-12">
+                    <div class="card pt-20">
+                        <div class="card-header card-header-gold">
+                            <h4 class="card-title">Voters</h4>
+                            <p class="card-category">Fill the form to add more Voters</p>
+                            <p class="card-category">Total: {{election?.voters.length}} Voters</p>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngIf="election?.voters.length == 0" class="d-block">
+                                        No Voters Added
+                                    </tr>
+                                    <div class="bg-light mb-2 row" #else *ngFor="let voter of voters; let ind = index">
+                                        <tr>
+                                            <td class="text-black col-md-1 col-sm-2">{{ind + 1}}</td>
+                                            <td class="text-black col-md-4 col-sm-3">{{voter.name}}</td>
+                                            <td class="text-black col-md-6 col-sm-5">{{voter.hash}}</td>
+                                            <td class="td-actions text-right col-md-1 col-sm-2">
+                                                <button type="button" (click)="delete(ind)" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <span class="text-right">
+                                        <button class="btn btn-green" [disabled]="!hasVoters() || isLoading" (click)="submit()">{{buttonText}}</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

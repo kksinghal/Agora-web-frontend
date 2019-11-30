@@ -1,0 +1,106 @@
+$segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
+$segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
+$segoe-bold: 'Segoe UI Bold', 'Open Sans', Helvetica, sans-serif
+$segoe-light: 'Segoe UI Light', 'Open Sans', Helvetica, sans-serif
+
+.bg-green
+    background: linear-gradient(180deg, #49ee96, #00843D)
+    margin-left: 0
+    display: flex
+    flex-direction: column
+    align-items: center
+    font-family: $segoe
+    height: 100%
+    min-height: 100vh
+    color: #ffffff
+.heading1-white
+    text-align: center
+    font-family: $segoe-semibold
+    font-size: 64px
+    margin-left: 20px
+.para-about
+    text-align: center
+    font-size: 27px
+    word-spacing: 3px
+    line-height: 32px
+    margin: 12px 50px
+
+.logo
+    height: 100px
+    width: 100px
+
+.vote
+    height: 340px
+    width: 420px
+    margin-top: 40px
+    margin-bottom: 30px
+    
+.btn-white
+    .a-link
+        margin-bottom: 20px
+        border-radius: 8px
+        font-size: 17px
+        color: #00843D
+.head
+    margin-top: 60px
+
+@media(min-width: 1600px)
+    .vote
+        height: 380px
+        width: 450px
+        margin-top: 60px
+        margin-bottom: 50px
+    .about
+        margin-bottom: 40px
+
+@media(max-width: 1200px)
+    .para-text
+        font-size: 24px
+        margin: 12px 25px
+        line-height: 28px
+
+@media(max-width: 992px)
+    .para-about
+        font-size: 24px
+        line-height: 28px
+    .vote
+        height: 250px
+        width: 300px
+        margin-top: 15px
+        margin-bottom: 10px
+    .bg-green
+        min-height: 50vh
+        height: 100%
+        padding-bottom: 20px
+
+@media(max-width: 500px)
+    .head
+        margin-top: 20px
+    .logo
+        height: 60px
+        width: 60px
+    .heading1-white
+        font-size: 34px
+    .para-about
+        font-size: 16px
+        line-height: 20px
+    .vote
+        height: 200px
+        width: 250px
+        margin-top: 15px
+        margin-bottom: 10px
+    .bg-green
+        height: 100%
+        padding-bottom: 20px
+
+@media(max-height: 600px)
+    .head
+        margin-top: 10px
+    .logo
+        height: 60px
+        width: 60px
+    .heading1-white
+        font-size: 34px
+    .para-about
+        font-size: 16px
+        line-height: 20px

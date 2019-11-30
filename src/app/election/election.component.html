@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div class="container full-width">
+        <app-navbar></app-navbar>
+        <app-heading-bar>
+            <div class="heading">{{ election?.name }}</div>
+            <div class="description">Description: {{ election?.description }}</div>
+        </app-heading-bar>
+        <div class="btn-wrapper">
+            <div class="btn-group btn-group-sm mt-2">
+                <button type="button" class="btn btn-green-line">Election Info</button>
+                <button type="button" class="btn btn-line" *ngIf="election.electionType != 'Public'" (click)="addVoter()">Add Voters</button>
+                <button type="button" class="btn btn-line" (click)="results()" [disabled]="status != 'Finish'">View Results</button>
+            </div>
+        </div>
+        <div class="infoBox  row justify-content-center">
+            <div class="candidates col-lg-5 col-md-6 col-10 mb-4">
+                <div class="row justify-content-center">
+                    <div class="head d-flex justify-content-center col-xl-8 col-lg-9 col-md-10 col-sm-7 col-10">Basic
+                        Info</div>
+                    <div class="box col-xl-10 col-md-12 col-lg-10 col-sm-9 col-12">Status: <div class="status ml-2"
+                            [ngClass]="{'green': getStatus() == 'Active', 'red': getStatus() == 'Pending', 'blue': getStatus() == 'Finish'}">{{status}}</div>
+                    </div>
+                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Type: <div class="type ml-2"
+                            [ngClass]="{'green': election.electionType == 'Private', 'blue': election.electionType == 'Public'}">{{election?.electionType}}</div>
+                    </div>
+                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Voting Algorithm:
+                        {{election?.votingAlgo}}</div>
+                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Total Voters: <div class="voters ml-2">{{election?.voters.length}}</div>
+                    </div>
+                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12" *ngIf="election?.electionType == 'Public'">Voting
+                        URL: <div class="link ml-3"><button *ngIf="election?.adminLink==''" class="btn btn-sm btn-dark ml-3"
+                                (click)="generateUrl()">Generate</button>{{election?.adminLink}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="candidates col-lg-5 col-md-6 col-10">
+                <div class="row justify-content-center">
+                    <div class="head d-flex justify-content-center col-xl-8 col-lg-9 col-md-10 col-sm-9 col-10">Candidates</div>
+                    <div *ngFor="let candidate of election?.candidates; let ind = index" class="candidateBox box col-xl-8 col-lg-9 col-md-10 col-sm-7 col-10">
+                        <div class="index">{{ind + 1}}: </div>
+                        <div class="name">{{candidate}}</div>
+                    </div>
+                    <div class="dates col-12">
+                        <div class="row justify-content-center">
+                            <div class="head d-flex justify-content-center col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Dates</div>
+                            <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Start Date:
+                                {{getDisplayDate(election?.start)}}</div>
+                            <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">End Date:
+                                {{getDisplayDate(election?.end)}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center mt-5">
+                <button class="btn btn-green d-flex justify-content-center align-items-center mr-2" (click)="delete()">Delete<i
+                        class="material-icons ml-2">delete</i></button>
+                <button class="btn btn-green d-flex justify-content-center align-items-center" (click)="edit()">Edit<i
+                        class="material-icons text-gold ml-2">settings</i></button>
+            </div>
+        </div>
+    </div>
+</div>

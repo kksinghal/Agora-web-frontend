@@ -1,0 +1,72 @@
+<div class="main-content">
+  <div class="container-fluid full-width">
+    <app-navbar></app-navbar>
+    <app-heading-bar>
+      <div class="heading">{{ election?.name }}</div>
+      <div class="description">Description: {{ election?.description }}<br>
+        Start Date: {{election?.startingDate}}<br>
+        End Date: {{election?.endingDate}}
+      </div>
+      <div class="instruction">Instruction: Press the plus button to add a candidate to your ballot.
+        Move candidates up or down to change position</div>
+    </app-heading-bar>
+    <div class="container infoBox">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+          <br>
+          <div class="card pt-20">
+            <div class="card-header">
+              <h1 class="card-title">Election Candidates</h1>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <tbody class="row justify-content-center">
+                  <div class="bg-light mb-2 col-lg-9 col-xl-7" *ngFor="let candidate of candidates; let ind = index">
+                    <tr>
+                      <td class="text-black col-9">{{candidate}}</td>
+                      <td class="td-actions text-right">
+                        <button type="button" (click)="add(ind)" class="btn btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">add_circle</i>
+                        </button>
+                      </td>
+                    </tr>
+                  </div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-8">
+          <br>
+          <div class="card pt-20">
+            <div class="card-header">
+              <h1 class="card-title">Your ballot</h1>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <tbody  class="row justify-content-center" dragula="SELECTED" [(dragulaModel)]="selected">
+                  <h3 *ngIf="selected.length == 0">Empty Ballot</h3>
+                  <div class="bg-light mb-2 row col-lg-9 col-xl-7" *ngFor="let candidate of selected; let ind = index">
+                    <tr>
+                      <td class="text-black col-9">{{candidate}}</td>
+                      <td class="td-actions text-right">
+                        <button type="button" (click)="delete(ind)" class="btn btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">delete</i>
+                        </button>
+                      </td>
+                    </tr>
+                  </div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-green" [disabled]="isEmpty()" (click)="vote()">{{msg}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

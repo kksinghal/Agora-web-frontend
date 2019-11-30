@@ -3,14 +3,16 @@ import { PasswordData } from '../model/password.model';
 import { SignUp } from '../model/signUp.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Response, RequestOptions } from '@angular/http';
 import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
 import { Credentials } from '../model/credentials.model';
 import { User } from '../model/user.model';
+import { TwoFactorAuth } from '../model/twoFactorAuth.model';
 import { JwtService } from './jwt.service';
 import { JwtToken } from '../model/jwtToken.model';
+import { OneTimePassword } from '../model/oneTimePassword.model';
+import { Question } from '../model/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,9 @@ export class UserService {
   private rootUrl = environment.API_URL;
   private currentUserSubject = new BehaviorSubject<User>({} as User);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
+
+  private currentCryptoSubject = new BehaviorSubject<TwoFactorAuth>({} as TwoFactorAuth);
+  public currentCrypto = this.currentCryptoSubject.asObservable().pipe(distinctUntilChanged());
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
@@ -64,7 +69,19 @@ export class UserService {
     const reqHeaders = { headers: new HttpHeaders(this.getheadersNoAuth()) };
     return this.http.post(this.rootUrl + '/auth/login', body, reqHeaders)
       .pipe(map(
-        data => {
+        (data: any) => {
+          if (data.twoFactorAuthentication && ! ('token' in data)) {
+
+            console.log(data);
+
+            const twoFactorAuth = new TwoFactorAuth().deserialize(data);
+
+            this.currentCryptoSubject.next(twoFactorAuth);
+            console.log(this.getCurrentCrypto());
+
+            return twoFactorAuth;
+          } else {
+
           console.log(data);
           const user = new User().deserialize(data);
           // Save JWT sent from server in localstorage
@@ -74,9 +91,102 @@ export class UserService {
 
           this.currentUserSubject.next(user);
 
+          console.log(this.currentUserSubject);
+          console.log(user);
           return user;
+          }
         })
       );
+  }
+
+  verifyOtp(oneTimePassword: OneTimePassword) {
+    const body = JSON.stringify(oneTimePassword);
+    console.log(body);
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersNoAuth()) };
+    return this.http.post(this.rootUrl + '/verifyOtp', body, reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          const user = new User().deserialize(data);
+          if (oneTimePassword.trustedDevice) {
+            this.addTrustedDevice(user.trustedDevice);
+          }
+          // Save JWT sent from server in localstorage
+          this.jwtService.saveToken(user.token.token);
+          // Set isAuthenticated to true
+          this.isAuthenticatedSubject.next(true);
+
+          this.currentUserSubject.next(user);
+
+          return user;
+        }
+      ));
+  }
+
+  addTrustedDevice(trust: string) {
+    window.localStorage.trustedDevice = trust;
+  }
+
+  getTrustedDevice(): string {
+    return window.localStorage.trustedDevice;
+  }
+
+  resendOtp(userName: string) {
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersNoAuth()) };
+    return this.http.get(this.rootUrl + '/resendOtp/' + userName, reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          const twoFactorAuth = new TwoFactorAuth().deserialize(data);
+          this.currentCryptoSubject.next(twoFactorAuth);
+          console.log(this.getCurrentCrypto());
+          return twoFactorAuth;
+        }
+      ));
+  }
+
+  toggleTwoFactorAuthentication() {
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth()) };
+    return this.http.get(this.rootUrl + '/toggleTwoFactorAuth', reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          return data;
+        }
+      ));
+  }
+
+  getSecurityQuestion(crypto: string) {
+    const reqHeaders =  { headers: new HttpHeaders(this.getheadersNoAuth()) };
+    console.log(crypto);
+    return this.http.get(this.rootUrl + '/securityQuestion/' + crypto, reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          return data;
+        }
+      ));
+  }
+
+  verifySecurityQuestion(question: Question) {
+    const reqHeaders =  { headers: new HttpHeaders(this.getheadersNoAuth()) };
+    const body = JSON.stringify(question);
+    return this.http.post(this.rootUrl + '/verifySecurityQuestion', body, reqHeaders)
+      .pipe(map(
+        data => {
+          console.log(data);
+          const user = new User().deserialize(data);
+
+          // Save JWT sent from server in localstorage
+          this.jwtService.saveToken(user.token.token);
+          // Set isAuthenticated to true
+          this.isAuthenticatedSubject.next(true);
+
+          this.currentUserSubject.next(user);
+
+          return user;
+        }
+      ));
   }
 
   socialLogin(provider: string, token: string) {
@@ -202,7 +312,7 @@ export class UserService {
     }
   }
 
-  private setAuth(user: User, token: String) {
+  private setAuth(user: User, token: string) {
     // Save JWT sent from server in localstorage
     this.jwtService.saveToken(token);
     // Set current user data into observable
@@ -218,6 +328,10 @@ export class UserService {
     this.currentUserSubject.next({} as User);
     // Set auth status to false
     this.isAuthenticatedSubject.next(false);
+  }
+
+  getCurrentCrypto(): TwoFactorAuth {
+    return this.currentCryptoSubject.value;
   }
 
   getCurrentUser(): User {

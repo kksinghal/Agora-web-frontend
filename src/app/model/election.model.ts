@@ -8,6 +8,7 @@ export class Election implements Deserializable {
 
     _id: string;
     name: string;
+    electionType: string;
     description: string;
     creatorName: string;
     creatorEmail: string;

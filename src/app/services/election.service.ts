@@ -68,6 +68,7 @@ export class ElectionService {
   create(election: ElectionData) {
     const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth()) };
     const body = JSON.stringify(election);
+    console.log(body);
     return this.http.post(this.rootUrl + '/election', body, reqHeaders);
   }
 
@@ -118,9 +119,25 @@ export class ElectionService {
      }));
   }
 
-  getResults(id: string) {
+  verifyPollVoter(id: string): Observable<ElectionData> {
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersNoAuth())};
+    return this.http.get<ElectionData>(this.rootUrl + '/voter/verifyPoll/' + encodeURIComponent(id),
+     reqHeaders).pipe(map(data => {
+       return new ElectionData().deserialize(data);
+     }));
+  }
+
+
+  generateUrl(id: string) {
     const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth())};
-    return this.http.get<Winner[]>(this.rootUrl + '/result/' + id , reqHeaders).pipe(map(data => {
+    return this.http.get<Ballot>(this.rootUrl + '/election/' + id + '/pollVoterLink', reqHeaders);
+  }
+
+  getResults(id: string) {
+    console.log(id);
+    const reqHeaders = { headers: new HttpHeaders(this.getheadersWithAuth())};
+    return this.http.get<Winner[]>(this.rootUrl + '/result/' + encodeURIComponent(id) , reqHeaders).pipe(map(data => {
+      console.log(data);
       return data.map(value => new Winner().deserialize(value));
     }));
   }

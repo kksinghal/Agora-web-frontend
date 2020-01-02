@@ -2,252 +2,343 @@ $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
 $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
 
 .full-width
-    margin: 0
-    max-width: 100vw
-    min-height: 100vh
-    background: #fefefe
-    font-family: $segoe
-    overflow-x: hidden
+  margin: 0
+  max-width: 100vw
+  min-height: 100vh
+  background: #fefefe
+  font-family: $segoe
+  overflow-x: hidden
 
 .public-election, .private-election-text, .private-election, .public-election-text
-    display: flex
-    justify-content: center
-    align-items: center
-    font-family: $segoe-semibold
+  display: flex
+  justify-content: center
+  align-items: center
+  font-family: $segoe-semibold
 .private-election-text, .public-election-text
-    font-family: $segoe-semibold
-    border-radius: 8px
+  font-family: $segoe-semibold
+  border-radius: 8px
 .electionStats
-    width: 100%
+  width: 100%
+  height: 6vw
+  margin: 0px !important
+  color: #000
 .stats
-    width: 100vw
-    padding: 0 8vw
-    margin: 0
-    margin-top: 30px
-    display: flex
-    justify-content: space-around
+  width: 100vw
+  padding: 0 8vw
+  margin: 0
+  margin-top: 30px
+  display: flex
+  justify-content: space-around
 .totalElec, .activeElec, .pendingElec, .finishedElec
-    width: 18vw
-    height: 14vw
-    border-radius: 20px
-    font-family: $segoe
-    padding: 20px
-    font-size: 25px
-    color: #ffffff
-    text-align: center
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    background: #ffffff
-    box-shadow: #f0f0f0 0px 0px 15px
+  width: 18vw
+  height: 14vw
+  border-radius: 20px
+  font-family: $segoe
+  padding: 20px
+  font-size: 25px
+  color: #ffffff
+  text-align: center
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  background: #ffffff
+  box-shadow: #f0f0f0 0px 0px 15px
 .pendingElec
-    background: #1e83f7
+  background: #1e83f7
 .totalElec
-    background: #fcd115
+  background: #fcd115
 .finishedElec
-    background: #e84318
+  background: #e84318
 .activeElec
-    background: #54a457
+  background: #54a457
 .figure
-    font-size: 38px
+  font-size: 38px
 h1
-    font-size: 4rem
+  font-size: 4rem
 .private
-    padding: 5px 30px
-    border: 1px solid #087348
-    background: #ffffff
-    color: #087348
+  padding: 5px 30px
+  border: 1px solid #087348
+  background: #ffffff
+  color: #087348
 .border-blue
-    border-left: 5px solid #1D83F7
+  border-left: 5px solid #1D83F7
 .border-green
-    border-left: 5px solid #087348
+  border-left: 5px solid #087348
 .border-red
-    border-left: 5px solid #FF2A2A
+  border-left: 5px solid #FF2A2A
 .public
-    padding: 5px 30px
-    border: 1px solid #1D83F7
-    background: #ffffff
-    color: #1D83F7
+  padding: 5px 30px
+  border: 1px solid #1D83F7
+  background: #ffffff
+  color: #1D83F7
 .pending, .results
-    width: fit-content
-    padding: 5px 20px
-    color: #ffffff
-    background: #1D83F7
+  width: fit-content
+  padding: 5px 20px
+  color: #ffffff
 .results
-    padding: 5px 20px
+  padding: 5px 20px
 .finish, .voters
-    padding: 5px 30px
-    color: #ffffff
-    background: #FF2A2A
+  padding: 5px 30px
+  color: #ffffff
+  background: #FF2A2A
 .active, .edit
-    width: fit-content
-    padding: 5px 30px
-    color: #ffffff
-    background: #17a257
-.edit 
-    padding: 5px 40px
+  width: fit-content
+  padding: 5px 30px
+  color: #ffffff
+  background: #17a257
+.edit
+  padding: 5px 40px
 .election
-    min-width: 75vw
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
+  min-width: 75vw
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 .name, .type, .status, .startDate, .endDate, .editStatus
-    display: flex
-    text-align: center
-    justify-content: center
-    align-items: center
+  display: flex
+  text-align: center
+  justify-content: center
+  align-items: center
 .container
-    padding: 0
+  padding: 0
 .editStatus
-    cursor: pointer
+  cursor: pointer
+  background: #1D83F7
+  padding: 0px
+.status
+  padding: 5px 10px
 .bg-grey
-    height: 90px
-    background: #ffffff
-    box-shadow: #f0f0f0 0px 0px 15px
+  height: 90px
+  background: #ffffff
+  box-shadow: #f0f0f0 0px 0px 15px
 .election-head
-    display: flex
-    align-items: center
-    margin-top: 40px
-    font-size: 24px
-    color: #000000
-    font-family: $segoe-semibold
-
+  height: 100%
+  display: flex
+  align-items: center
+  margin-top: 40px
+  font-size: 24px
+  color: #000000
+  font-family: $segoe-semibold
 .electionInfo
-    display: flex
-    align-items: center
-    font-size: 22px
-    font-family: $segoe
-    color: #000000
-    margin-top: 20px
+  display: flex
+  align-items: center
+  font-size: 22px
+  font-family: $segoe
+  color: #000000
+  height: 100%
+.electionInfo>*
+  margin: auto
 .card
-    background: #ffffff
-    box-shadow: #f0f0f0 0px 0px 15px
-    border: none
+  background: #ffffff
+  box-shadow: #f0f0f0 0px 0px 15px
+  border: none
 
 @media(max-width: 1200px)
-    .totalElec, .activeElec, .pendingElec, .finishedElec
-        width: 30vw
-        height: 22vw
-        margin-bottom: 20px
-        border-radius: 12px
+  .totalElec, .activeElec, .pendingElec, .finishedElec
+    width: 30vw
+    height: 22vw
+    border-radius: 12px
     .election-head
-        font-size: 19px
+      font-size: 19px
     .electionInfo
-        font-size: 19px
+      font-size: 19px
 @media(min-width: 768px)
-    .private-election
-        height: 180px
+  .private-election
+    height: 180px
     .public-election
-        height: 180px
+      height: 180px
     .private-election-text
-        background: #17A257
-        height: 50px
-        width: 245px
-        margin-left: 5vw
-        .btn
-            color: #ffffff
+      background: #17A257
+      height: 50px
+      width: 245px
+      margin-left: 5vw
+      .btn
+        color: #ffffff
     .public-election-text
-        background: #1D83F7
-        height: 50px
-        width: 245px
-        .btn
-            color: #ffffff
+      background: #1D83F7
+      height: 50px
+      width: 245px
+      .btn
+        color: #ffffff
     .btn
-        font-size: 20px
+      font-size: 20px
 
 @media(min-width: 1024px)
-    .private-election
-        height: 180px
+  .private-election
+    height: 180px
     .public-election
-        height: 180px
+      height: 180px
     .private-election-text, .public-election-text
-        width: 270px
-        height: 60px
+      width: 270px
+      height: 60px
     .btn
-        font-size: 24px
+      font-size: 24px
 @media(min-width: 1400px)
-    .private-election
-        height: 200px
+  .private-election
+    height: 200px
     .public-election
-        height: 200px
+      height: 200px
     .private-election-text, .public-election-text
-        width: 320px
+      width: 320px
     .btn
-        font-size: 24px
+      font-size: 24px
 @media(max-width: 1400px)
-    .private, .public, .finish
-        padding: 5px 15px
+  .private, .public, .finish
+    padding: 5px 15px
     .active, .finish, .results, .voters, .pending, .edit
-        padding: 5px 15px
+      padding: 5px 15px
 @media(max-width: 1000px)
-    .electionInfo
-        font-size: 16px
+  .electionInfo
+    font-size: 16px
     .private, .public, .results
-        padding: 5px 10px
+      padding: 5px 10px
     .finish
-        padding: 5px 20px
+      padding: 5px 20px
 
 @media(max-width: 767px)
+  .election-count-table
+    font-size: 3vw !important
+    margin: 10vh auto 10vh !important
+  .election-count-table .head
+    height: 12vw
+  .election-count-table .head td
+    font-size: 4vw !important
+  .election-count-table tbody .count-data
+    height: 15vw
+  .election-count-table tbody .count-data td
+    height: 15vw
+  .election-count-table tbody p
+    height: 8vw !important
+    width: 8vw !important
+    top: 50% !important
+  .hidden-md
+    display: none
+  .electionStats
+    height: 40vw
     .stats
-        padding: 0 5vw
+      padding: 0 5vw
     .totalElec, .activeElec, .pendingElec, .finishedElec
-        width: 36vw
-        height: 30vw
-        font-size: 20px
-        border-radius: 8px
+      width: 36vw
+      height: 30vw
+      font-size: 20px
+      border-radius: 8px
     .figure
-        font-size: 32px
+      font-size: 32px
     h1
-        font-size: 2.5rem
+      font-size: 2.5rem
     .private, .public, .active
-        padding: 5px 10px
+      padding: 5px 10px
     .name
-        font-size: 17px
+      font-size: 17px
     .private-election
-        height: 100px
-        background: #ffffff
+      height: 100px
+      background: #ffffff
     .public-election
-        height: 100px
-        background: #ffffff
+      height: 100px
+      background: #ffffff
     .private-election-text
-        background: #17A257
-        height: 50px
-        border-radius: 5px
-        width: 240px
-        img
-            display: none
+      background: #17A257
+      height: 50px
+      border-radius: 5px
+      width: 240px
+      img
+        display: none
     .public-election-text
-        background: #1D83F7
-        border-radius: 5px
-        height: 50px
-        width: 240px
-        img
-            display: none
+      background: #1D83F7
+      border-radius: 5px
+      height: 50px
+      width: 240px
+      img
+        display: none
     .btn
-        color: #ffffff
-        font-size: 20px
+      color: #ffffff
+      font-size: 20px
     .name, .type, .status, .startDate, .endDate, .editStatus
-        font-size: 14px
+      font-size: 14px
     .name
-        font-weight: bold
-        font-size: 20px
-    
+      font-weight: bold
+      font-size: 20px
+    .sm-black-bg
+      background-color: #171717
+      margin: 0px
 @media(max-width: 450px)
-    .totalElec, .activeElec, .pendingElec, .finishedElec
-        width: 80vw
-        height: 28vw
-        font-size: 18px
+  .totalElec, .activeElec, .pendingElec, .finishedElec
+    width: 80vw
+    height: 28vw
+    font-size: 18px
     .figure
-        font-size: 28px
+      font-size: 28px
     .card-body
-        padding: 0.5rem
+      padding: 0.5rem
     .private-election-text, .public-election-text
-        border-radius: 6px
-        width: 220px
+      border-radius: 6px
+      width: 220px
     .name
-        font-weight: bold
-        font-size: 18px
+      font-weight: bold
+      font-size: 18px
     .btn
-        font-size: 18px
+      font-size: 18px
+button
+  padding: 10px 20px
+  outline: none
+  border: none
+  color: #fff
+  border-radius: 50px
+  margin-top: 30px
+  background-color: #3ab0d7
+  a
+    color: #fff
+.button-container
+  text-align: center
+fieldset
+  margin: 0 0 3rem
+  padding: 0
+  border: none
+.yellow-text
+  color: #FAC914
+.text-left
+  text-align: left
+.blue-background
+  background-color: #3ab0d7
+.blue-text
+  color: #3AB0D7
+form button
+  border-radius: 50px
+.dashboard-container
+  color: #fff
+.election-count-table
+  color: #fff
+  background-color: #3ab0d7
+  text-align: center
+  margin: 18vh auto 15vh
+  font-size: 1.6vw
+  font-weight: 500
+.election-count-table .head
+  border: none
+  height: 2vw
+.election-count-table .head td
+  height: 4vw
+  vertical-align: middle
+  font-size: 2vw
+.election-count-table tbody .count-data td
+  height: 10vw
+  position: relative
+  border: none
+  text-align: center
+  vertical-align: middle
+.election-count-table tbody p
+  color: #fff
+  font-size: 5vw
+  height: 10vw
+  width: 10vw
+  display: inline-block
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+.electionStats:nth-child(odd)
+  background-color: #a1e6ff
+.election-count-td-background
+  height: 8vw
+  opacity: 0.2

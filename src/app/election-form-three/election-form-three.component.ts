@@ -20,11 +20,13 @@ export class ElectionFormThreeComponent implements OnInit {
   algos = VOTING_ALGORITHMS;
   form1 = new ElectionFormOne();
   form4 = new ElectionFormFour();
+  algoSearchStr: string;
   isLoading = false;
   buttonStatus = 'Finish';
 
   constructor(private router: Router, private route: ActivatedRoute, private electionDataService: ElectionDataService, private electionService: ElectionService) {
     const origin = this.electionDataService.getOrigin();
+    this.algoSearchStr = "";
     if (origin && 'valid' === origin) {
       this.form1 = this.electionDataService.getForm1();
       this.form4 = this.electionDataService.getForm4();
@@ -34,6 +36,10 @@ export class ElectionFormThreeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  filterAlgorithm(event){
+    this.algoSearchStr = event.target.value ;
   }
 
   navigateForm1() {

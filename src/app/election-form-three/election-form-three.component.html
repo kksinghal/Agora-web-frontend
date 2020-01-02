@@ -1,38 +1,44 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <app-navbar></app-navbar>
+    <div>
+        <app-navbar class="text-left"></app-navbar>
         <app-heading-bar>
+            <img class="icon-img" src="../assets/add-file.svg" />
             <div class="heading">
-                Voting Algorithm
+                Create <span class="blue-text">Election</span>
             </div>
-            <div class="instruction">
-                <i>Instruction: Provide select the voting algorithm. </i>
-            </div>
+            <div class="text1 font-weight-bold blue-text">Add Voters</div>
         </app-heading-bar>
-        <div class="btn-wrapper">
-            <div class="btn-group btn-group-sm mt-2">
-                <button type="button" class="btn btn-line" (click)="navigateForm1()">Election Info</button>
-                <button type="button" class="btn btn-line" (click)="previous()">Candidates</button>
-                <button type="button" class="btn btn-green-line" [disabled]="!ngform4.valid">Voting Algorithm</button>
-            </div>
+        <div>
+            <ul class="tab-bar">
+                <li class="tab wave dark" >Election Info</li>
+                <li class="tab wave dark" >Candidates</li>
+                <li class="tab wave dark"><span class="hidden-sm">Voting</span> Algorithm</li>
+                <div class="indicator"></div>
+            </ul>
         </div>
         <div class="form-election">
             <form #ngform4="ngForm">
                 <div class="form-group">
                     <div class="row center">
                         <div class="col-md-7 col-lg-5 col-xl-4 col-sm-12 text-left">
-                            <div class=" row algo" *ngFor="let algo of algos; let i = index">
-                                <div class=" col-9 col-sm group">
-                                    <label class="radio-label">{{algo.description}}
-                                        <input type="radio" value="{{algo.value}}" [(ngModel)]="form4.votingAlgo"
-                                            ngDefaultControl name="form4.votingAlgo">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class=" col-3 col-sm-4 group text-right">
-                                    <a type="button" href="{{algo.link}}" class="btn btn-gold btn-link btn-sm btn-just-icon">
-                                        <i class="material-icons">chrome_reader_mode</i>
-                                    </a>
+                            <div class="form-group col-12 d-inline-block text-white">
+                                <input (keyup)='filterAlgorithm($event)' placeholder="Search" />
+                                <label for="input" class="control-label" ></label><i class="bar"></i>
+                            </div>
+                            <div *ngFor="let algo of algos; let i = index">
+                                <div class="row algo" *ngIf="algo.description.trim().toLowerCase().indexOf(algoSearchStr.trim().toLowerCase())!==-1">
+                                    <div class=" col-9 col-sm group">
+                                        <label class="radio-label">{{algo.description}}
+                                            <input type="radio" value="{{algo.value}}" [(ngModel)]="form4.votingAlgo"
+                                                ngDefaultControl name="form4.votingAlgo">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class=" col-3 col-sm-4 group text-right">
+                                        <a type="button" href="{{algo.link}}" class="btn btn-gold btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">chrome_reader_mode</i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -40,9 +46,14 @@
                 </div>
             </form>
         </div>
-        <div class="row d-flex justify-content-center pb-20">
-            <button class="btn btn-green mr-3" (click)="previous()">Previous</button>
-            <button class="btn btn-green" [disabled]="!ngform4.valid" (click)="finish()">{{buttonStatus}}</button>
+        <div class="container text-center">
+            <div class="text-center mt-5 d-inline-block w-50">
+                <button class="col-md-3 col-sm-6 col-xs-10 pull-right mr-3 yellow-background text-dark" (click)="previous()" >Previous</button>
+            </div>
+            <div class="text-center mt-5 d-inline-block w-50">
+                <button class="col-md-3 col-sm-6 col-xs-10 pull-left ml-3" [disabled]="!ngform4.valid" (click)="finish()" >{{buttonStatus}}</button>
+            </div>
         </div>
+        <app-footer></app-footer>
     </div>
 </div>

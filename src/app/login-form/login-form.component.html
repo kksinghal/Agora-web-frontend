@@ -1,29 +1,52 @@
-<div class="form-clean">
-    <div class="btn-wrraper">
-        <div class="btn-group btn-group-sm float-right mt-2">
-            <button type="button" class="btn btn-green-line" (click)="navigateSignUp()">Sign Up</button>
-            <button type="button" class="btn btn-green">Sign In</button>
+<div id="login-page" class="form-clean background-image" style="background-image: url('../../assets/voting.svg');">
+    <div class="col-md-6 col-lg-5 col-xl-4 login-form-container">
+        <div>
+            <h2 class="d-inline-block">Welcome to </h2>
+            <h2 class="yellow-text d-inline-block">&nbsp; Agora!</h2>
+            <div style="margin: 10px;">Please <span class="yellow-text font-weight-bold">login</span> into your account to continue </div>
+            <form class="text-left" #loginForm="ngForm" method="post" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
+                <div class="form-group">
+                    <input matInput type="text" #UserName ngModel name="user_name" required="required" />
+                    <label for="input" class="control-label">Username</label><i class="bar"></i>
+                </div>
+                <div class="form-group">
+                    <input matInput type="password" #Password ngModel name="password" required="required" />
+                    <label for="input" class="control-label">Password</label><i class="bar"></i>
+                </div>
+                <div>
+                    <a routerLink="/forgot-password" class="forgot pull-right" style="font-size: 14px;"> Forgot your password? </a>
+                </div>
+                <br><br>
+                <div class="form-group center w-100 col-12" >
+                    <button class="btn col-md-8 col-sm-12 blue-background w-100 border-0 text-white" [disabled]="!loginForm.valid || isLoading || socialLoading" type="submit">
+                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
+                    <div style="margin: 10px;">Or</div>
+                    <app-social-login class="w-100 text-center" [disabled]="isLoading || socialLoading" (isCurrentlyLoading)="socialLoading=$event"></app-social-login>
+                </div>
+            </form>
+            <div *ngIf="!error" class="error">
+                <p><br></p>
+            </div>
+            <div *ngIf="error" class="error">
+                <p>An error occured please try again.</p>
+            </div>
+            <div style="float: right;" (click) = "navigateSignUp()" ><span class="font-weight-bold">New User </span>? Click here to <span class="blue-text font-weight-bold">sign up</span></div>
         </div>
     </div>
-    <h1>Welcome to Agora!</h1>
-    <p>Please login into your account to continue.</p>
-    <form #loginForm="ngForm" method="post" (ngSubmit)="OnSubmit(UserName.value,Password.value)" class="form-clean">
-        <h2 class="sr-only">Login Form</h2>
-        <div class="form-group">
-            <input matInput type="text" #UserName ngModel name="user_name" placeholder="User name" required>
-        </div>
-        <div class="form-group">
-            <input matInput type="password" #Password ngModel name="password" placeholder="Password" required
-                spellcheck="false">
-        </div>
-        <a routerLink="/forgot-password" class="forgot">Forgot your password?</a>
-        <div class="form-group center">
-            <button class="btn btn-green" [disabled]="!loginForm.valid || isLoading || socialLoading" type="submit">
-                <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
-        </div>
-        <app-social-login [disabled]="isLoading || socialLoading" (isCurrentlyLoading)="socialLoading=$event"></app-social-login>
-    </form>
-    <div *ngIf="error" class="error">
-        <p>An error occured please try again.</p>
+</div>
+<div class="col-12" style="margin: 10vw 0;">
+    <div class="col-sm-12 col-md-6 d-inline-block align-middle">
+          <div>
+             <h2 class="d-inline-block">Create an</h2><h2 class="d-inline-block blue-text">&nbsp;election&nbsp; </h2>
+             <h2 class="d-inline-block"> and invite </h2><br>
+             <h2 class="d-inline-block"> friends to cast their </h2>
+             <h2 class="d-inline-block blue-text"> &nbsp;votes&nbsp;</h2>
+             <h2 class="d-inline-block"> today! </h2>
+             <br>
+             <button><a href="http://aossie.org" target="_blank">Learn More</a></button>
+          </div>
+    </div>
+    <div class="col-md-6 d-inline-block">
+        <img class="w-100 hidden-sm" src="../assets/vote.png" />
     </div>
 </div>

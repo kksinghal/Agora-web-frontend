@@ -6,6 +6,7 @@ import { ElectionFormThreeRoutingModule } from './election-form-three-routing.mo
 import { ElectionFormThreeComponent } from './election-form-three.component';
 import { HeadingBarModule } from '../heading-bar/heading-bar.module';
 import { NavbarModule } from '../navbar/navbar.module';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [ElectionFormThreeComponent],
@@ -14,7 +15,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     ElectionFormThreeRoutingModule,
     FormsModule,
     HeadingBarModule,
-    NavbarModule
+    NavbarModule,
+    FooterModule
   ],
   exports: [ElectionFormThreeComponent]
 })

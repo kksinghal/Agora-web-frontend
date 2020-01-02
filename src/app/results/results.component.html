@@ -1,40 +1,77 @@
 <div class="main-content">
-    <div class="container full-width">
-        <app-navbar></app-navbar>
+    <div class="container full-width text-center">
+        <app-navbar class="text-left"></app-navbar>
         <app-heading-bar>
-            <div class="heading">{{ election?.name }}</div>
-            <div class="description">Description: {{ election?.description }}</div>
+            <img class="icon-img" src="../assets/prize_batch.svg" />
+            <div class="heading">
+               <span class="blue-text">Election Name</span><br>{{ election?.name }}
+            </div>
+            <div class="text1"><span class="blue-text font-weight-bold">Description</span></div>
+            <div class="text1">{{ election?.description }}</div>
         </app-heading-bar>
-        <div class="btn-wrapper" *ngIf="user?.email == election?.creatorEmail">
-            <div class="btn-group btn-group-sm mt-2">
-                <button type="button" class="btn btn-line" (click)="electionInfo()">Election Info</button>
-                <button type="button" class="btn btn-line" *ngIf="election?.electionType != 'Public'" (click)="addVoter()">Add Voters</button>
-                <button type="button" class="btn btn-green-line">View Results</button>
-            </div>
+        <div class="btn-wrapper">
+            <ul class="tab-bar">
+                <li class="tab wave dark" (click)="electionInfo()">Election Info</li>
+                <span *ngIf="election.electionType != 'Public' ?  changeTabsNumber(3) : changeTabsNumber(2)"></span>
+                <li class="tab wave dark"  [ngStyle]="{'display': getAddVoterDisplay() }" (click)="addVoter()" >Add Voters</li>
+                <li class="tab wave dark" >View Results</li>
+                <div class="indicator" [ngStyle]="{'width.vw': 84/getTabsNumber(), 'margin-left.vw': 84/(getTabsNumber())*(getTabsNumber()-1) }"></div>
+            </ul>
         </div>
-        <div class="infoBox  row justify-content-center">
+        <br>
+        <div class="container blue-text font-weight-bold text-center mb-5 mt-5">
+            <img src="../assets/celebration2.svg" class="icon-img" />
+            <h1 *ngIf="election?.winners.length==0" class="d-inline-block ml-5 mr-5" >No Winner</h1>
+            <h1 *ngIf="election?.winners.length!=0" class="d-inline-block ml-5 mr-5">
+                The winners 
+                <span *ngIf="election?.winners.length==1">is</span>
+                <span *ngIf="election?.winners.length>1">are</span>
+                <div *ngFor="let winner of election?.winners">{{winner.candidate.name}}</div>
+            </h1>
             <div class="winner col-12 text-center" *ngFor="let winner of election?.winners">Winner:  {{winner.candidate.name}}</div>
-            <div class="algo col-12 text-center mt-3">Voting Algorithm: {{election?.votingAlgo}}</div>
-            <div class="candidates col-lg-5 col-md-6 col-10 mb-4">
-                <div class="row justify-content-center">
-                    <div class="head d-flex justify-content-center col-xl-8 col-lg-9 col-md-10 col-sm-9 col-11">Votes
-                        Info</div>
-                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-11">Type: <div class="type ml-2"
-                            [ngClass]="{'green': election.electionType == 'Private', 'blue': election.electionType == 'Public'}">{{election?.electionType}}</div>
-                    </div>
-                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-11">Total Voters: {{election?.voters.length}}</div>
-                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-11">Ballots Cast: {{election?.ballots.length}}</div>
-                </div>
-            </div>
-            <div class="candidates col-lg-5 col-md-6 col-10">
-                <div class="row justify-content-center">
-                    <div class="head d-flex justify-content-center col-xl-8 col-lg-9 col-md-10 col-sm-9 col-11">Candidates</div>
-                    <div *ngFor="let candidate of election?.candidates; let ind = index" class="candidateBox box col-xl-8 col-lg-9 col-md-10 col-sm-7 col-11">
-                        <div class="index">{{ind + 1}}: </div>
-                        <div class="name">{{candidate}}</div>
-                    </div>
-                </div>
-            </div>
+            <img src="../assets/celebrations.svg" class="icon-img" />
         </div>
+        <br>
+        <election-pages-card class="col-6" >
+            <span class="header text-white">
+                <div class="img-container">
+                    <img class="icon" src="../assets/info.svg">
+                </div>
+                Votes Info
+            </span>
+            <div class="body">
+                <img src="../assets/cloud.svg" class="election-pages-card-icon"/> <span style="margin: 2vw;">Type: {{election?.electionType}}</span>
+                <br>
+                <img src="../assets/sigma.svg" class="election-pages-card-icon"/> <span style="margin: 2vw;">Total Voters: {{election?.voters.length}}</span>
+                <br>
+                <img src="../assets/ballot.svg" class="election-pages-card-icon"/> <span style="margin: 2vw;">Ballots Cast: {{election?.ballots.length}}</span>
+            </div>
+            <div class="footer text-white">
+                Voting Algorithm: {{election?.votingAlgo}}
+            </div>
+        </election-pages-card>
+        <election-pages-card class="col-6 mt-5">
+            <span class="header text-white">
+                <div class="img-container">
+                    <img class="icon" src="../assets/candidate.svg">
+                </div>
+                Candidates
+            </span>
+            
+            <div class="body">
+                <div *ngFor="let candidate of election?.candidates">
+                    <div *ngIf="candidate.trim().toLowerCase().indexOf(candidateSearchStr.trim().toLowerCase())!==-1">
+                        <img src="../assets/candidate2.svg" class="election-pages-card-icon"/> <span style="margin: 2vw;">{{candidate}}</span><br>
+                    </div>
+                </div>
+            </div>
+            <div class="footer text-white col-10">
+                <div class="form-group col-12 d-inline-block text-white">
+                    <input class="candidateSearch text-white" (keyup)='filterCandidate($event)' placeholder="Search" />
+                    <label for="input" class="control-label"  ></label><i class="bar"></i>
+                </div>
+            </div>
+        </election-pages-card>
+        <app-footer></app-footer>
     </div>
 </div>

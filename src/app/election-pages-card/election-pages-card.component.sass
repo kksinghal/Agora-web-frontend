@@ -1,0 +1,197 @@
+.material-card
+  position: relative
+  height: 0
+  padding-bottom: calc(100% - 16px)
+  margin-bottom: 6.6em
+  text-align: left
+  h2
+    background-color: #3AB0D7
+    position: absolute
+    top: calc(100% - 16px)
+    left: 0
+    width: 100%
+    padding: 10px 16px
+    color: #fff
+    font-size: 1.4em
+    line-height: 1.6em
+    margin: 0
+    z-index: 10
+    -webkit-transition: all 0.3s
+    -moz-transition: all 0.3s
+    -ms-transition: all 0.3s
+    -o-transition: all 0.3s
+    transition: all 0.3s
+
+    span
+      display: block
+
+    strong
+      font-weight: 400
+      display: block
+      font-size: .8em
+
+    &:before
+      border-top-color: transparent
+      border-right-color: #3AB0D7
+      border-bottom-color: #3AB0D7
+      border-left-color: transparent
+      content: ' '
+      position: absolute
+      left: 0
+      top: -16px
+      width: 0
+      border: 8px solid
+      -webkit-transition: all 0.3s
+      -moz-transition: all 0.3s
+      -ms-transition: all 0.3s
+      -o-transition: all 0.3s
+      transition: all 0.3s
+
+
+    &:after
+      border-top-color: #098eba
+      border-right-color: #098eba
+      border-bottom-color: transparent
+      border-left-color: transparent
+
+      content: ' '
+      position: absolute
+      left: 0
+      top: -16px
+      width: 0
+      border: 8px solid
+      -webkit-transition: all 0.3s
+      -moz-transition: all 0.3s
+      -ms-transition: all 0.3s
+      -o-transition: all 0.3s
+      transition: all 0.3s
+      top: auto
+      bottom: 0
+
+  &.mc-active h2
+    top: 0
+    padding: 10px 16px 10px 90px
+
+    &:before
+      top: 0
+      border-top-color: transparent
+      border-right-color: #3AB0D7
+      border-bottom-color: #3AB0D7
+      border-left-color: transparent
+
+    &:after
+      bottom: -16px
+      border-top-color: #0080ab
+      border-right-color: #0080ab
+      border-bottom-color: transparent
+      border-left-color: transparent
+
+  .mc-content
+    display: flex
+    position: absolute
+    background-color: #F0F0F0
+    right: 0
+    top: 0
+    bottom: 16px
+    left: 16px
+    -webkit-transition: all 0.3s
+    -moz-transition: all 0.3s
+    -ms-transition: all 0.3s
+    -o-transition: all 0.3s
+    transition: all 0.3s
+    overflow-y: scroll
+  .mc-btn-action
+    background-color: #F44336
+    position: absolute
+    right: 16px
+    top: 15px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    border: 5px solid
+    width: 54px
+    height: 54px
+    line-height: 44px
+    text-align: center
+    color: #fff
+    cursor: pointer
+    z-index: 20
+    -webkit-transition: all 0.3s
+    -moz-transition: all 0.3s
+    -ms-transition: all 0.3s
+    -o-transition: all 0.3s
+    transition: all 0.3s
+
+  &.mc-active .mc-btn-action
+    top: 62px
+
+  .mc-description
+    margin: auto
+    overflow: hidden
+    -webkit-transition: all 1.2s
+    -moz-transition: all 1.2s
+    -ms-transition: all 1.2s
+    -o-transition: all 1.2s
+    transition: all 1.2s
+    font-size: 18px
+    color: #707070
+  .mc-footer
+    height: 0
+    overflow: hidden
+    -webkit-transition: all 0.3s
+    -moz-transition: all 0.3s
+    -ms-transition: all 0.3s
+    -o-transition: all 0.3s
+    transition: all 0.3s
+
+    h4
+      position: absolute
+      top: 200px
+      left: 30px
+      padding: 0
+      margin: 0
+      font-size: 16px
+      font-weight: 700
+      -webkit-transition: all 1.4s
+      -moz-transition: all 1.4s
+      -ms-transition: all 1.4s
+      -o-transition: all 1.4s
+      transition: all 1.4s
+
+
+
+
+  &.mc-active
+
+    .mc-footer
+      background-color: #3AB0D7
+      overflow: visible
+      position: absolute
+      top: calc(100% - 16px)
+      left: 16px
+      right: 0
+      height: 82px
+      display: flex
+
+      a
+        top: 0
+
+      h4
+        top: -32px
+@media (max-width: 767px)
+    .material-card.mc-active
+        padding-bottom: 0
+        height: auto
+    .material-card.mc-active .mc-description
+        position: relative
+        top: auto
+        right: auto
+        left: auto
+        padding: 50px 30px 70px 30px
+        bottom: 0
+    .material-card.mc-active .mc-content
+        position: relative
+        margin-right: 16px
+.material-card > h2
+    display: flex
+    height: 80px

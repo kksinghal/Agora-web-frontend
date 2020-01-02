@@ -1,143 +1,442 @@
-
 $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
 $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
-
 .container
-    margin: 0
-    min-width: 100vw
-    background: #ffffff
-    
+  margin: 0
+  min-width: 100vw
+  background: #ffffff
 .content
-    padding: 0
-
+  padding: 0
 .form-clean, .center
-    display: flex
-    flex-direction: column
-    align-items: center
-    width: 100%
-
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
 .side
-    display: flex
-    width: 55%
-    justify-content: flex-end
-
+  display: flex
+  width: 55%
+  justify-content: flex-end
 .btn-white
-    background: #ffffff
-    font-size: 14px
-    box-shadow: none
-    line-height: 14px
-    width: 160px
-    margin-bottom: 20px
-    color: #49ee96
+  background: #ffffff
+  font-size: 14px
+  box-shadow: none
+  line-height: 14px
+  width: 160px
+  margin-bottom: 20px
+  color: #49ee96
 a
-    color: #49ee96
+  color: #49ee96
 .btn-white
-    &:hover
-        color: #49ee96
-
-.form-group
-    display: flex
-    align-items: center
-    justify-content: center
-    width: 90%
-
-.input-text
-    width: 50%
-    background: #F6F6F6
-    border: none
-    color: #9E9E9E
-    font-family: $segoe
-    font-size: 18px
-    line-height: 18px
-    margin-bottom: 2px
-    height: 55px
-    padding: 15px
-.form-check-input
-    position: relative
-    margin: 0
-    margin-right: 10px
-.form-check-label
-    font-size: 18px
-    color: #444444
-.btn-green-line
-    &:active
-        background: #ffffff
-        color: #49ee96
-        border: #49ee96 2px solid
-    &:hover
-        background: linear-gradient(180deg, #49ee96, #00843D)
-        color: #ffffff
-
-.btn-green
-    background: linear-gradient(180deg, #49ee96, #00843D)
-    width: 200px
-    color: #ffffff
-    border: none
-    height: 40px
-    border-radius: 8px
-    line-height: 18px
-    font-size: 16px
-
-.btn-green-line
-    border: 2px #49ee96 solid
-    width: 150px
-    background: #ffffff
-    height: 40px
+  &:hover
     color: #49ee96
-    border-radius: 8px
-    line-height: 18px
-    font-size: 18px
-
+.form-group
+  align-items: center
+  justify-content: center
+  width: 90%
+.input-text
+  width: 50%
+  background: #F6F6F6
+  border: none
+  color: #9E9E9E
+  font-family: $segoe
+  font-size: 18px
+  line-height: 18px
+  margin-bottom: 2px
+  height: 55px
+  padding: 15px
+.form-check-input
+  position: relative
+  margin: 0
+  margin-right: 10px
+.form-check-label
+  font-size: 18px
+  color: #444444
+.btn-green-line
+  &:active
+    background: #ffffff
+    color: #49ee96
+    border: #49ee96 2px solid
+    &:hover
+      background: linear-gradient(180deg, #49ee96, #00843D)
+      color: #ffffff
+.btn-green
+  background: linear-gradient(180deg, #49ee96, #00843D)
+  width: 200px
+  color: #ffffff
+  border: none
+  height: 40px
+  border-radius: 8px
+  line-height: 18px
+  font-size: 16px
+.btn-green-line
+  border: 2px #49ee96 solid
+  width: 150px
+  background: #ffffff
+  height: 40px
+  color: #49ee96
+  border-radius: 8px
+  line-height: 18px
+  font-size: 18px
 .btn-wrraper
-    width: 90%
-    margin-top: 20px
-    margin-bottom: 100px
-
+  width: 90%
+  margin-top: 20px
+  margin-bottom: 100px
 h1
-    font-size: 52px
-    font-weight: 400
-    font-family: $segoe-semibold
-    color: #49EE96
-    text-align: center
-    margin-bottom: 20px
+  font-size: 52px
+  font-weight: 400
+  font-family: $segoe-semibold
+  color: #49EE96
+  text-align: center
+  margin-bottom: 20px
 p
-    margin-bottom: 50px
-    font-size: 18px
-    text-align: center
-    font-family: $segoe
-
+  margin-bottom: 50px
+  font-size: 18px
+  text-align: center
+  font-family: $segoe
 @media(max-width: 1024px)
-    h1
-        font-size: 42px
-        margin-bottom: 30px
+  h1
+    font-size: 42px
+    margin-bottom: 30px
     .btn-wrraper
-        margin-bottom: 60px
-
+      margin-bottom: 60px
 @media(max-width: 450px)
-    .side
-        width: 70%
+  .side
+    width: 70%
     .input-text
-        width: 70%
-        font-size: 14px
-        height: 40px
+      width: 70%
+      font-size: 14px
+      height: 40px
     .form-check-label
-        font-size: 16px
+      font-size: 16px
     h1
-        font-size: 24px
-        margin-bottom: 20px
+      font-size: 24px
+      margin-bottom: 20px
     p
-        font-size: 14px
+      font-size: 14px
     .btn
-        width: 100px
-        height: 40px
-        border-radius: 8px
-        font-size: 14px
-        line-height: 14px
-        padding: 12px 20px
+      width: 100px
+      height: 40px
+      border-radius: 8px
+      font-size: 14px
+      line-height: 14px
+      padding: 12px 20px
     .btn-green
-        width: 120px
+      width: 120px
     .btn-white
-        width: 140px
-        padding: 0px 12px
+      width: 140px
+      padding: 0px 12px
     .btn-wrraper
-        margin-bottom: 30px
+      margin-bottom: 30px
+.noPadding
+  padding: 0px
+.background-image
+  background-size: cover
+  background-repeat: no-repeat
+.button-container
+  text-align: center
+.form-group
+  margin: 2.25rem auto
+  position: relative
+  text-align: left
+.form-inline > .form-group,
+.form-inline > .btn
+  display: inline-block
+  margin-bottom: 0
+.form-help
+  margin-top: 0.125rem
+  margin-left: 0.125rem
+  color: #b3b3b3
+  font-size: 0.8rem
+.checkbox .form-help, .form-radio .form-help, .form-group .form-help
+  position: absolute
+  width: 100%
+.checkbox
+  .form-help
+    position: relative
+    margin-bottom: 1rem
+.form-radio
+  .form-help
+    padding-top: 0.25rem
+    margin-top: -1rem
+.form-group
+  input
+    height: 1.9rem
+  textarea
+    resize: none
+  select
+    width: 100%
+    font-size: 1rem
+    height: 1.6rem
+    padding: 0.125rem 0.125rem 0.0625rem
+    background: none
+    border: none
+    line-height: 1.6
+    box-shadow: none
+  .control-label
+    position: absolute
+    top: 0.25rem
+    pointer-events: none
+    padding-left: 0.125rem
+    z-index: 1
+    color: #fff
+    font-size: 1rem
+    font-weight: normal
+    -webkit-transition: all 0.28s ease
+    transition: all 0.28s ease
+  .bar
+    position: relative
+    border-bottom: 0.0625rem solid #fff
+    display: block
+    &::before
+      content: ''
+      height: 0.125rem
+      width: 0
+      left: 50%
+      bottom: -0.0625rem
+      position: absolute
+      background: #fff
+      -webkit-transition: left 0.28s ease, width 0.28s ease
+      transition: left 0.28s ease, width 0.28s ease
+      z-index: 2
+    & ~ .bar
+      display: none
+.form-group input,
+.form-group textarea
+  display: block
+  background: none
+  padding: 0.125rem 0.125rem 0.0625rem
+  font-size: 1rem
+  border-width: 0
+  border-color: transparent
+  line-height: 1.9
+  width: 100%
+  color: transparent
+  -webkit-transition: all 0.28s ease
+  transition: all 0.28s ease
+  box-shadow: none
+.form-group select,
+.form-group input:focus,
+.form-group input:valid,
+.form-group input.form-file,
+.form-group input.has-value,
+.form-group textarea:focus,
+.form-group textarea:valid,
+.form-group textarea.form-file,
+.form-group textarea.has-value
+  color: #fff
+.form-group select ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group input:valid ~ .control-label,
+.form-group input.form-file ~ .control-label,
+.form-group input.has-value ~ .control-label,
+.form-group textarea:focus ~ .control-label,
+.form-group textarea:valid ~ .control-label,
+.form-group textarea.form-file ~ .control-label,
+.form-group textarea.has-value ~ .control-label
+  font-size: 0.8rem
+  color: #fff
+  top: -1rem
+  left: 0
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus
+  outline: none
+.form-group select:focus ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group textarea:focus ~ .control-label
+  color: #fff
+.form-group select:focus ~ .bar::before,
+.form-group input:focus ~ .bar::before,
+.form-group textarea:focus ~ .bar::before
+  width: 100%
+  left: 0
+.yellow-text
+  color: #FAC914
+.text-left
+  text-align: left
+.blue-background
+  background-color: #3AB0D7
+form button
+  border-radius: 50px
+.checkbox label,
+.form-radio label
+  position: relative
+  cursor: pointer
+  padding-left: 2rem
+  text-align: left
+  color: #fff
+  display: block
+.checkbox input,
+.form-radio input
+  width: auto
+  opacity: 0.00000001
+  position: absolute
+  left: 0
+.radio
+  margin-bottom: 1rem
+  .helper
+    position: absolute
+    top: -0.25rem
+    left: -0.25rem
+    cursor: pointer
+    display: block
+    font-size: 1rem
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    color: #fff
+    &::after
+      -webkit-transform: scale(0)
+      transform: scale(0)
+      background-color: #fff
+      border-color: #fff
+  label
+    &:hover
+      .helper
+        color: #fff
+  input
+    &:checked
+      & ~ .helper
+        &::after
+          -webkit-transform: scale(0.5)
+          transform: scale(0.5)
+        &::before
+          color: #fff
+.radio .helper::before, .radio .helper::after
+  content: ''
+  position: absolute
+  left: 0
+  top: 0
+  margin: 0.25rem
+  width: 1rem
+  height: 1rem
+  -webkit-transition: -webkit-transform 0.28s ease
+  transition: -webkit-transform 0.28s ease
+  transition: transform 0.28s ease
+  transition: transform 0.28s ease, -webkit-transform 0.28s ease
+  border-radius: 50%
+  border: 0.125rem solid currentColor
+.checkbox
+  .helper
+    color: #fff
+    position: absolute
+    top: 0
+    left: 0
+    width: 1rem
+    height: 1rem
+    z-index: 0
+    border: 0.125rem solid currentColor
+    border-radius: 0.0625rem
+    -webkit-transition: border-color 0.28s ease
+    transition: border-color 0.28s ease
+    &::before
+      top: 0.65rem
+      left: 0.38rem
+      -webkit-transform: rotate(-135deg)
+      transform: rotate(-135deg)
+      box-shadow: 0 0 0 0.0625rem #fff
+    &::after
+      top: 0.3rem
+      left: 0
+      -webkit-transform: rotate(-45deg)
+      transform: rotate(-45deg)
+  label
+    &:hover
+      .helper
+        color: #fff
+  input
+    &:checked
+      & ~ .helper
+        color: #fff
+        &::after
+          height: 0.5rem
+        &::before
+          height: 1.2rem
+          -webkit-transition-delay: 0.28s
+          transition-delay: 0.28s
+.checkbox .helper::before, .checkbox .helper::after
+  position: absolute
+  height: 0
+  width: 0.2rem
+  background-color: #fff
+  display: block
+  -webkit-transform-origin: left top
+  transform-origin: left top
+  border-radius: 0.25rem
+  content: ''
+  -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s
+  transition: opacity 0.28s ease, height 0s linear 0.28s
+  opacity: 0
+.checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before
+  opacity: 1
+  -webkit-transition: height 0.28s ease
+  transition: height 0.28s ease
+.radio + .radio,
+.checkbox + .checkbox
+  margin-top: 1rem
+.has-error .legend.legend, .has-error.form-group .control-label.control-label
+  color: #d9534f
+.has-error.form-group .form-help,
+.has-error.form-group .helper, .has-error.checkbox .form-help,
+.has-error.checkbox .helper, .has-error.radio .form-help,
+.has-error.radio .helper, .has-error.form-radio .form-help,
+.has-error.form-radio .helper
+  color: #d9534f
+.has-error
+  .bar
+    &::before
+      background: #d9534f
+      left: 0
+      width: 100%
+.button
+  position: relative
+  background: currentColor
+  border: 1px solid currentColor
+  font-size: 1.1rem
+  color: #4f93ce
+  margin: 3rem 0
+  padding: 0.75rem 3rem
+  cursor: pointer
+  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease
+  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease
+  overflow: hidden
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
+  span
+    color: #fff
+    position: relative
+    z-index: 1
+  &::before
+    content: ''
+    position: absolute
+    background: #071017
+    border: 50vh solid #1d4567
+    width: 30vh
+    height: 30vh
+    border-radius: 50%
+    display: block
+    top: 50%
+    left: 50%
+    z-index: 0
+    opacity: 1
+    -webkit-transform: translate(-50%, -50%) scale(0)
+    transform: translate(-50%, -50%) scale(0)
+  &:hover
+    color: #337ab7
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2)
+  &:focus
+    outline: none
+.button:active::before, .button:focus::before
+  -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease
+  transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease
+  transition: transform 1.12s ease, opacity 0.28s ease 0.364s
+  transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease
+  -webkit-transform: translate(-50%, -50%) scale(1)
+  transform: translate(-50%, -50%) scale(1)
+  opacity: 0
+.two-factor-auth-container
+  background-color: rgba(0,0,0,0.5)
+  margin: 6% 0px
+  padding: 30px
+  color: #fff
+  font-weight: 300
+  margin: 7% auto

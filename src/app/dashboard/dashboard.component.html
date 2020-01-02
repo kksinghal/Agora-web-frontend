@@ -1,74 +1,84 @@
-<div class="main-content">
-    <div class="container full-width">
-        <app-navbar></app-navbar>
-
-        <!-- Election Stats-->
-        <div class="row pb-20">
-            <div class="col-md-6 col-sm-12 text-center private-election">
-                <span class="private-election-text">
-                    <button class="btn" (click)="navigatePrivate()">Create a new Election</button>
-                </span>
+<app-navbar></app-navbar>
+<div class="dashboard-container">
+    <img src="../assets/black-trapezium.svg" style="width: 100%; position: absolute; z-index: -1;" />
+    <div class="col-12">
+        <div class="col-sm-6 col-xs-12 d-inline-block align-middle">
+            <div class="align-middle d-inline-block" style="margin: 7vw 0 0 7vw;">
+                <h2 class="d-inline-block">Your</h2><h2 class="d-inline-block blue-text">&nbsp;Elections&nbsp; </h2>
             </div>
-            <div class="col-md-6 col-sm-12 text-center public-election">
-                <span class="public-election-text">
-                    <button class="btn" (click)="navigatePoll()">Create a new Poll</button>
-                </span>
+            <img src="../assets/checklist-on-a-paper-with-a-pencil.png" style="width: 6vw; margin: 6vw 7vw 0;"/>
+        </div>
+        <div class="col-sm-6 col-xs-12  d-inline-block text-center align-middle" style="margin-top: 2vw">
+            <button class="col-md-5 col-sm-10 col-xs-12" (click)="navigatePrivate()">Create a new Election</button>
+            <br>
+            <button class="col-md-5 col-sm-10 col-xs-12" (click)="navigatePoll()">Create a new Poll</button>
+        </div>
+    </div>
+    <table class="table election-count-table col-lg-9 col-md-10">
+        <tbody>
+          <tr class="text-white head">
+            <td scope="col">Total Elections</td>
+            <td scope="col">Active Elections</td>
+            <td scope="col">Finished Elections</td>
+            <td scope="col">Pending Elections</td>
+          </tr>
+          <tr class="count-data">
+            <td>
+              <img src="../assets/total_elections.svg" class="election-count-td-background" />
+              <p class="d-flex" >
+                <span class="m-auto">{{elections?.length}}</span>
+              </p>
+            </td>
+            <td>
+              <img src="../assets/active_elections.svg" class="election-count-td-background"/>
+              <p class="d-flex" >
+                <span class="m-auto">{{activeElections?.length}}</span>
+              </p>
+            </td>
+            <td>
+              <img src="../assets/finished_elections.svg" class="election-count-td-background"/>
+              <p class="d-flex" >
+                <span class="m-auto">{{finishedElections?.length}}</span>
+              </p>
+            </td>
+            <td>
+              <img src="../assets/pending_elections.svg" class="election-count-td-background"/>
+              <p class="d-flex" >
+                <span class="m-auto">{{pendingElections?.length}}</span>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="container" >
+        <div *ngIf="!isMobile()" class="col-12 mt-6 hidden-md" style="background-color: #31a0cd; height: 6vw;">
+            <div class="election-head row text-white" >
+                <div class="name col-12 col-md-4">Election Name</div>
+                <div class="startDate col-6 col-md-2">Start Date</div>
+                <div class="endDate col-6 col-md-2">End Date</div>
+                <div class="status col-6 col-md-2">Status</div>
             </div>
         </div>
-        <div class="stats row">
-            <div class="totalElec">Total Elections : <div class="figure">{{elections?.length}}</div></div>
-            <div class="activeElec">Total Active Elections : <div class="figure">{{activeElections?.length}}</div></div>
-            <div class="pendingElec">Total Finished Elections : <div class="figure">{{finishedElections?.length}}</div></div>
-            <div class="finishedElec">Total Pending Elections : <div class="figure">{{pendingElections?.length}}</div></div>
-        </div>
-        <!-- List of Elections-->
-        <div class="container mt-2 election" *ngIf="elections.length != 0">
-            <div class="row mt-4">
-                <h1>Your Elections</h1>
-            </div>
-            <div *ngIf="!isMobile()" class="col-12 mt-6">
-                <div class="election-head bg-grey row border-red">
-                    <div class="name col-12 col-md-4">Election Name</div>
-                    <div class="startDate col-6 col-md-2">Start Date</div>
-                    <div class="endDate col-6 col-md-2">End Date</div>
-                    <div class="status col-6 col-md-2">Status</div>
-                </div>
-            </div>
-            <div class="electionStats d-flex justify-content-center mb-4" *ngFor="let election of elections">
-                <div *ngIf="!isMobile()" class="col-12">
-                    <div class="bg-grey electionInfo row" [ngClass]="{'border-green': election.electionType == 'Private', 'border-blue': election.electionType == 'Public'}">
-                        <div class="name col-12 col-md-4">{{election?.name}}</div>
-                        <div class="startDate col-6 col-md-2">{{getDisplayDate(election?.start)}}</div>
-                        <div class="endDate col-6 col-md-2">{{getDisplayDate(election?.end)}}</div>
-                        <div class="status col-6 col-md-2">
-                            <div [ngClass]="{'active': getStatus(election) == 'Active', 'pending': getStatus(election) == 'Pending', 'finish': getStatus(election) == 'Finish'}">{{getStatus(election)}}</div>
-                        </div>
-                        <div class="editStatus col-6 col-md-2" (click)="navigateElection(election._id)">
-                            <div class="results">More Info</div>
-                        </div>
+        <div class="electionStats d-flex justify-content-center mb-4" *ngFor="let election of elections">
+            <div class="col-md-12">
+                <div class="electionInfo row">
+                    <div class="name col-12 col-md-4">{{election?.name}}</div>
+                    <div class="startDate col-6 col-md-2">{{getDisplayDate(election?.start)}}</div>
+                    <div class="endDate col-6 col-md-2">{{getDisplayDate(election?.end)}}</div>
+                    <div class="status col-6 col-md-2" style="color: #000; background-color: #FAC914;">
+                        <div>{{getStatus(election)}}</div>
+                    </div>
+                    <div class="editStatus col-6 col-md-2" (click)="navigateElection(election._id)">
+                        <div class="results">More Info</div>
                     </div>
                 </div>
-                <div *ngIf="isMobile()" class="card col-11 col-sm-10 col-md-8 mb-1">
-                    <div class="card-body row" [ngClass]="{'border-green': election.electionType == 'Private', 'border-blue': election.electionType == 'Public'}">
-                        <h5 class="name col-12 mb-3">{{election.name}}</h5>
-                        <div class="title d-flex justify-content-center align-items-center col-4 mb-2">Start</div>
-                        <div class="startDate col-8 mb-2">{{getDisplayDate(election?.start)}}</div>
-                        <div class="title d-flex justify-content-center align-items-center col-4 mb-3">End</div>
-                        <div class="endDate col-8 mb-3">{{getDisplayDate(election?.end)}}</div>
-                        <div class="status col-6 mb-2">
-                            <div [ngClass]="{'active': getStatus(election) == 'Active', 'pending': getStatus(election) == 'Pending', 'finish': getStatus(election) == 'Finish'}">{{getStatus(election)}}</div>
-                        </div>
-                        <div class="editStatus col-6 col-md-4 mb-2">
-                            <div class="results" (click)="navigateElection(election._id)">More Info</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-        <div class="container mt-4" *ngIf="elections.length == 0">
+        <div class="container mt-4 blue-text" *ngIf="elections.length == 0">
             <div class="row mt-4 justify-content-center">
                 <h1 class="text-center">No Elections Created</h1>
             </div>
         </div>
     </div>
 </div>
+<app-footer></app-footer>

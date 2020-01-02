@@ -26,6 +26,7 @@ export class AddVoterComponent implements OnInit {
   election: Election;
   id: string;
   status: string;
+  
   constructor( private router: Router, private electionService: ElectionService, private route: ActivatedRoute ) {
     this.route.params.subscribe(params => {
       this.id = params.id;

@@ -6,6 +6,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { HeadingBarModule } from '../heading-bar/heading-bar.module';
 import { ProfileComponent } from './profile.component';
 import { NavbarModule } from '../navbar/navbar.module';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -14,7 +15,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     FormsModule,
     ProfileRoutingModule,
     HeadingBarModule,
-    NavbarModule
+    NavbarModule,
+    FooterModule
   ],
   exports: [ProfileComponent]
 })

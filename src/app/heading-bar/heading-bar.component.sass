@@ -7,21 +7,17 @@ $segoe-light: 'Segoe UI Light', 'Open Sans', Helvetica, sans-serif
     max-width: 100vw
 
 .bg-color
-    background: #4a945a
+    background: #171717
     padding-bottom: 25px
     color: white
     font-family: $segoe
 .heading
-    margin-left: 10vw
-    padding-top: 40px
-    padding-bottom: 20px
     font-size: 64px
-.description
-    font-size: 22px
-    width: 65vw
-    margin-left: 10vw
-    word-spacing: 2px
-    font-family: $segoe-light
+.text-container
+    margin-left: 40px
+    margin-bottom: 20px
+.text1
+    margin-bottom: 20px
 .instruction
     max-width: 100vw
     background: #ffffff
@@ -39,10 +35,18 @@ $segoe-light: 'Segoe UI Light', 'Open Sans', Helvetica, sans-serif
 @media(max-width: 950px)
     .heading
         font-size: 52px
+@media(max-width: 767px)
+    .icon-container
+        height: 16vw
+        width: 16vw
 @media(max-width: 450px)
     .heading
         font-size: 42px
         margin-left: 5vw
+    .text1, .text2
+        margin-left: 5vw
+    .text-container
+        margin: 0px
     .description
         font-size: 16px
         width: 90vw
@@ -56,4 +60,17 @@ $segoe-light: 'Segoe UI Light', 'Open Sans', Helvetica, sans-serif
         padding-bottom:  5px
         height: 100%
         font-size: 14px
-    
+    icon
+        width: 135px
+        height: 135px
+.icon-container
+    background-color: #fff
+    padding: 10px
+    border-radius: 100%
+    height: 12vw
+    width: 12vw
+    display: inline-flex
+    vertical-align: top
+    min-width: 100px
+    min-height: 100px
+

@@ -21,16 +21,6 @@ $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
     height: 65px
     margin-bottom: 20px
     border-radius: 10px
-label
-    margin-bottom: 0
-    margin-left: 25px
-
-input 
-  opacity: 0
-  cursor: pointer
-  height: 0
-  width: 0
-
 .btn-green
   background: #54a457
   width: 200px
@@ -44,7 +34,7 @@ input
 
 
 /* Create a custom radio button */
-.checkmark 
+.checkmark
   position: absolute
   top: 0
   left: 8px
@@ -55,29 +45,29 @@ input
 
 
 /* On mouse-over, add a grey background color */
-input ~ .checkmark 
+input ~ .checkmark
   background-color: #ccc
 
 
 /* When the radio button is checked, add a blue background */
-input:checked ~ .checkmark 
+input:checked ~ .checkmark
   background-color: #2196F3
 
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after 
+.checkmark:after
   content: ""
   position: absolute
   display: none
 
 
 /* Show the indicator (dot/circle) when checked */
-input:checked ~ .checkmark:after 
+input:checked ~ .checkmark:after
   display: block
 
 
 /* Style the indicator (dot/circle) */
-.checkmark:after 
+.checkmark:after
   top: 9px
   left: 9px
   width: 8px
@@ -115,7 +105,7 @@ input:checked ~ .checkmark:after
         width: 200px
         font-size: 16px
         margin-right: 30px
-@media(max-width: 800px)
+@media(max-width: 767px)
     .btn-line
         width: 120px
         font-size: 12px
@@ -124,6 +114,10 @@ input:checked ~ .checkmark:after
         width: 120px
         font-size: 12px
         margin-right: 20px
+    .hidden-sm
+        display: none
+    .form-icon
+        margin-left: 0px !important
 @media(max-width: 450px)
     .btn-wrapper
         margin-left: 8vw
@@ -147,3 +141,60 @@ input:checked ~ .checkmark:after
         padding: 12px 20px
         width: 100px
         margin-bottom: 30px
+.tab-bar
+  margin: 30px auto
+  width: 84vw
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  list-style-type: none
+  -webkit-padding-start: 0
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+
+.tab
+  width: 28vw
+  padding: 20px 0
+  background: white
+  color: #607D8B
+  overflow: hidden
+  text-align: center
+  -webkit-box-flex: 1
+  -ms-flex-positive: 1
+  flex-grow: 1
+  cursor: pointer
+  position: relative
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  -o-user-select: none
+  user-select: none
+
+.indicator
+  width: 28vw
+  height: 3px
+  background: #3AB0D7
+  position: absolute
+  margin-top: 63px
+  margin-left: 54vw
+  -webkit-transition: margin 0.5s ease
+  transition: margin 0.5s ease
+.icon-img
+    margin: 0px
+    height: 6vw
+    width: 6vw
+    min-height: 60px
+    min-width: 60px
+    margin: auto
+.card
+    border-color: #3AB0D7 !important
+.form-group input::placeholder
+  color: #3AB0D7
+.radio-label input
+    display: none
+.radio-label
+    margin-left: 40px !important
+.form-icon
+    margin-left: 25px
+    margin-right: 30px
+.yellow-background
+    background-color: #FAC914

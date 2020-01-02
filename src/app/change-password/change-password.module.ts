@@ -6,6 +6,7 @@ import { ChangePasswordRoutingModule } from './change-password-routing.module';
 import { HeadingBarModule } from '../heading-bar/heading-bar.module';
 import { ChangePasswordComponent } from './change-password.component';
 import { NavbarModule } from '../navbar/navbar.module';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [ChangePasswordComponent],
@@ -14,7 +15,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     FormsModule,
     ChangePasswordRoutingModule,
     HeadingBarModule,
-    NavbarModule
+    NavbarModule,
+    FooterModule
   ],
   exports: [ChangePasswordComponent]
 })

@@ -1,51 +1,62 @@
 <div class="main-content">
-        <div class="container-fluid">
-            <app-navbar></app-navbar>
-            <app-heading-bar>
-                <div class="heading">
-                    Create Election
-                </div>
-                <div class="instruction"><i>Instruction: Provide information about the election. </i></div>
-            </app-heading-bar>
-            <div class="btn-wrapper">
-                <div class="btn-group btn-group-sm mt-2">
-                    <button type="button" class="btn btn-green-line">Election Info</button>
-                    <button type="button" class="btn btn-line" [disabled]="!ngform1.valid" (click)="next()">Candidates</button>
-                    <button type="button" class="btn btn-line" disabled>Voting Algorithm</button>
-                </div>
+    <div>
+        <app-navbar></app-navbar>
+        <app-heading-bar>
+            <img class="icon-img" src="../assets/add-file.svg" />
+            <div class="heading">
+                Create <span class="blue-text">Election</span>
             </div>
-            <div class="form-election">
-                <form #ngform1="ngForm">
-                    <div class="form-group">
-                        <label for="election_name">Name:</label>
-                        <input class="full-width" matInput type="text" [(ngModel)]="form1.name" name="election_name" placeholder="Election Name" required>
-                    </div>
-                    <div class="form-group d-flex align-items-center">
-                        <label for="election_description">Description:</label>
-                        <textarea class="full-width description" matInput type="text" [(ngModel)]="form1.description" name="election_description" placeholder="Election Description" required> </textarea>
-                    </div>
-                    <div class="form-group date-input">
-                        <div class="inp-wrapper">
-                            <label for="election_startDate">Start Date:</label>
-                            <input class="half-width" [(ngModel)]="form2.startDate" type="text" [min]="getToday()"
+            <div class="text1 font-weight-bold blue-text">Instructions</div>
+            <div class="text1">Provide information about the election</div>
+        </app-heading-bar>
+        <div>
+            <ul class="tab-bar">
+                <li class="tab wave dark" >Election Info</li>
+                <li class="tab wave dark" >Candidates</li>
+                <li class="tab wave dark"><span class="hidden-sm">Voting</span> Algorithm</li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="col-12">
+                <form class="form-profile" #ngform1="ngForm">
+                    <img class="form-icon" src="../assets/election-name.svg"/>
+                    <div class="form-group col-md-4 col-sm-12 d-inline-block">
+                        <input matInput type="text" [(ngModel)]="form1.name" name="election_name" required />
+                        <label for="input" class="control-label">Name</label><i class="bar"></i>
+                    </div><br>
+                    <img class="form-icon" src="../assets/info.svg"/>
+                    <div class="form-group col-md-4 col-sm-12 d-inline-block">
+                        <input matInput type="text" [(ngModel)]="form1.description" name="election_description" required />
+                        <label for="input" class="control-label">Description</label><i class="bar"></i>
+                    </div><br>
+                    <img class="form-icon" src="../assets/calendar.svg"/>
+                    <div class="form-group date-input d-inline-flex">
+                        <div class="d-inline-block position-relative">
+                            <input [(ngModel)]="form2.startDate" type="text" [min]="getToday()"
                             [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" name="start_date" placeholder="Start Date" required>
+                            <label for="input" class="control-label">Start Date</label><i class="bar"></i>
                             <owl-date-time #dt1></owl-date-time>
                         </div>
-                        <div class="inp-wrapper">
-                            <label for="election_endDate" class="end-label">End Date:</label>
+                        <div class="d-inline-block position-relative ml-5">
                             <input class="half-width" [(ngModel)]="form2.endDate" type="text" [min]="getMinEnd()" [owlDateTime]="dt2"
                             [owlDateTimeTrigger]="dt2" name="end_date" placeholder="End Date (Click below to edit time)" required>
+                            <label for="input" class="control-label">End Date</label><i class="bar"></i>
                             <owl-date-time [startAt]="getEndStart()" #dt2></owl-date-time>
                         </div>
+                    </div><br>
+                    <div class="col-12 text-center">
+                        <div class="text-center mt-5 d-inline-block w-50">
+                            <button class="col-md-4 col-sm-6 col-xs-10 pull-right mr-3 yellow-background text-dark" routerLink="/dashboard">Cancel</button>
+                        </div>
+                        <div class="text-center mt-5 d-inline-block w-50">
+                            <button class="col-md-4 col-sm-6 col-xs-10 pull-left ml-3" [disabled]="!ngform1.valid" (click)="next()">Next</button>
+                        </div>
                     </div>
+                    <div class="container text-center"></div>
                 </form>
             </div>
-            <div class="row pb-20">
-                <div class="col pt-3 text-center">
-                    <span>
-                        <button class="btn btn-green" [disabled]="!ngform1.valid" (click)="next()">Next</button>
-                    </span>
-                </div>
-            </div>
         </div>
+        <app-footer></app-footer>
     </div>
+</div>

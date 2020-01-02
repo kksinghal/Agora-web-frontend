@@ -17,12 +17,12 @@ declare var $: any;
   styleUrls: ['./change-password.component.sass']
 })
 export class ChangePasswordComponent implements OnInit {
-
+  user: User;
   newPassword: PasswordData = new PasswordData();
   newRetypePassword: PasswordData = new PasswordData();
 
   constructor(private router: Router, private userService: UserService, private agoraSocialUserService: AgoraSocialUserService) {
-
+    this.user = this.userService.getCurrentUser();
   }
 
   ngOnInit() {

@@ -13,14 +13,17 @@ import { Winner } from '../model/winner.model';
   styleUrls: ['./results.component.sass']
 })
 export class ResultsComponent implements OnInit {
+  candidateSearchStr: string;
   election: Election;
   id: string;
   user: User;
-
+  tabsNumber: number;
   constructor(private userService: UserService,
               private router: Router,
               private electionService: ElectionService,
               private route: ActivatedRoute) {
+      this.candidateSearchStr = "";
+      this.tabsNumber = 3;
       this.route.params.subscribe(params => {
       this.election = new Election();
       this.id = params.id;
@@ -40,6 +43,25 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  
+  changeTabsNumber(n){
+    console.log(n);
+    this.tabsNumber = n;
+  }
+  getTabsNumber(){
+    return this.tabsNumber;
+  }
+  getAddVoterDisplay(){
+    if(this.tabsNumber==3) {
+      return 'list-item';
+    }
+    else{
+      return 'none';
+    }
+  }
+  filterCandidate(event){
+    this.candidateSearchStr = event.target.value ;
   }
 
   addVoter() {

@@ -8,6 +8,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { FormsModule } from '@angular/forms';
 import { ElectionFormOneComponent } from './election-form-one.component';
 import { NavbarModule } from '../navbar/navbar.module';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [ElectionFormOneComponent],
@@ -18,7 +19,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     OwlNativeDateTimeModule,
     HeadingBarModule,
     FormsModule,
-    NavbarModule
+    NavbarModule,
+    FooterModule
   ],
   exports: [ElectionFormOneComponent]
 })

@@ -1,62 +1,100 @@
 <div class="main-content">
-    <div class="container full-width">
-        <app-navbar></app-navbar>
+    <div class="container full-width text-center">
+        <app-navbar class="text-left"></app-navbar>
         <app-heading-bar>
-            <div class="heading">{{ election?.name }}</div>
-            <div class="description">Description: {{ election?.description }}</div>
+            <img class="icon-img" src="../assets/prize_batch.svg" />
+            <div class="heading">
+               <span class="blue-text">Election Name</span><br>{{ election?.name }}
+            </div>
+            <div class="text1"><span class="blue-text font-weight-bold">Description</span></div>
+            <div class="text1">{{ election?.description }}</div>
         </app-heading-bar>
         <div class="btn-wrapper">
-            <div class="btn-group btn-group-sm mt-2">
-                <button type="button" class="btn btn-green-line">Election Info</button>
-                <button type="button" class="btn btn-line" *ngIf="election.electionType != 'Public'" (click)="addVoter()">Add Voters</button>
-                <button type="button" class="btn btn-line" (click)="results()" [disabled]="status != 'Finish'">View Results</button>
-            </div>
+            <ul class="tab-bar">
+                <li class="tab wave dark">Election Info</li>
+                <span *ngIf="election.electionType != 'Public' ?  changeTabsNumber(3) : changeTabsNumber(2)"></span>
+                <li class="tab wave dark"  [ngStyle]="{'display': getAddVoterDisplay() }" (click)="addVoter()" >Add Voters</li>
+                <li class="tab wave dark" (click)="results()">View Results</li>
+                <div class="indicator" [ngStyle]="{'width.vw': 84/getTabsNumber()}"></div>
+            </ul>
         </div>
-        <div class="infoBox  row justify-content-center">
-            <div class="candidates col-lg-5 col-md-6 col-10 mb-4">
-                <div class="row justify-content-center">
-                    <div class="head d-flex justify-content-center col-xl-8 col-lg-9 col-md-10 col-sm-7 col-10">Basic
-                        Info</div>
-                    <div class="box col-xl-10 col-md-12 col-lg-10 col-sm-9 col-12">Status: <div class="status ml-2"
-                            [ngClass]="{'green': getStatus() == 'Active', 'red': getStatus() == 'Pending', 'blue': getStatus() == 'Finish'}">{{status}}</div>
-                    </div>
-                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Type: <div class="type ml-2"
-                            [ngClass]="{'green': election.electionType == 'Private', 'blue': election.electionType == 'Public'}">{{election?.electionType}}</div>
-                    </div>
-                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Voting Algorithm:
-                        {{election?.votingAlgo}}</div>
-                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Total Voters: <div class="voters ml-2">{{election?.voters.length}}</div>
-                    </div>
-                    <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12" *ngIf="election?.electionType == 'Public'">Voting
-                        URL: <div class="link ml-3"><button *ngIf="election?.adminLink==''" class="btn btn-sm btn-dark ml-3"
-                                (click)="generateUrl()">Generate</button>{{election?.adminLink}}</div>
+        <div class="container text-center mb-5 mt-5">
+            <h1 class="font-weight-bold" style="color: #607D8B">Schedule</h1>
+            <div class="text-white text-center d-inline-block col-sm-12 schedule" style="height: 320px; width: 270px; background: #3AB0D7; " >
+                <div class="d-flex" style="height: 60px;">
+                    <h3 class="font-weight-bold"  style="margin: auto; ">Starts</h3>
+                </div>
+                <div class="col-12 d-flex" style="background-color: #219bc3; height: 50px;">
+                    <h5 style="margin: auto;">{{getTime(election?.start)}}</h5>
+                </div>
+                <div class="col-12 d-flex flex-column" style="height: 203px;">
+                    <h4 style="margin: auto;">{{getMonth(election?.start)}}</h4>
+                    <h2 style="margin: auto;" class="font-weight-bold">{{getDate(election?.start)}}</h2>
+                    <h4 style="margin: auto;">{{getYear(election?.start)}}</h4>
+                </div>
+            </div>
+            <div class="text-white text-center d-inline-block col-sm-12 schedule" style="height: 320px; width: 270px; background: #3AB0D7;" >
+                <div class="d-flex" style="height: 60px;">
+                    <h2 class="col-12 font-weight-bold"  style="margin: auto;">Ends</h2>
+                </div>
+                <div class="col-12 d-flex" style="background-color: #219bc3; height: 50px;">
+                    <h4 style="margin: auto;">{{getTime(election?.end)}}</h4>
+                </div>
+                <div class="col-12 d-flex  flex-column" style="height: 203px;">
+                    <h3 style="margin: auto;">{{getMonth(election?.end)}}</h3>
+                    <h1 style="margin: auto;" class="font-weight-bold">{{getDate(election?.end)}}</h1>
+                    <h3 style="margin: auto;">{{getYear(election?.end)}}</h3>
+                </div>
+            </div>
+        </div >
+        <election-pages-card class="col-6" class="col-6">
+            <span class="header text-white">
+                <div class="img-container">
+                    <img class="icon" src="../assets/info.svg">
+                </div>
+                Basic Info
+            </span>
+            <div class="body">
+                <img src="../assets/status.svg" class="election-pages-card-icon"/> <span style="margin: 2vw;">Status: {{status}}</span>
+                <br>
+                <img src="../assets/cloud.svg" class="election-pages-card-icon"/> <span style="margin: 2vw;">Type: {{election?.electionType}}</span>
+                <br>
+                <img src="../assets/sigma.svg" class="election-pages-card-icon"/> <span style="margin: 2vw;">Total Voters: {{election?.voters.length}}</span>
+            </div>
+            <div class="footer text-white">
+                Voting Algorithm: {{election?.votingAlgo}}
+            </div>
+        </election-pages-card>
+        <election-pages-card class="col-6">
+            <span class="header text-white">
+                <div class="img-container">
+                    <img class="icon" src="../assets/candidate.svg">
+                </div>
+                Candidates
+            </span>
+            
+            <div class="body">
+                <div *ngFor="let candidate of election?.candidates">
+                    <div *ngIf="candidate.trim().toLowerCase().indexOf(candidateSearchStr.trim().toLowerCase())!==-1">
+                        <img src="../assets/candidate2.svg" class="election-pages-card-icon"/> <span style="margin: 2vw;">{{candidate}}</span><br>
                     </div>
                 </div>
             </div>
-            <div class="candidates col-lg-5 col-md-6 col-10">
-                <div class="row justify-content-center">
-                    <div class="head d-flex justify-content-center col-xl-8 col-lg-9 col-md-10 col-sm-9 col-10">Candidates</div>
-                    <div *ngFor="let candidate of election?.candidates; let ind = index" class="candidateBox box col-xl-8 col-lg-9 col-md-10 col-sm-7 col-10">
-                        <div class="index">{{ind + 1}}: </div>
-                        <div class="name">{{candidate}}</div>
-                    </div>
-                    <div class="dates col-12">
-                        <div class="row justify-content-center">
-                            <div class="head d-flex justify-content-center col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Dates</div>
-                            <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">Start Date:
-                                {{getDisplayDate(election?.start)}}</div>
-                            <div class="box col-xl-10 col-lg-10 col-md-12 col-sm-9 col-12">End Date:
-                                {{getDisplayDate(election?.end)}}</div>
-                        </div>
-                    </div>
+            <div class="footer text-white col-10">
+                <div class="form-group col-12 d-inline-block text-white">
+                    <input class="candidateSearch text-white" (keyup)='filterCandidate($event)' placeholder="Search" />
+                    <label for="input" class="control-label" ></label><i class="bar"></i>
                 </div>
             </div>
-            <div class="col-12 d-flex justify-content-center mt-5">
-                <button class="btn btn-green d-flex justify-content-center align-items-center mr-2" (click)="delete()">Delete<i
-                        class="material-icons ml-2">delete</i></button>
-                <button class="btn btn-green d-flex justify-content-center align-items-center" (click)="edit()">Edit<i
-                        class="material-icons text-gold ml-2">settings</i></button>
+        </election-pages-card>
+        <div class="container text-center">
+            <div class="text-center mt-5 d-inline-block w-50">
+                <button class="col-md-4 col-sm-6 col-xs-10 pull-right mr-3 btn-danger" (click)="delete()" >Delete <i class="material-icons align-top">delete</i></button>
+            </div>
+            <div class="text-center mt-5 d-inline-block w-50">
+                <button class="col-md-4 col-sm-6 col-xs-10 pull-left ml-3" (click)="edit()"> Edit<i class="material-icons align-top">settings</i> </button>
             </div>
         </div>
+        <app-footer></app-footer>
     </div>
 </div>

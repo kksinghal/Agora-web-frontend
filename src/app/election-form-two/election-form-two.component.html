@@ -1,36 +1,33 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <app-navbar></app-navbar>
+    <div>
+        <app-navbar class="text-left"></app-navbar>
         <app-heading-bar>
+            <img class="icon-img" src="../assets/add-file.svg" />
             <div class="heading">
-                Add Candidates
+                Create <span class="blue-text">Election</span>
             </div>
-            <div class="instruction">
-                <i>Instruction: Please provide details about all candidates.</i>
-            </div>
+            <div class="text1 font-weight-bold blue-text">Add Candidates</div>
         </app-heading-bar>
-        <div class="btn-wrapper">
-            <div class="btn-group btn-group-sm mt-2">
-                <button type="button" class="btn btn-line" (click)="previous()">Election Info</button>
-                <button type="button" class="btn btn-green-line">Candidates</button>
-                <button type="button" class="btn btn-line" [disabled]="!hasCandidates()" (click)="next()">Voting
-                    Algorithm</button>
-            </div>
+        <div>
+            <ul class="tab-bar">
+                <li class="tab wave dark" >Election Info</li>
+                <li class="tab wave dark" >Candidates</li>
+                <li class="tab wave dark"><span class="hidden-sm">Voting</span> Algorithm</li>
+                <div class="indicator"></div>
+            </ul>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
                     <div class="form-election">
                         <form class="text-center" #ngform3="ngForm" (ngSubmit)="add(currentCandidate)">
-                            <div class="form-group">
-                                <input matInput type="text" [(ngModel)]="currentCandidate" name="candidate_name"
-                                    placeholder="Candidate name" required>
+                            <img class="form-icon" src="../assets/user.svg"/>
+                            <div class="form-group col-md-4 col-sm-12 d-inline-block">
+                                <input matInput type="text" [(ngModel)]="currentCandidate" name="candidate_name" />
+                                <label for="input" class="control-label">Candidate Name</label><i class="bar"></i>
                             </div>
-                            <div class="text-center mt-10">
-                                <span>
-                                    <button class="btn btn-green mt-4" [disabled]="!ngform3.valid" type="submit">Add
-                                        Candidate</button>
-                                </span>
+                            <div class="w-100 text-center mt-5">
+                                <button class="col-md-3 col-sm-6 col-xs-10" [disabled]="!ngform3.valid" type="submit" >Add Candidate</button>
                             </div>
                         </form>
                     </div>
@@ -38,19 +35,19 @@
                 <div class="col-lg-5">
                     <br>
                     <div class="card pt-20">
-                        <div class="card-header">
+                        <div class="card-header blue-text">
                             <h4 class="card-title">Candidates</h4>
                             <p class="card-category">Fill the form to add more candidates</p>
                         </div>
                         <div class="card-body">
                             <table class="table">
                                 <tbody>
-                                    <tr *ngIf="form3.candidates.length == 0" class="d-block">
+                                    <tr *ngIf="form3.candidates.length == 0" class="d-block blue-text">
                                         No Candidates Added
                                     </tr>
                                     <div class="bg-light" #else *ngFor="let candidate of form3.candidates; let ind = index">
                                         <tr>
-                                            <td class="text-black">{{candidate}}</td>
+                                            <td class="text-black align-middle">{{candidate}}</td>
                                             <td class="td-actions text-right">
                                                 <button type="button" (click)="delete(ind)" class="btn btn-sm btn-just-icon">
                                                     <i class="material-icons">delete</i>
@@ -64,16 +61,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col text-center pt-3 mt-4">
-                    <span class="pr-20">
-                        <button class="btn btn-green" (click)="previous()">Previous</button>
-                    </span>
-                    <span class="pr-20 text-right">
-                        <button class="btn btn-green" [disabled]="!hasCandidates()" (click)="next()">Next</button>
-                    </span>
+            <div class="container text-center">
+                <div class="text-center mt-5 d-inline-block w-50">
+                    <button class="col-md-3 col-sm-6 col-xs-10 pull-right mr-3 yellow-background text-dark" (click)="previous()" >Previous</button>
+                </div>
+                <div class="text-center mt-5 d-inline-block w-50">
+                    <button class="col-md-3 col-sm-6 col-xs-10 pull-left ml-3" [disabled]="!hasCandidates()" (click)="next()" >Next</button>
                 </div>
             </div>
         </div>
+        <app-footer></app-footer>
     </div>
 </div>

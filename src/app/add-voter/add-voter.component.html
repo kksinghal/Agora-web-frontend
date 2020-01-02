@@ -2,40 +2,45 @@
     <div class="full-width">
         <app-navbar></app-navbar>
         <app-heading-bar>
-            <div class="heading">{{ election?.name }}</div>
-            <div class="description">Description: {{ election?.description }}</div>
+            <img class="icon-img" src="../assets/add-file.svg" />
+            <div class="heading">
+                Create <span class="blue-text">Election</span>
+            </div>
+            <div class="text1 font-weight-bold blue-text">Add Voters</div>
         </app-heading-bar>
         <div class="btn-wrapper">
-            <div class="btn-group btn-group-sm mt-2">
-                <button type="button" class="btn btn-line" (click)="electionInfo()">Election Info</button>
-                <button type="button" class="btn btn-green-line">Add Voters</button>
-                <button type="button" class="btn btn-line" (click)="results()" [disabled]="getStatus() != 'Finish'">View Results</button>
-            </div>
+            <ul class="tab-bar">
+                <li class="tab wave dark" (click)="electionInfo()">Election Info</li>
+                <li class="tab wave dark" >Add Voters</li>
+                <li class="tab wave dark" (click)="results()">View Results</li>
+                <div class="indicator" ></div>
+            </ul>
         </div>
         <div class="container infoBox">
             <div class="row justify-content-center">
                 <div class="col-lg-5">
                     <div class="form-election">
                         <form #ngvoter="ngForm" (ngSubmit)="add()">
-                            <div class="form-group mb-4">
-                                <input type="text" [(ngModel)]="voter.name" name="voters_name" placeholder="Voters name"
-                                    required>
+                            <img class="form-icon" src="../assets/user.svg"/>
+                            <div class="form-group col-md-8 col-sm-12 d-inline-block">
+                                <input type="text" [(ngModel)]="voter.name" name="voters_name" required/>
+                                <label for="input" class="control-label">Voter's Name</label><i class="bar"></i>
+                            </div><br>
+                            <img class="form-icon" src="../assets/email.svg"/>
+                            <div class="form-group col-md-8 col-sm-12 d-inline-block">
+                                <input type="email" [(ngModel)]="voter.hash" name="voters_email" required/>
+                                <label for="input" class="control-label">Voter's Email</label><i class="bar"></i>
                             </div>
-                            <div class="form-group">
-                                <input type="email" [(ngModel)]="voter.hash" name="voters_email" placeholder="Voters email"
-                                    required>
-                            </div>
-                            <div class="text-center mt-4">
-                                <span>
-                                    <button class="btn btn-green" [disabled]="!ngvoter.valid" type="submit">Add Voter</button>
-                                </span>
+                            <div class="w-100 text-center mt-5">
+                                <button class="col-md-3 col-sm-6 col-xs-10" [disabled]="!ngvoter.valid" type="submit" >Add Voter</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-8 col-12">
+                <div class="col-lg-5">
+                    <br>
                     <div class="card pt-20">
-                        <div class="card-header card-header-gold">
+                        <div class="card-header blue-text">
                             <h4 class="card-title">Voters</h4>
                             <p class="card-category">Fill the form to add more Voters</p>
                             <p class="card-category">Total: {{election?.voters.length}} Voters</p>
@@ -52,7 +57,7 @@
                                             <td class="text-black col-md-4 col-sm-3">{{voter.name}}</td>
                                             <td class="text-black col-md-6 col-sm-5">{{voter.hash}}</td>
                                             <td class="td-actions text-right col-md-1 col-sm-2">
-                                                <button type="button" (click)="delete(ind)" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <button type="button" (click)="delete(ind)" class="btn btn-sm btn-just-icon p-0">
                                                     <i class="material-icons">delete</i>
                                                 </button>
                                             </td>
@@ -63,7 +68,7 @@
                             <div class="row">
                                 <div class="col text-center">
                                     <span class="text-right">
-                                        <button class="btn btn-green" [disabled]="!hasVoters() || isLoading" (click)="submit()">{{buttonText}}</button>
+                                        <button [disabled]="!hasVoters() || isLoading" (click)="submit()">{{buttonText}}</button>
                                     </span>
                                 </div>
                             </div>
@@ -72,5 +77,6 @@
                 </div>
             </div>
         </div>
+        <app-footer></app-footer>
     </div>
 </div>

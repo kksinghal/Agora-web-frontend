@@ -1,4 +1,4 @@
-<div class="main-content">
+<!--<div class="main-content">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 content">
@@ -42,6 +42,52 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="main-content">
+    <div class="container noPadding">
+        <div class="row text-center">
+            <app-navbar class="w-100"></app-navbar>
+            <div class="form-clean background-image" style="background-image: url('../../assets/voting.svg')">
+                <div class="col-md-5 two-factor-auth-container text-center">
+                    <div>
+                        <h2 class="d-inline-block">Two Factor </h2>
+                        <h2 class="yellow-text d-inline-block">&nbsp; Authentication</h2>
+                        <div style="margin: 10px;">Please enter the <span class="yellow-text font-weight-bold">One Time Password</span> send to your <span class="yellow-text font-weight-bold">registered email address</span></div>
+                        <form class="text-left" #twoFactorForm="ngForm" method="post" (ngSubmit)="OnSubmit(otp.value)">
+                            <div class="form-group">
+                                <input type="text" #otp ngModel name="user_name" required="required" />
+                                <label for="input" class="control-label">One Time Password</label><i class="bar"></i>
+                            </div>
+                            <button class="yellow-text" style="margin: 10px; float: right; background: none; border: none;" [disabled]="isSending" (click)="resendOTP()" ><span class="font-weight-bold">Resend OTP</span></button>
+                            <div class="form-group center w-100 col-12" >
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="trustDevice" [(ngModel)]="oneTimePassword.trustedDevice" /><i class="helper align-middle" style="margin-top: 4px;"></i>Trust this device
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group center w-100 col-12" >
+                                <button class="btn col-6 blue-background w-100 border-0 text-white" [disabled]="!twoFactorForm.valid || isLoading" type="submit">
+                                    <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
+                            </div>
+                        </form>
+                    
+                        <div *ngIf="error" class="error">
+                            <p>An error occured please try again.</p>
+                        </div>
+                        <div style="margin: 10px; float: right;" (click) = "navigateSignUp()" ><span class="font-weight-bold">New User </span>? Click here to <span class="yellow-text font-weight-bold">sign up</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12" style="margin-top: 100px;">
+                <app-about></app-about>
+            </div>
+            <div class="col-12 noPadding">
+                <app-footer></app-footer>
             </div>
         </div>
     </div>

@@ -5,6 +5,8 @@ import { ResultsRoutingModule } from './results-routing.module';
 import { ResultsComponent } from './results.component';
 import { HeadingBarModule } from '../heading-bar/heading-bar.module';
 import { NavbarModule } from '../navbar/navbar.module';
+import { ElectionPagesCardModule } from '../election-pages-card/election-pages-card.module';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [ResultsComponent],
@@ -12,7 +14,9 @@ import { NavbarModule } from '../navbar/navbar.module';
     CommonModule,
     ResultsRoutingModule,
     HeadingBarModule,
-     NavbarModule
+     NavbarModule,
+     ElectionPagesCardModule,
+     FooterModule
   ],
   exports: [ResultsComponent]
 })

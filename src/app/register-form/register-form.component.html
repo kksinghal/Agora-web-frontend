@@ -1,50 +1,73 @@
-<div class="form-clean">
-    <div class="btn-wrraper">
-        <div class="btn-group btn-group-sm float-right mt-2">
-          <button type="button" class="btn btn-green">Sign Up</button>
-          <button type="button" class="btn btn-green-line" (click) = "navigateSignIn()">Sign In</button>
-      </div>
-    </div>
-    <h1 class="heading-green">Create Account</h1>
-    <form method="post" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)" class="form-clean">
-        <h2 class="sr-only">Signup Form</h2>
-        <div class="form-group">
-          <input class="input-grey" matInput type="text" name="userName" #identifier="ngModel" [(ngModel)]="signup.identifier" placeholder="User name" required>
+<div id="registration-page" class="form-clean background-image" style="background-image: url('../../assets/voting.svg')">
+    <form class="col-md-12 noPadding d-flex" method="post" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+        <div class="col-md-8 text-center registration-form-container">
+          <div class="col-12">
+            <h2 class="d-inline-block">Welcome to </h2>
+            <h2 class="yellow-text d-inline-block">&nbsp; Agora!</h2>
+          <div style="margin: 10px;">Please fill in the details to <span class="yellow-text font-weight-bold">register </span>with us</div>
+          </div>
+          <div class="col-md-6 d-inline-block text-left">
+            <div class="form-group">
+                <input matInput type="text" name="userName" #identifier="ngModel" [(ngModel)]="signup.identifier" required="required" />
+                <label for="input" class="control-label">Username</label><i class="bar"></i>
+            </div>
+            <div class="form-group">
+                <input matInput type="text" name="firstName" #firstName="ngModel" [(ngModel)]="signup.firstName" required="required" />
+                <label for="input" class="control-label">First Name</label><i class="bar"></i>
+            </div>
+            <div class="form-group">
+                <input matInput type="text" name="lastName" #lastName="ngModel" [(ngModel)]="signup.lastName" required="required" />
+                <label for="input" class="control-label">Last Name</label><i class="bar"></i>
+            </div>
+            <div class="form-group">
+                <input matInput type="email" name="email" #email="ngModel" [(ngModel)]="signup.email" required="required" />
+                <label for="input" class="control-label">Email</label><i class="bar"></i>
+            </div>
+            <div class="pull-right hidden-sm" style="margin: 10px;" (click) = "navigateSignIn()" ><span class="font-weight-bold">Already registered </span>? Click here to <span class="blue-text font-weight-bold">sign in</span></div>
+          </div>
+          <div class="col-md-6 d-inline-block align-top text-left">
+          <div class="form-group">
+              <input  matInput type="password" #password ngModel name="password"  spellcheck="false" required="required" />
+              <label for="input" class="control-label">Password</label><i class="bar"></i>
+          </div>
+          <div class="form-group">
+            <select class="form-control" name="securityQuestion"  [(ngModel)]="question.question" required>
+              <option>Select Security Question</option>
+              <option>What was your childhood nickname?</option>
+              <option>What is the name of your favorite childhood friend?</option>
+              <option>What is your oldest sibling's middle name?</option>
+              <option>In what city or town was your first job?</option>
+              <option>What was the last name of your third grade teacher?</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input  matInput type="answer" name="answer" #answer="ngModel" [(ngModel)]="question.answer"  required="required" />
+            <label for="input" class="control-label">Security Answer</label><i class="bar"></i>
+          </div>
+          <div class="form-group center w-100 col-12" >
+            <button class="btn col-md-8 col-sm-12 blue-background w-100 border-0 text-white" [disabled]="!userRegistrationForm.valid"><i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
+            <div style="margin: 10px;">Or</div>
+            <app-social-login class="w-100 text-center" [disabled]="isLoading || socialLoading" (isCurrentlyLoading)="socialLoading=$event"></app-social-login>
+          </div>
+
+          <div class="d-none pull-right col-sm d-inline-block-sm" style="margin: 10px;" (click) = "navigateSignIn()" ><span class="font-weight-bold">Already registered </span>? Click here to <span class="blue-text font-weight-bold">sign in</span></div>
         </div>
-        <div class="form-group">
-          <input class="input-grey" matInput type="text" name="firstName" #firstName="ngModel" [(ngModel)]="signup.firstName" placeholder="First name" required>
-        </div>
-        <div class="form-group">
-          <input class="input-grey" matInput type="text" name="lastName" #lastName="ngModel" [(ngModel)]="signup.lastName" placeholder="Last name" required>
-        </div>
-        <div class="form-group">
-          <input class="input-grey" matInput type="email" name="email" #email="ngModel" [(ngModel)]="signup.email" placeholder="Email" required>
-        </div>
-        <div class="form-group">
-          <input class="input-grey" matInput type="password" #password ngModel name="password" placeholder="Password" spellcheck="false" required>
-        </div>
-        <div class="form-group">
-          <select class="form-control" name="securityQuestion"  [(ngModel)]="question.question" required>
-            <option>Select Security Question</option>
-            <option>What was your childhood nickname?</option>
-            <option>What is the name of your favorite childhood friend?</option>
-            <option>What is your oldest sibling's middle name?</option>
-            <option>In what city or town was your first job?</option>
-            <option>What was the last name of your third grade teacher?</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <input class="input-grey" matInput type="answer" name="answer" #answer="ngModel" [(ngModel)]="question.answer" placeholder="Security Answer" required>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-green" [disabled]="!userRegistrationForm.valid"><i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>{{message}}</button>
         </div>
     </form>
-    <app-social-login [disabled]="isLoading || socialLoading" (isCurrentlyLoading)="socialLoading=$event"></app-social-login>
-    <div *ngIf="error" class="error">
-        <p class="para">An error occured please try again.</p>
-    </div>
-    <div *ngIf="success" class="success">
-        <p class="para">An activation link has been sent to your email. Follow it to activate your account.</p>
-    </div>
+</div>
+<div class="col-12" style="margin: 10vw 0;">
+  <div class="col-sm-12 col-md-6 d-inline-block align-middle text-center">
+        <div>
+           <h2 class="d-inline-block">Create an</h2><h2 class="d-inline-block blue-text">&nbsp;election&nbsp; </h2>
+           <h2 class="d-inline-block"> and invite </h2><br>
+           <h2 class="d-inline-block"> friends to cast their </h2>
+           <h2 class="d-inline-block blue-text"> &nbsp;votes&nbsp;</h2>
+           <h2 class="d-inline-block"> today! </h2>
+           <br>
+           <button><a href="http://aossie.org" target="_blank">Learn More</a></button>
+        </div>
+  </div>
+  <div class="col-md-6 d-inline-block">
+      <img class="w-100 hidden-sm" src="../assets/vote.png" />
+  </div>
 </div>

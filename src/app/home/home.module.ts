@@ -7,6 +7,7 @@ import { HomeComponent } from './home.component';
 import { RegisterFormModule } from '../register-form/register-form.module';
 import { LandingPageModule } from '../landing-page/landing-page.module';
 import { AboutModule } from '../about/about.module';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -17,6 +18,7 @@ import { AboutModule } from '../about/about.module';
     LandingPageModule,
     RegisterFormModule,
     AboutModule,
+    FooterModule
   ],
   exports: [HomeComponent]
 })

@@ -1,141 +1,63 @@
 $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
 
-.container-fluid
-    margin: 0
-    padding: 0
-    min-width: 100vw
-    background: #ffffff
-.row
-    margin: 0
+.tab-bar
+  margin: 30px auto
+  width: 84vw
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  list-style-type: none
+  -webkit-padding-start: 0
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
 
-.form-election
-    margin-top: 100px
-input
-    width: 260px
-    font-family: $segoe
-    font-size: 16px
-    color: #342B2B
-    padding: 5px
-    border-radius: 5px
-form
-    display: flex
-    align-items: center
-    flex-direction: column
-.btn, .btn-sm
-    padding: 0
+.tab
+  width: 28vw
+  padding: 20px 0
+  background: white
+  color: #607D8B
+  overflow: hidden
+  text-align: center
+  -webkit-box-flex: 1
+  -ms-flex-positive: 1
+  flex-grow: 1
+  cursor: pointer
+  position: relative
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  -o-user-select: none
+  user-select: none
 
-.card 
-    border: none
-    text-align: center
+.indicator
+  width: 28vw
+  height: 3px
+  background: #3AB0D7
+  position: absolute
+  margin-top: 63px
+  margin-left: 28vw
+  -webkit-transition: margin 0.5s ease
+  transition: margin 0.5s ease
+.icon-img
+    margin: 0px
+    height: 6vw
+    width: 6vw
+    min-height: 60px
+    min-width: 60px
+    margin: auto
+.card
+    border-color: #3AB0D7 !important
+.material-icons
+    color: #3AB0D7
+.hidden
+    display: none
+@media (max-width: 767px)
+    .hidden-sm
+        display: none
+    .form-icon
+        margin-left: 0px !important
+.form-icon
+    margin-left: 25px
+    margin-right: 30px
 
-.card-body::-webkit-scrollbar 
-    width: 0 !important
-
-.card-header
-    background: #ffffff
-    border: none
-
-.container
-    margin-top: 70px
-    height: 130%
-.pr-20
-    margin-left: 40px
-.btn-wrapper
-    margin-left: 20vw
-
-.bg-light
-    border-radius: 8px
-    margin-bottom: 10px
-    background: #f9f9f9
-.btn-green
-    background: #54a457
-    width: 150px
-    color: #ffffff
-    height: 40px
-    margin-bottom: 20px
-    border: none
-    border-radius: 8px
-    line-height: 18px
-    font-size: 16px
-
-tr
-    width: 100%
-    display: flex
-    align-items: center
-    justify-content: space-between
-
-td
-    border: none
-
-.btn-line
-    width: 250px
-    font-size: 22px
-    margin-right: 40px
-    color: #707070
-    text-align: center
-    border-bottom: 2px solid #707070
-
-.btn-green-line
-    width: 250px
-    color: #17A257
-    margin-right: 40px
-    font-size: 22px
-    text-align: center
-    border-bottom: 2px solid #17A257
-
-@media(max-width: 1400px)
-    .btn-wrapper
-        margin-left: 10vw
-    .btn-line
-        width: 200px
-        font-size: 16px
-        margin-right: 30px
-    .btn-green-line
-        width: 200px
-        font-size: 16px
-        margin-right: 30px
-
-@media(max-width: 800px)
-    .btn-line
-        width: 120px
-        font-size: 12px
-        margin-right: 20px
-    .btn-green-line
-        width: 120px
-        font-size: 12px
-        margin-right: 20px
-
-@media(max-width: 450px)
-    .btn-wrapper
-        margin-left: 8vw
-    .btn-line
-        width: 85px
-        font-size: 11px
-        margin-right: 12px
-    .btn-green-line
-        width: 85px
-        font-size: 11px
-        margin-right: 12px
-    .card-body
-        max-width: 60vh
-    .card-body, .card-category
-        font-size: 14px
-    .card-title
-        font-size: 18px
-    input
-        font-size: 14px
-    .form-election
-        margin-top: 0px
-    .pr-20
-        margin-left: 0px
-    .container
-        margin-top: 20px
-    .btn-green
-        width: 100px
-        height: 40px
-        border-radius: 8px
-        font-size: 14px
-        line-height: 14px
-        margin-right: 5px
-        margin-top: 20px
-        margin-bottom: 20px
+.yellow-background
+    background-color: #FAC914

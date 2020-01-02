@@ -7,32 +7,18 @@ $segoe-semibold: 'Segoe UI Semibold', 'Open Sans', Helvetica, sans-serif
     justify-content: center
     align-items: center
     width: 100%
-    
+
 .form-group
     width: 90%
 
-a 
+a
     cursor: pointer
-    color: #00843D
+    color: #fff
     font-family: $segoe
     font-size: 14px
     width: 45%
     text-align: right
-    margin-top: -10px
-    margin-bottom: 30px
-
-input
-    width: 50%
-    background: #F6F6F6
-    border: none
-    color: #9E9E9E
-    font-family: $segoe
-    font-size: 18px
-    line-height: 18px
-    margin-bottom: 22px
-    margin-left: 25%
-    height: 55px
-    padding: 15px
+    margin: 10px
 
 .btn-green-line
     &:active
@@ -85,15 +71,22 @@ p
         margin-bottom: 30px
     .btn-wrraper
         margin-bottom: 60px
-
+@media(min-width: 767px)
+    #login-page
+        height: calc(100vh - 70px)
+    .login-form-container
+        max-height: 100vh
+@media(max-width: 767px)
+    .hidden-sm
+        display: none
+    .form-icon
+        margin-left: -20px
 @media(max-width: 450px)
     a
         width: 60%
     input
         width: 70%
         font-size: 14px
-        margin-bottom: 22px
-        margin-left: 15%
         height: 40px
     h1
         font-size: 34px
@@ -111,3 +104,41 @@ p
         width: 120px
     .btn-wrraper
         margin-bottom: 30px
+.background-image
+    background-size: cover
+    background-repeat: no-repeat
+.login-form-container
+    margin: auto
+    background-color: rgba(0,0,0,0.6)
+    text-align: center
+    padding: 30px
+    color: #fff
+    font-weight: 300
+.yellow-text
+    color: #FAC914
+.text-left
+    text-align: left
+.blue-background
+    background-color: #3AB0D7
+.blue-text
+    color: #3AB0D7
+form button
+    border-radius: 50px
+.blue-text
+    color: #3ab0d7
+button
+    padding: 10px 20px
+    outline: none
+    border: none
+    color: #fff
+    border-radius: 50px
+    background-color: #3ab0d7
+    a
+        color: #fff
+label, form input, select
+    color: #fff !important
+.bar
+    border-bottom: 0.0625rem solid #fff !important
+    &::before
+      background-color: #fff
+

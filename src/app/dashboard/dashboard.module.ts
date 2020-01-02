@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NavbarModule } from '../navbar/navbar.module';
 import { DashboardComponent } from './dashboard.component';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -13,6 +14,7 @@ import { DashboardComponent } from './dashboard.component';
     RouterModule,
     DashboardRoutingModule,
     NavbarModule,
+    FooterModule
   ],
   exports: [DashboardComponent]
 })

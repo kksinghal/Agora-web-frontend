@@ -6,6 +6,7 @@ import { ElectionFormTwoRoutingModule } from './election-form-two-routing.module
 import { HeadingBarModule } from '../heading-bar/heading-bar.module';
 import { FormsModule } from '@angular/forms';
 import { NavbarModule } from '../navbar/navbar.module';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [ElectionFormTwoComponent],
@@ -14,7 +15,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     ElectionFormTwoRoutingModule,
     HeadingBarModule,
     FormsModule,
-    NavbarModule
+    NavbarModule,
+    FooterModule
   ],
   exports: [ElectionFormTwoComponent]
 })

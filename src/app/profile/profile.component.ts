@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
-
 import { UserService } from '../services/user.service';
 import { User } from '../model/user.model';
 import { PasswordData } from '../model/password.model';
 import { AgoraSocialUserService } from '../services/agora-social-user.service';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '../../../node_modules/@angular/router';
+import { HttpErrorResponse } from '../../../node_modules/@angular/common/http';
 declare var $: any;
 
 @Component({
@@ -20,15 +18,31 @@ export class ProfileComponent implements OnInit {
   newRetypePassword: PasswordData = new PasswordData();
   twoFacorAuthentication: boolean;
   twoFactorAuth: string;
-
-  constructor(private userService: UserService, private agoraSocialUserService: AgoraSocialUserService, private router: Router) {
+  resetPassword: boolean;
+  isActivationError = false;
+  error = false;
+  success = false;
+  isLoading = false;
+  message = 'Reset Password';
+  token: string;
+  constructor(private userService: UserService, private agoraSocialUserService: AgoraSocialUserService, private router: Router, private route: ActivatedRoute) {
     this.user = this.userService.getCurrentUser();
     this.twoFacorAuthentication = this.user.twoFactorAuthentication;
+    this.resetPassword = false;
     this.updateMessage();
-    console.log(this.user);
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.token = params.token;
+    });
+  }
+
+  resetPasswordToggle() {
+    this.resetPassword = !this.resetPassword;
+  }
+  isPasswordResetEnabled() {
+    return this.resetPassword
   }
 
   updateMessage() {
@@ -104,6 +118,37 @@ export class ProfileComponent implements OnInit {
           '</div>' +
           '<a href="{3}" target="{4}" data-notify="url"></a>' +
           '</div>'
+      });
+  }
+  navigateSignIn() {
+    this.router.navigate(['/signIn']);
+  }
+
+  navigateSignUp() {
+    this.router.navigate(['/home']);
+  }
+  OnSubmit(password) {
+    this.message = 'Loading....';
+    this.isLoading = true;
+    this.error = false;
+    this.success = false;
+    const passwordData = new PasswordData();
+    passwordData.password = password;
+    this.userService.resetPassword(passwordData, this.token).subscribe((data: any) => {
+      this.message = 'Reset Password';
+      this.isLoading = false;
+      this.success = true;
+    },
+      (err: HttpErrorResponse) => {
+        if (err.status === 200) {
+          this.message = 'Reset Password';
+          this.isLoading = false;
+          this.success = true;
+        } else {
+          this.message = 'Reset Password';
+          this.isLoading = false;
+          this.error = true;
+        }
       });
   }
 

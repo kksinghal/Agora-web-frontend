@@ -1,7 +1,16 @@
 <div class="wrapper">
-    <div class="bg-color">
-        <div class="heading"><ng-content select = ".heading"></ng-content></div>
-        <div class="description"><ng-content select = ".description"></ng-content></div>
+    <div class="bg-color text-left" style="padding: 30px;">
+        <div class="icon-container" >
+            <ng-content select=".icon-img"></ng-content>
+        </div>
+        <div class="d-inline-block align-middle text-container">
+            <div class="heading">
+                <ng-content select=".icon-img" class="d-none col-sm-6"></ng-content>
+                <ng-content select = ".heading"></ng-content>
+            </div>
+            <div class="text1"><ng-content select = ".text1"></ng-content></div>
+            <div class="text2"><ng-content select = ".text2"></ng-content></div>
+        </div>
     </div>
     <div class="instruction"><i><ng-content select = ".instruction"></ng-content></i></div>
 </div>

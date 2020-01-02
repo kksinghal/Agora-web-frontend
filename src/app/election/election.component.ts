@@ -5,7 +5,6 @@ import { Election } from '../model/election.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import * as Moment from 'moment';
 import Swal from 'sweetalert2';
-
 declare var $: any;
 
 @Component({
@@ -13,15 +12,18 @@ declare var $: any;
   templateUrl: './election.component.html',
   styleUrls: ['./election.component.sass']
 })
-export class ElectionComponent implements OnInit {
 
+export class ElectionComponent implements OnInit {
+  candidateSearchStr: string;
   election: Election;
   status: string;
   id: string;
   activated: boolean;
-
+  tabsNumber: number;
   constructor(private router: Router, private electionService: ElectionService, private route: ActivatedRoute) {
     this.election = new Election();
+    this.candidateSearchStr = "";
+    this.tabsNumber = 3;
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.electionService.getElection(params.id).subscribe((data: Election) => {
@@ -37,9 +39,44 @@ export class ElectionComponent implements OnInit {
 
   ngOnInit() {
   }
+  changeTabsNumber(n){
+    this.tabsNumber = n;
+  }
+  getTabsNumber(){
+    return this.tabsNumber;
+  }
+  getAddVoterDisplay(){
+    if(this.tabsNumber==3) {
+      return 'list-item';
+    }
+    else{
+      return 'none';
+    }
+  }
+  filterCandidate(event){
+    this.candidateSearchStr = event.target.value ;
+  }
+  getTime(date: string){
+     var d= Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().toLocaleString();
+     var arr = d.split(',')
+     return arr[1];
+  }
 
-  getDisplayDate(date: string): string {
-    return Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().toLocaleString();
+  getDate(date: string): string {
+     var d= Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().toLocaleString();
+     var arr = d.split(',')[0].split('/')
+     return arr[0];
+  }
+  getMonth(date: string): string {
+    var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var d= Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().toLocaleString();
+    var arr = d.split(',')[0].split('/')
+    return month[parseInt(arr[1])-1];
+  }
+  getYear(date: string): string {
+    var d= Moment.utc(date, 'YYYY-MM-DDTHH:mm:ssZ', false).local(true).toDate().toLocaleString();
+    var arr = d.split(',')[0].split('/')
+    return arr[2];
   }
 
   delete() {

@@ -58,8 +58,7 @@ $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
     display: flex
     justify-content: space-between
 .btn-wrapper
-    padding: 0
-    padding-left: 10vw
+    padding: 0 10vw
 .index
     width: 10%
 .name
@@ -112,8 +111,13 @@ $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
         width: 120px
         font-size: 12px
         margin-right: 20px
-
-@media(max-width: 576px)
+    .election-pages-card-icon
+        margin: 10px 20px !important
+    election-pages-card .body > *
+        font-size: 25px
+@media(max-width: 767px)
+    .schedule
+        margin-bottom: 70px
     .btn-group
         width: 90vw
     .infoBox
@@ -144,4 +148,96 @@ $segoe: 'Segoe UI', 'Open Sans', Helvetica, sans-serif
         margin-right: 5px
         margin-top: 20px
         margin-bottom: 20px
-    
+
+.tab-bar
+  margin: 30px auto
+  width: 84vw
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  list-style-type: none
+  -webkit-padding-start: 0
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+
+.tab
+  width: 28vw
+  padding: 20px 0
+  background: white
+  color: #607D8B
+  overflow: hidden
+  text-align: center
+  -webkit-box-flex: 1
+  -ms-flex-positive: 1
+  flex-grow: 1
+  cursor: pointer
+  position: relative
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  -o-user-select: none
+  user-select: none
+
+.indicator
+  width: 28vw
+  height: 3px
+  background: #3AB0D7
+  position: absolute
+  margin-top: 63px
+  margin-left: 0
+  -webkit-transition: margin 0.5s ease
+  transition: margin 0.5s ease
+
+.election-pages-card-icon
+    height: 3vw
+    min-height: 30px
+    margin: 1vw
+election-pages-card .body
+    margin-top: 80px
+election-pages-card .footer
+    margin: auto
+    font-size: 18px
+election-pages-card .icon
+    height: 30px
+    width: 30px
+    margin: auto
+.img-container
+    overflow: hidden
+    position: absolute
+    left: 30px
+    top: 20px
+    z-index: 3
+    webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    -webkit-transition: all 0.3s
+    -moz-transition: all 0.3s
+    -ms-transition: all 0.3s
+    -o-transition: all 0.3s
+    transition: all 0.3s
+    background-color: #fff
+    display: inline-flex
+    margin: auto
+    height: 40px
+    width: 40px
+election-pages-card .header
+    margin: auto 0px
+.blue-text
+    color: #3AB0D7
+.icon-img
+    margin: 0px
+    height: 9vw
+    width: 9vw
+    min-height: 80px
+    min-width: 80px
+    margin: auto
+    border-radius: 100%
+label, form input, select
+    color: #fff !important
+.bar
+    border-bottom: 0.0625rem solid #fff !important
+    &::before
+      background-color: #fff
+input::placeholder
+  color: #fff
+.form-group
+    margin: 0px !important

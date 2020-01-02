@@ -1,0 +1,15 @@
+<div class="col-md-4 col-sm-6 col-xs-12 d-inline-block" style="width: 95%">
+    <article class="material-card mc-active">
+        <h2 class="d-flex">
+            <ng-content select=".header"></ng-content>
+        </h2>
+        <div class="mc-content">
+            <div class="mc-description">
+                <ng-content select=".body"></ng-content>
+            </div>
+        </div>
+        <div class="mc-footer">
+            <ng-content select=".footer"></ng-content>
+        </div>
+    </article>
+</div>

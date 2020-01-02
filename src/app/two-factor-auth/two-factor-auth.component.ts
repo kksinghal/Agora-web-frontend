@@ -21,7 +21,8 @@ export class TwoFactorAuthComponent implements OnInit {
   oneTimePassword: OneTimePassword;
   success = false;
   isSending = false;
-
+  public subscriber1: any = {};
+  public subscriber2: any = {};
   constructor(private userService: UserService, private jwt: JwtService, private router: Router) { }
 
   resetForm(form?: NgForm) {
@@ -49,20 +50,22 @@ export class TwoFactorAuthComponent implements OnInit {
 
   resendOTP() {
     this.isSending = true;
-    this.userService.currentCrypto.subscribe( crypto => {
+    this.subscriber1.name = this.userService.currentCrypto.subscribe( crypto => {
       console.log(crypto.username);
-      this.userService.resendOtp(crypto.username).subscribe((data: any) => {
+      this.subscriber2.name  = this.userService.resendOtp(crypto.username).subscribe((data: any) => {
         this.isSending = false;
         this.success = true;
-        console.log(data);
+        this.subscriber1.name.unsubscribe();
+        this.subscriber2.name.unsubscribe();
       },
       (err: HttpErrorResponse) => {
         this.isSending = false;
         this.error = true;
+        this.subscriber1.name.unsubscribe();
+        this.subscriber2.name.unsubscribe();
       });
     });
   }
-
   OnSubmit( otp ) {
     this.message = 'Loading....';
     this.isLoading = true;
@@ -83,3 +86,4 @@ export class TwoFactorAuthComponent implements OnInit {
   }
 
 }
+
